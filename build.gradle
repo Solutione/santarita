@@ -1,0 +1,44 @@
+group 'org.solutione.santarita'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+//Application plugin
+apply plugin: 'application'
+
+mainClassName = "org.solutione.santarita.Main"
+jar{
+    manifest{
+        attributes "Main-Class": 'org.solutione.santarita.Main'
+    }
+}
+
+//javafx plugin
+
+buildscript {
+    dependencies {
+        classpath group: 'de.dynamicfiles.projects.gradle.plugins', name: 'javafx-gradle-plugin', version: '8.8.2'
+    }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+
+    }
+}
+
+apply plugin: 'javafx-gradle-plugin'
+
+
+jfx {
+    // minimal requirement for jfxJar-task
+    mainClass = 'org.solutione.santarita'
+
+    // minimal requirement for jfxNative-task
+    vendor = 'scysco'
+}
