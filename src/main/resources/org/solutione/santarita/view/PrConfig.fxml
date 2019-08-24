@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="BPConfig" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="469.0" prefWidth="872.0" style="-fx-background-color: #a49582;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.PrConfig">
+    <top>
+        <FlowPane alignment="CENTER_RIGHT" columnHalignment="CENTER" prefHeight="50.0" prefWidth="730.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="42.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../image/search.png" />
+                    </image>
+                    <FlowPane.margin>
+                        <Insets right="15.0" />
+                    </FlowPane.margin>
+                </ImageView>
+            </children>
+        </FlowPane>
+    </top>
+    <center>
+        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #a49582;" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+         <content>
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #a49582;">
+               <children>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <Label text="Roles" textFill="#6c4b47" BorderPane.alignment="TOP_LEFT">
+                           <font>
+                              <Font name="Roboto Light" size="20.0" />
+                           </font>
+                           <BorderPane.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </BorderPane.margin>
+                        </Label>
+                     </top>
+                     <center>
+                        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="89.0" prefWidth="870.0">
+                                 <children>
+                                    <ImageView fitHeight="43.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../image/user.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="30.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <Label text="Administrador" textFill="#5d3737">
+                                       <font>
+                                          <Font name="Roboto Regular" size="21.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="15.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="160.0" prefWidth="232.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="97.0">
+                                             <children>
+                                                <ImageView fitHeight="30.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../image/btnRadioSelected.png" />
+                                                   </image>
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                </ImageView>
+                                                <Label text="Ventas">
+                                                   <font>
+                                                      <Font name="Roboto Regular" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" layoutX="58.0" layoutY="35.0" prefHeight="40.0" prefWidth="97.0">
+                                             <children>
+                                                <ImageView fitHeight="30.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../image/btnRadioSelected.png" />
+                                                   </image>
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                </ImageView>
+                                                <Label text="Ventas">
+                                                   <font>
+                                                      <Font name="Roboto Regular" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" layoutX="58.0" layoutY="55.0" prefHeight="40.0" prefWidth="97.0">
+                                             <children>
+                                                <ImageView fitHeight="30.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../image/btnRadioSelected.png" />
+                                                   </image>
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                </ImageView>
+                                                <Label text="Ventas">
+                                                   <font>
+                                                      <Font name="Roboto Regular" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" layoutX="58.0" layoutY="90.0" prefHeight="40.0" prefWidth="97.0">
+                                             <children>
+                                                <ImageView fitHeight="30.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../image/btnRadioSelected.png" />
+                                                   </image>
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                </ImageView>
+                                                <Label text="Ventas">
+                                                   <font>
+                                                      <Font name="Roboto Regular" size="16.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </FlowPane>
+                                    <ImageView fitHeight="29.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../image/btnGuardar.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="60.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </center>
+                     <bottom>
+                        <ImageView fitHeight="31.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
+                           <image>
+                              <Image url="@../image/btnNuevo.png" />
+                           </image>
+                           <BorderPane.margin>
+                              <Insets right="60.0" />
+                           </BorderPane.margin>
+                        </ImageView>
+                     </bottom>
+                  </BorderPane>
+               </children>
+            </VBox>
+         </content>
+        </ScrollPane>
+    </center>
+</BorderPane>

@@ -1,5 +1,6 @@
 package org.solutione.santarita.controller;
 
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -7,7 +8,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
+import java.io.IOException;
+
 public class Principal {
+
+    public BorderPane BPPrincipal;
+
     public BorderPane bpSale;
     public BorderPane bpProvider;
     public BorderPane bpInventory;
@@ -42,6 +48,15 @@ public class Principal {
         imgProvider.setImage(new Image("org/solutione/santarita/image/proveedor.png"));
         imgInventory.setImage(new Image("org/solutione/santarita/image/inventario.png"));
         imgFinance.setImage(new Image("org/solutione/santarita/image/administracion.png"));
+        imgConfig.setImage(new Image("org/solutione/santarita/image/ajustes.png"));
+
+        BorderPane bp = null;
+        try {
+            bp = (BorderPane) FXMLLoader.load(getClass().getResource("/org/solutione/santarita/view/PrSale.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        BPPrincipal.setCenter(bp);
     }
 
     public void bpProviderMC(MouseEvent mouseEvent) {
@@ -54,6 +69,15 @@ public class Principal {
         imgProvider.setImage(new Image("org/solutione/santarita/image/proveedor-b.png"));
         imgInventory.setImage(new Image("org/solutione/santarita/image/inventario.png"));
         imgFinance.setImage(new Image("org/solutione/santarita/image/administracion.png"));
+        imgConfig.setImage(new Image("org/solutione/santarita/image/ajustes.png"));
+
+        BorderPane bp = null;
+        try {
+            bp = (BorderPane) FXMLLoader.load(getClass().getResource("/org/solutione/santarita/view/PrProvider.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        BPPrincipal.setCenter(bp);
     }
 
     public void bpInventoryMC(MouseEvent mouseEvent) {
@@ -66,6 +90,15 @@ public class Principal {
         imgProvider.setImage(new Image("org/solutione/santarita/image/proveedor.png"));
         imgInventory.setImage(new Image("org/solutione/santarita/image/inventario-b.png"));
         imgFinance.setImage(new Image("org/solutione/santarita/image/administracion.png"));
+        imgConfig.setImage(new Image("org/solutione/santarita/image/ajustes.png"));
+
+        BorderPane bp = null;
+        try {
+            bp = (BorderPane) FXMLLoader.load(getClass().getResource("/org/solutione/santarita/view/PrInventory.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        BPPrincipal.setCenter(bp);
 
     }
 
@@ -79,9 +112,32 @@ public class Principal {
         imgProvider.setImage(new Image("org/solutione/santarita/image/proveedor.png"));
         imgInventory.setImage(new Image("org/solutione/santarita/image/inventario.png"));
         imgFinance.setImage(new Image("org/solutione/santarita/image/administracion-b.png"));
+        imgConfig.setImage(new Image("org/solutione/santarita/image/ajustes.png"));
+
+        BorderPane bp = null;
+        try {
+            bp = (BorderPane) FXMLLoader.load(getClass().getResource("/org/solutione/santarita/view/PrFinance.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        BPPrincipal.setCenter(bp);
     }
 
     public void imgConfigMC(MouseEvent mouseEvent) {
+
+        imgSale.setImage(new Image("org/solutione/santarita/image/venta.png"));
+        imgProvider.setImage(new Image("org/solutione/santarita/image/proveedor.png"));
+        imgInventory.setImage(new Image("org/solutione/santarita/image/inventario.png"));
+        imgFinance.setImage(new Image("org/solutione/santarita/image/administracion.png"));
+        imgConfig.setImage(new Image("org/solutione/santarita/image/ajustes-b.png"));
+
+        BorderPane bp = null;
+        try {
+            bp = (BorderPane) FXMLLoader.load(getClass().getResource("/org/solutione/santarita/view/PrConfig.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        BPPrincipal.setCenter(bp);
     }
 
     public void lblClockMC(MouseEvent mouseEvent) {

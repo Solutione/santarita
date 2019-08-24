@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="693.0" style="-fx-background-color: #a49582ff;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.Principal">
+<BorderPane fx:id="BPPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="693.0" style="-fx-background-color: #a49582ff;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.Principal">
    <left>
       <BorderPane prefHeight="467.0" prefWidth="55.0" style="-fx-background-color: #3f0d16FF;" BorderPane.alignment="CENTER">
          <opaqueInsets>
