@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -32,32 +33,28 @@
     <center>
         <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #a49582;" BorderPane.alignment="CENTER">
             <BorderPane.margin>
-                <Insets />
+                <Insets left="30.0" right="30.0" />
             </BorderPane.margin>
          <content>
-            <TableView prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #a49582;" stylesheets="@../style/table.css">
+            <TableView fx:id="tvProducts" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #a49582;" stylesheets="@../style/table.css">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn fx:id="tcName" maxWidth="9000.0" prefWidth="155.0" text="Nombre Producto" />
+                <TableColumn fx:id="tcUnits" maxWidth="2000.0" prefWidth="100.0" text="Unidades" />
+                  <TableColumn fx:id="tcCost" maxWidth="2500.0" prefWidth="100.0" text="Costo" />
+                  <TableColumn fx:id="tcPrice" maxWidth="2500.0" prefWidth="100.0" text="Precio" />
+                  <TableColumn fx:id="tcBrand" prefWidth="75.0" text="Marca" />
               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
          </content>
         </ScrollPane>
     </center>
    <bottom>
       <BorderPane prefHeight="187.0" prefWidth="872.0" BorderPane.alignment="CENTER">
-         <top>
-            <ImageView fitHeight="26.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="TOP_RIGHT">
-               <image>
-                  <Image url="@../image/btnagregar.png" />
-               </image>
-               <BorderPane.margin>
-                  <Insets right="25.0" top="8.0" />
-               </BorderPane.margin>
-            </ImageView>
-         </top>
          <center>
-            <BorderPane prefHeight="201.0" prefWidth="872.0" BorderPane.alignment="CENTER">
+            <BorderPane fx:id="bpProduct" prefHeight="201.0" prefWidth="872.0" visible="false" BorderPane.alignment="CENTER">
                <left>
                   <ImageView fitHeight="125.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                      <image>
@@ -80,11 +77,11 @@
                                           <Font name="Roboto Light" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Example Product" textFill="#5d3737">
+                                    <TextField fx:id="tfName" promptText="Nombre" style="-fx-prompt-text-fill: #5d3737; -fx-background-color: #a49582; -fx-text-fill: #5d3737;">
                                        <font>
-                                          <Font name="Roboto Regular" size="24.0" />
+                                          <Font name="Roboto Regular" size="22.0" />
                                        </font>
-                                    </Label>
+                                    </TextField>
                                  </children>
                               </VBox>
                               <VBox layoutX="10.0" layoutY="10.0" prefHeight="63.0" prefWidth="240.0">
@@ -94,11 +91,11 @@
                                           <Font name="Roboto Light" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label text="\$00000.00" textFill="#5d3737">
+                                    <TextField fx:id="tfCost" layoutX="10.0" layoutY="29.0" promptText="000.00" style="-fx-prompt-text-fill: #5d3737; -fx-background-color: #a49582; -fx-text-fill: #5d3737;">
                                        <font>
-                                          <Font name="Roboto Regular" size="20.0" />
+                                          <Font name="Roboto Regular" size="18.0" />
                                        </font>
-                                    </Label>
+                                    </TextField>
                                  </children>
                               </VBox>
                               <VBox layoutX="10.0" layoutY="10.0" prefHeight="63.0" prefWidth="240.0">
@@ -108,11 +105,11 @@
                                           <Font name="Roboto Light" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label text="\$00000.00" textFill="#5d3737">
+                                    <TextField fx:id="tfPrice" promptText="0000.00" style="-fx-prompt-text-fill: #5d3737; -fx-background-color: #a49582; -fx-text-fill: #5d3737;">
                                        <font>
-                                          <Font name="Roboto Regular" size="20.0" />
+                                          <Font name="Roboto Regular" size="18.0" />
                                        </font>
-                                    </Label>
+                                    </TextField>
                                  </children>
                               </VBox>
                               <VBox layoutX="233.0" layoutY="10.0" prefHeight="63.0" prefWidth="240.0">
@@ -122,11 +119,11 @@
                                           <Font name="Roboto Light" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label text="00000" textFill="#5d3737">
+                                    <TextField fx:id="tfUnits" promptText="00" style="-fx-prompt-text-fill: #5d3737; -fx-background-color: #a49582; -fx-text-fill: #5d3737;">
                                        <font>
-                                          <Font name="Roboto Regular" size="20.0" />
+                                          <Font name="Roboto Regular" size="18.0" />
                                        </font>
-                                    </Label>
+                                    </TextField>
                                  </children>
                               </VBox>
                            </children></HBox>
@@ -139,11 +136,11 @@
                                           <Font name="Roboto Light" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Example " textFill="#5d3737">
+                                    <TextField fx:id="tfBrand" layoutX="10.0" layoutY="29.0" promptText="Marca" style="-fx-prompt-text-fill: #5d3737; -fx-background-color: #a49582; -fx-text-fill: #5d3737;">
                                        <font>
-                                          <Font name="Roboto Regular" size="20.0" />
+                                          <Font name="Roboto Regular" size="18.0" />
                                        </font>
-                                    </Label>
+                                    </TextField>
                                  </children>
                               </VBox>
                               <VBox layoutX="10.0" layoutY="10.0" prefHeight="63.0" prefWidth="129.0">
@@ -153,11 +150,11 @@
                                           <Font name="Roboto Light" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label text="00/00/0000" textFill="#5d3737">
+                                    <TextField fx:id="tfExpiration" promptText="00/00/0000" style="-fx-prompt-text-fill: #5d3737; -fx-background-color: #a49582; -fx-text-fill: #5d3737;">
                                        <font>
-                                          <Font name="Roboto Regular" size="20.0" />
+                                          <Font name="Roboto Regular" size="18.0" />
                                        </font>
-                                    </Label>
+                                    </TextField>
                                  </children>
                               </VBox>
                               <VBox layoutX="10.0" layoutY="10.0" prefHeight="63.0" prefWidth="168.0">
@@ -167,11 +164,11 @@
                                           <Font name="Roboto Light" size="13.0" />
                                        </font>
                                     </Label>
-                                    <Label text="0000000000000" textFill="#5d3737">
+                                    <TextField fx:id="tfCode" promptText="000000000" style="-fx-prompt-text-fill: #5d3737; -fx-background-color: #a49582; -fx-text-fill: #5d3737;">
                                        <font>
-                                          <Font name="Roboto Regular" size="20.0" />
+                                          <Font name="Roboto Regular" size="18.0" />
                                        </font>
-                                    </Label>
+                                    </TextField>
                                  </children>
                               </VBox>
                               <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
@@ -181,9 +178,9 @@
                                           <Image url="@../image/btnEliminar.png" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fitHeight="30.0" fitWidth="70.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="30.0" fitWidth="70.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#btnGSave" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../image/btnGuardar.png" />
+                                          <Image url="@../image/btnGuardar-b.png" />
                                        </image>
                                        <FlowPane.margin>
                                           <Insets left="20.0" />
@@ -208,6 +205,21 @@
                </top>
             </BorderPane>
          </center>
+         <top>
+            <HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="872.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="txtScanner" onAction="#txtScannerAddProduct" style="-fx-background-color: #a49582;" visible="false" />
+                  <ImageView fitHeight="26.0" fitWidth="70.0" onMouseClicked="#btnAgregarMC" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/btnagregar.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="25.0" top="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+         </top>
       </BorderPane>
    </bottom>
 </BorderPane>

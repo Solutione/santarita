@@ -8,9 +8,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.solutione.santarita.controller.PrSaleFinish;
+import org.solutione.santarita.controller.Principal;
 import org.solutione.santarita.controller.Splash;
 
 import java.io.IOException;
@@ -32,7 +35,7 @@ public class  Main extends Application {
         }
 
         Stage splash = new Stage();
-        splash.setScene(new Scene(root, 600, 500));
+        splash.setScene(new Scene(root, 800, 640));
         splash.setMaximized(true);
         splash.initStyle(StageStyle.UNDECORATED);
         splash.show();
@@ -45,16 +48,19 @@ public class  Main extends Application {
 
                     Platform.runLater(() -> {
 
-                        Parent root = null;
+                        splash.close();
+
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/Principal.fxml"));
+                        primaryStage.setMaximized(true);
+                        primaryStage.initStyle(StageStyle.UNDECORATED);
                         try {
-                            root = FXMLLoader.load(getClass().getResource("/org/solutione/santarita/view/Principal.fxml"));
+                            primaryStage.setScene(new Scene((Pane) loader.load(),800, 600));
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-                        splash.close();
-                        primaryStage.setScene(new Scene(root, 300, 250));
-                        primaryStage.setMaximized(true);
-                        primaryStage.initStyle(StageStyle.UNDECORATED);
+
+                        Principal controller = loader.<Principal>getController();
+                        controller.initData(primaryStage);
 
                         primaryStage.show();
                     });

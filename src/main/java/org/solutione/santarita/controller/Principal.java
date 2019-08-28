@@ -1,12 +1,16 @@
 package org.solutione.santarita.controller;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -37,6 +41,11 @@ public class Principal {
     private String bgPnlSel = "-fx-background-color: rgba(246, 245, 250, 1);";
     private String bgPnlNotSel = "-fx-background-color: rgba(63, 13, 22, 1);";
 
+    @FXML
+    void initialize() {}
+
+    public void initData(Stage primaryStage) {}
+
 
     public void bpSaleMC(MouseEvent mouseEvent) {
         pnlSale.setStyle(bgPnlSel);
@@ -50,13 +59,17 @@ public class Principal {
         imgFinance.setImage(new Image("org/solutione/santarita/image/administracion.png"));
         imgConfig.setImage(new Image("org/solutione/santarita/image/ajustes.png"));
 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrSale.fxml"));
         BorderPane bp = null;
         try {
-            bp = (BorderPane) FXMLLoader.load(getClass().getResource("/org/solutione/santarita/view/PrSale.fxml"));
+            bp = (BorderPane) loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
         BPPrincipal.setCenter(bp);
+
+        PrSale controller = loader.<PrSale>getController();
+        controller.initData(BPPrincipal);
     }
 
     public void bpProviderMC(MouseEvent mouseEvent) {
@@ -124,6 +137,11 @@ public class Principal {
     }
 
     public void imgConfigMC(MouseEvent mouseEvent) {
+
+        pnlSale.setStyle(bgPnlNotSel);
+        pnlProvider.setStyle(bgPnlNotSel);
+        pnlInventory.setStyle(bgPnlNotSel);
+        pnlFinance.setStyle(bgPnlNotSel);
 
         imgSale.setImage(new Image("org/solutione/santarita/image/venta.png"));
         imgProvider.setImage(new Image("org/solutione/santarita/image/proveedor.png"));

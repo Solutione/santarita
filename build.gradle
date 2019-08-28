@@ -9,6 +9,11 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    implementation 'com.google.guava:guava:22.0'
+    implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
+}
+
 //Application plugin
 apply plugin: 'application'
 

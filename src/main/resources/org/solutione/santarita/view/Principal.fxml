@@ -112,7 +112,4 @@
          </bottom>
       </BorderPane>
    </left>
-   <right>
-      <BorderPane prefHeight="467.0" prefWidth="284.0" style="-fx-background-color: #83695fff;" BorderPane.alignment="CENTER" />
-   </right>
 </BorderPane>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="123.0" prefWidth="294.0" style="-fx-background-color: #3f0d16;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.PrSaleFinishConfirm">
+   <center>
+      <Label text="¿Terminar Compra?" textFill="#a1907e" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Roboto Italic" size="24.0" />
+         </font>
+      </Label>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="34.0" prefWidth="294.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="imgBtnAceptar" fitHeight="39.0" fitWidth="77.0" onMouseClicked="#imgBtnAceptarAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/btnAceptar.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="30.0" top="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="imgBtnCancelar" fitHeight="39.0" fitWidth="77.0" layoutX="119.0" layoutY="11.0" onMouseClicked="#imgBtnCancelarAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/btnCancelar.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="30.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
