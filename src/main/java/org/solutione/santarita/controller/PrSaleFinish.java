@@ -1,5 +1,6 @@
 package org.solutione.santarita.controller;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.solutione.santarita.api.Producto;
 
 import java.io.IOException;
 
@@ -23,16 +25,18 @@ public class PrSaleFinish {
     public ImageView imgBtnFinish;
     private Stage stg;
     private BorderPane bpPrincipal;
-    double total;
+    private double total;
+    private ObservableList<Producto> oblProductos;
 
     @FXML
     void initialize() {}
 
-    void initData(BorderPane bpPrincipal,Stage stg, String total) {
+    void initData(ObservableList<Producto> oblProductos,BorderPane bpPrincipal, Stage stg, String total) {
         this.total = Double.parseDouble(total);
         tfMoney.setText(total);
         this.stg = stg;
         this.bpPrincipal = bpPrincipal;
+        this.oblProductos = oblProductos;
     }
 
     public void changeExchange(KeyEvent keyEvent) {
@@ -60,7 +64,7 @@ public class PrSaleFinish {
         }
 
         PrSaleFinishConfirm controller = loader.<PrSaleFinishConfirm>getController();
-        controller.initData(bpPrincipal,stage,stg);
+        controller.initData(oblProductos,bpPrincipal,stage,stg);
 
         stage.show();
     }

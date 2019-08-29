@@ -87,7 +87,7 @@
                         <Insets />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="50.0" fitWidth="25.0" onMouseClicked="#exampleAddProd" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="50.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/efectivo.png" />
                      </image>

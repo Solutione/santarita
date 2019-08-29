@@ -5,9 +5,9 @@ import javafx.collections.ObservableList;
 
 import java.sql.*;
 
-public class BDProductos {
+public class BDProveedores {
     private Connection conn;
-    public BDProductos(){
+    public BDProveedores(){
         try {
             conn = DriverManager.getConnection("jdbc:mariadb://localhost/santarita", "root", "123Abejas");
         } catch (SQLException e) {
@@ -17,20 +17,18 @@ public class BDProductos {
     public ObservableList<Producto> getProducts(){
         ObservableList<Producto> datos = FXCollections.observableArrayList();
         try {
-            String query = "SELECT * FROM Products";
+            String query = "SELECT * FROM Providers";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next())
             {
                 String code = rs.getString("code");
                 String name = rs.getString("name");
+                String brand = rs.getString("brand");
                 double cost = rs.getDouble("cost");
                 double price = rs.getDouble("price");
-                int units = rs.getInt("units");
-                String brand = rs.getString("brand");
-                String expiration = rs.getString("expiration");
 
-                datos.add(new Producto(code,name,cost,price,units,brand,expiration));
+                datos.add(new Producto(code,name,brand,cost,price));
             }
             st.close();
             conn.close();
@@ -40,20 +38,18 @@ public class BDProductos {
         return datos;
     }
     public String[] getProduct(String code){
-        String[] product = new String[7];
+        String[] product = new String[5];
         try {
-            String query = "SELECT * FROM Products where code = '"+code+"'";
+            String query = "SELECT * FROM Providers where code = '"+code+"'";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next())
             {
                 product[0] = code;
                 product[1] = rs.getString("name");
-                product[2] = Double.toString(rs.getDouble("cost"));
-                product[3] = Double.toString(rs.getDouble("price"));
-                product[4] = Integer.toString(rs.getInt("units"));
-                product[5] = rs.getString("brand");
-                product[6] = rs.getString("expiration");
+                product[2] = rs.getString("brand");
+                product[3] = Double.toString(rs.getDouble("cost"));
+                product[4] = Double.toString(rs.getDouble("price"));
             }
             st.close();
             conn.close();
@@ -62,29 +58,16 @@ public class BDProductos {
         }
         return product;
     }
-    public void updateProduct(String code, int units){
+    public void addProduct(String codigo,String nombre,String marca,double costo,double precio){
         try {
-            String query = "UPDATE Products SET units = "+units+" where code = '"+code+"'";
-            Statement st = conn.createStatement();
-            st.executeQuery(query);
-            st.close();
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    public void addProduct(String codigo,String nombre,double costo,double precio, int unidades,String marca,String caducidad){
-        try {
-            String query = "insert into Products " +
-                    "(code,name,cost,price,units,brand,expiration) " +
+            String query = "insert into Providers " +
+                    "(code,name,brand,cost,price) " +
                     "values (" +
                     "'"+codigo+"'," +
                     "'"+nombre+"'," +
+                    ""+marca+"," +
                     ""+costo+"," +
-                    ""+precio+"," +
-                    ""+unidades+"," +
-                    "'"+marca+"'," +
-                    "'"+caducidad+"')";
+                    ""+precio+")";
             Statement st = conn.createStatement();
             st.executeQuery(query);
             st.close();
@@ -93,16 +76,14 @@ public class BDProductos {
             e.printStackTrace();
         }
     }
-    public void setProduct(String codigo,String nombre,double costo,double precio, int unidades,String marca,String caducidad){
+    public void setProduct(String codigo,String nombre,String marca,double costo,double precio){
         try {
-            String query = "UPDATE Products SET " +
+            String query = "UPDATE Providers SET " +
                     "code = '"+codigo+"'," +
                     "name = '"+nombre+"'," +
-                    "cost = "+costo+"," +
-                    "price = "+precio+"," +
-                    "units = "+unidades+"," +
                     "brand = '"+marca+"'," +
-                    "expiration = '"+caducidad+"'" +
+                    "cost = "+costo+"," +
+                    "price = "+precio +
                     "where code = '"+codigo+"'";
             Statement st = conn.createStatement();
             st.executeQuery(query);

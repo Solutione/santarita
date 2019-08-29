@@ -75,10 +75,6 @@ public class PrSale {
         lblTotal.setText(Double.toString(total));
     }
 
-    public void exampleAddProd(MouseEvent mouseEvent) {
-        addProduct("00000002");
-    }
-
     public void lblFinishMouseClick(MouseEvent mouseEvent) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrSaleFinish.fxml"));
         Stage stage = new Stage(StageStyle.DECORATED);
@@ -89,7 +85,7 @@ public class PrSale {
         }
 
         PrSaleFinish controller = loader.<PrSaleFinish>getController();
-        controller.initData(bpPrincipal,stage,lblTotal.getText());
+        controller.initData(productos,bpPrincipal,stage,lblTotal.getText());
 
         stage.show();
     }
