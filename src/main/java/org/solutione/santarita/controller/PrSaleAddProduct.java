@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import org.solutione.santarita.api.BDProductos;
 import org.solutione.santarita.api.Producto;
 
@@ -17,20 +18,24 @@ public class PrSaleAddProduct {
     private ObservableList<Producto> productos;
     private Label lblTotal;
 
+    Stage thisst;
     @FXML
     void initialize(){}
 
-    void initData(ObservableList<Producto> productos,Label lblTotal) {
+    void initData(ObservableList<Producto> productos, Label lblTotal, Stage thisst) {
         this.productos = productos;
         this.lblTotal = lblTotal;
+        this.thisst = thisst;
     }
 
     public void onEnter(ActionEvent actionEvent) {
         addProduct(tfCode.getText());
+        thisst.close();
     }
 
     public void imgBtnTerminarMC(MouseEvent mouseEvent) {
         addProduct(tfCode.getText());
+        thisst.close();
     }
     private void addProduct(String code){
         String[] product = new BDProductos().getProduct(code);

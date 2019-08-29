@@ -102,7 +102,7 @@ public class BDProductos {
                     "price = "+precio+"," +
                     "units = "+unidades+"," +
                     "brand = '"+marca+"'," +
-                    "expiration = '"+caducidad+"'" +
+                    "expiration = '"+caducidad+"' " +
                     "where code = '"+codigo+"'";
             Statement st = conn.createStatement();
             st.executeQuery(query);

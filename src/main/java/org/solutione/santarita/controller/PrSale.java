@@ -172,7 +172,7 @@ public class PrSale {
         }
 
         PrSaleAddProduct controller = loader.<PrSaleAddProduct>getController();
-        controller.initData(productos,lblTotal);
+        controller.initData(productos,lblTotal,stage);
 
         stage.show();
     }

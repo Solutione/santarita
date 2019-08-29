@@ -38,11 +38,11 @@
          <content>
             <TableView fx:id="tvProducts" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #a49582;" stylesheets="@../style/table.css">
               <columns>
-                <TableColumn fx:id="tcName" maxWidth="9000.0" prefWidth="155.0" text="Nombre Producto" />
-                <TableColumn fx:id="tcUnits" maxWidth="2000.0" prefWidth="100.0" text="Unidades" />
-                  <TableColumn fx:id="tcCost" maxWidth="2500.0" prefWidth="100.0" text="Costo" />
-                  <TableColumn fx:id="tcPrice" maxWidth="2500.0" prefWidth="100.0" text="Precio" />
-                  <TableColumn fx:id="tcBrand" prefWidth="75.0" text="Marca" />
+                 <TableColumn fx:id="tcName" maxWidth="9000.0" prefWidth="155.0" text="Nombre Producto" />
+                 <TableColumn fx:id="tcUnits" maxWidth="2000.0" prefWidth="100.0" text="Unidades" />
+                 <TableColumn fx:id="tcCost" maxWidth="2500.0" prefWidth="100.0" text="Costo" />
+                 <TableColumn fx:id="tcPrice" maxWidth="2500.0" prefWidth="100.0" text="Precio" />
+                 <TableColumn fx:id="tcBrand" prefWidth="75.0" text="Marca" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

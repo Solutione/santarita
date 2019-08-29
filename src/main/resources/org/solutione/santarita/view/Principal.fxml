@@ -11,7 +11,7 @@
 
 <BorderPane fx:id="BPPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="693.0" style="-fx-background-color: #a49582ff;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.Principal">
    <left>
-      <BorderPane prefHeight="467.0" prefWidth="55.0" style="-fx-background-color: #3f0d16FF;" BorderPane.alignment="CENTER">
+      <BorderPane prefHeight="467.0" prefWidth="58.0" style="-fx-background-color: #3f0d16FF;" BorderPane.alignment="CENTER">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -99,9 +99,9 @@
                         <Image url="@../image/ajustes.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="lblClock" onMouseClicked="#lblClockMC" text="17:04" textFill="#a39583">
+                  <Label fx:id="lblClock" onMouseClicked="#lblClockMC" text="17:04:00" textFill="#a39583">
                      <font>
-                        <Font size="16.0" />
+                        <Font name="Roboto Light" size="14.0" />
                      </font>
                      <padding>
                         <Insets bottom="15.0" top="15.0" />

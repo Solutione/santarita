@@ -39,4 +39,7 @@
          </children>
       </HBox>
    </bottom>
+   <top>
+      <TextField onAction="#onEnter" style="-fx-background-color: #3f0d16; -fx-text-fill: #3f0d16;" BorderPane.alignment="CENTER" />
+   </top>
 </BorderPane>

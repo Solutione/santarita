@@ -47,9 +47,6 @@ public class  Main extends Application {
                     Thread.sleep(5000);
 
                     Platform.runLater(() -> {
-
-                        splash.close();
-
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/Principal.fxml"));
                         primaryStage.setMaximized(true);
                         primaryStage.initStyle(StageStyle.UNDECORATED);
@@ -63,6 +60,7 @@ public class  Main extends Application {
                         controller.initData(primaryStage);
 
                         primaryStage.show();
+                        splash.close();
                     });
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();

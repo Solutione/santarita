@@ -1,8 +1,10 @@
 package org.solutione.santarita.controller;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,9 +12,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 public class Principal {
 
@@ -42,7 +45,18 @@ public class Principal {
     private String bgPnlNotSel = "-fx-background-color: rgba(63, 13, 22, 1);";
 
     @FXML
-    void initialize() {}
+    void initialize() {
+        Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+            int second = LocalDateTime.now().getSecond();
+            int minute = LocalDateTime.now().getMinute();
+            int hour = LocalDateTime.now().getHour();
+            lblClock.setText(hour + ":" + (minute) + ":" + second);
+        }),
+                new KeyFrame(Duration.seconds(1))
+        );
+        clock.setCycleCount(Animation.INDEFINITE);
+        clock.play();
+    }
 
     public void initData(Stage primaryStage) {}
 
