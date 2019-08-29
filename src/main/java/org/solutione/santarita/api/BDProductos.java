@@ -9,7 +9,7 @@ public class BDProductos {
     private Connection conn;
     public BDProductos(){
         try {
-            conn = DriverManager.getConnection("jdbc:mariadb://localhost/santarita", "root", "123Abejas");
+            conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/santarita", "root", "123Abejas");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -17,7 +17,7 @@ public class BDProductos {
     public ObservableList<Producto> getProducts(){
         ObservableList<Producto> datos = FXCollections.observableArrayList();
         try {
-            String query = "SELECT * FROM Products";
+            String query = "SELECT * FROM products";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next())
@@ -42,7 +42,7 @@ public class BDProductos {
     public String[] getProduct(String code){
         String[] product = new String[7];
         try {
-            String query = "SELECT * FROM Products where code = '"+code+"'";
+            String query = "SELECT * FROM products where code = '"+code+"'";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next())
@@ -64,7 +64,7 @@ public class BDProductos {
     }
     public void updateProduct(String code, int units){
         try {
-            String query = "UPDATE Products SET units = "+units+" where code = '"+code+"'";
+            String query = "UPDATE products SET units = "+units+" where code = '"+code+"'";
             Statement st = conn.createStatement();
             st.executeQuery(query);
             st.close();
@@ -75,7 +75,7 @@ public class BDProductos {
     }
     public void addProduct(String codigo,String nombre,double costo,double precio, int unidades,String marca,String caducidad){
         try {
-            String query = "insert into Products " +
+            String query = "insert into products " +
                     "(code,name,cost,price,units,brand,expiration) " +
                     "values (" +
                     "'"+codigo+"'," +
@@ -95,7 +95,7 @@ public class BDProductos {
     }
     public void setProduct(String codigo,String nombre,double costo,double precio, int unidades,String marca,String caducidad){
         try {
-            String query = "UPDATE Products SET " +
+            String query = "UPDATE products SET " +
                     "code = '"+codigo+"'," +
                     "name = '"+nombre+"'," +
                     "cost = "+costo+"," +

@@ -16,6 +16,7 @@ dependencies {
 
 //Application plugin
 apply plugin: 'application'
+applicationName = 'santarita'
 
 mainClassName = "org.solutione.santarita.Main"
 jar{

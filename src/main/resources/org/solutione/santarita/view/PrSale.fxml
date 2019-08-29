@@ -79,7 +79,7 @@
          <left>
             <HBox alignment="CENTER" prefHeight="131.0" prefWidth="188.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="btnFamily" fitHeight="49.0" fitWidth="56.0" onMouseClicked="#btnFamilyMC" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/family.png" />
                      </image>
@@ -87,7 +87,7 @@
                         <Insets />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="50.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="btnMoney" fitHeight="50.0" fitWidth="25.0" onMouseClicked="#btnMoneyMC" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/efectivo.png" />
                      </image>
@@ -99,10 +99,20 @@
             </HBox>
          </left>
          <BorderPane.margin>
-            <Insets bottom="15.0" />
+            <Insets />
          </BorderPane.margin>
-         <top>
+         <bottom>
             <TextField fx:id="txtScanner" onAction="#txtScannerAdd" style="-fx-background-color: #a49582; -fx-text-fill: #a49582;" BorderPane.alignment="CENTER" />
+         </bottom>
+         <top>
+            <ImageView fx:id="imgBtnAgregar" fitHeight="26.0" fitWidth="66.0" onMouseClicked="#imgBtnAgregarMC" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
+               <image>
+                  <Image url="@../image/btnagregar.png" />
+               </image>
+               <BorderPane.margin>
+                  <Insets right="60.0" />
+               </BorderPane.margin>
+            </ImageView>
          </top>
       </BorderPane>
    </bottom>
