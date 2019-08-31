@@ -1,5 +1,6 @@
 package org.solutione.santarita.controller;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,7 @@ import org.solutione.santarita.api.BDProveedores;
 import org.solutione.santarita.api.Proveedor;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class PrProvider {
     public BorderPane BPProvider;
@@ -27,6 +29,7 @@ public class PrProvider {
     @FXML
     void initialize(){
         ObservableList<Proveedor> bdProviders = new BDProveedores().getProviders();
+        ArrayList<VBox> vBoxProviders = new ArrayList<VBox>();
         for (Proveedor prov: bdProviders) {
             VBox bx =  new VBox();
             bx.setPrefHeight(80);
@@ -41,6 +44,7 @@ public class PrProvider {
             fwPnlProviders.setHgap(10);
             bx.setOnMouseClicked((e) ->{
 
+                System.out.println(prov.getName()+"<--");
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrProviderManager.fxml"));
 
                 BorderPane bp = null;
@@ -51,7 +55,7 @@ public class PrProvider {
                 }
 
                 PrProviderManager controller = loader.<PrProviderManager>getController();
-                controller.initData(bpPrincipal,prov.getName());
+                controller.initData(bpPrincipal,lbl.getText());
                 bpPrincipal.setCenter(bp);
             });
         }

@@ -45,6 +45,13 @@ public class PrProviderManager {
 
     @FXML
     void initialize(){
+
+    }
+
+    void initData(BorderPane bpPrincipal, String provider) {
+        this.bpPrincipal = bpPrincipal;
+        this.provider = provider;
+
         lblBrand.setText(provider);
         String[] codes = new BDProveedores().getCodes(provider);
         ObservableList<Producto> prod = new BDProductos().getProducts();
@@ -67,11 +74,6 @@ public class PrProviderManager {
 
         tvNoProducts.setItems(noproducts);
         tvProducts.setItems(products);
-    }
-
-    void initData(BorderPane bpPrincipal, String provider) {
-        this.bpPrincipal = bpPrincipal;
-        this.provider = provider;
     }
 
     public void btnBackMC(MouseEvent mouseEvent) {
