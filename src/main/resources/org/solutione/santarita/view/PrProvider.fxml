@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="BPProvider" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="469.0" prefWidth="872.0" style="-fx-background-color: #a49582;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.PrProvider">
     <top>
@@ -25,67 +22,24 @@
             </children>
         </FlowPane>
     </top>
-    <center>
+   <center>
         <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #a49582;" BorderPane.alignment="CENTER">
             <BorderPane.margin>
                 <Insets />
             </BorderPane.margin>
          <content>
-            <FlowPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #a49582;">
-               <children>
-                  <VBox alignment="CENTER" prefHeight="144.0" prefWidth="158.0" style="-fx-background-color: #bc7837; -fx-border-radius: 18; -fx-background-radius: 18; -fx-border-width: 5;">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="BIMBO" textAlignment="CENTER" textFill="#3f0d16">
-                           <font>
-                              <Font name="Lexend Zetta Regular" size="18.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="64.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../image/Bimbo.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                     <FlowPane.margin>
-                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-                     </FlowPane.margin>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="35.0" layoutY="35.0" prefHeight="144.0" prefWidth="158.0" style="-fx-background-color: #bc7837; -fx-border-radius: 18; -fx-background-radius: 18; -fx-border-width: 5;">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="BARCEL" textAlignment="CENTER" textFill="#3f0d16">
-                           <font>
-                              <Font name="Lexend Zetta Regular" size="18.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="64.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../image/Barcel.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                     <FlowPane.margin>
-                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-                     </FlowPane.margin>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="243.0" layoutY="35.0" prefHeight="144.0" prefWidth="158.0" style="-fx-background-color: #bc7837; -fx-border-radius: 18; -fx-background-radius: 18; -fx-border-width: 5;">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="MARINELA" textAlignment="CENTER" textFill="#3f0d16">
-                           <font>
-                              <Font name="Lexend Zetta Regular" size="18.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="64.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../image/Marinela.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                     <FlowPane.margin>
-                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-                     </FlowPane.margin>
-                  </VBox>
-               </children></FlowPane>
+            <FlowPane fx:id="fwPnlProviders" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #a49582;" />
          </content>
         </ScrollPane>
-    </center>
+   </center>
+   <bottom>
+      <ImageView fitHeight="29.0" fitWidth="78.0" onMouseClicked="#btnAddMC" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
+         <image>
+            <Image url="@../image/btnagregar.png" />
+         </image>
+         <BorderPane.margin>
+            <Insets bottom="15.0" left="15.0" right="25.0" top="15.0" />
+         </BorderPane.margin>
+      </ImageView>
+   </bottom>
 </BorderPane>

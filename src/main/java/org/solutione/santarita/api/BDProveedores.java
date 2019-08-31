@@ -14,21 +14,20 @@ public class BDProveedores {
             e.printStackTrace();
         }
     }
-    public ObservableList<Producto> getProducts(){
-        ObservableList<Producto> datos = FXCollections.observableArrayList();
+    public ObservableList<Proveedor> getProviders(){
+        ObservableList<Proveedor> datos = FXCollections.observableArrayList();
         try {
-            String query = "SELECT * FROM Providers";
+            String query = "SELECT * FROM providers";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next())
             {
-                String code = rs.getString("code");
                 String name = rs.getString("name");
                 String brand = rs.getString("brand");
-                double cost = rs.getDouble("cost");
-                double price = rs.getDouble("price");
+                String codes = rs.getString("codes");
+                String img =  rs.getString("img");
 
-                datos.add(new Producto(code,name,brand,cost,price));
+                datos.add(new Proveedor(name,brand,codes,img));
             }
             st.close();
             conn.close();
@@ -37,37 +36,35 @@ public class BDProveedores {
         }
         return datos;
     }
-    public String[] getProduct(String code){
-        String[] product = new String[5];
+    public String[] getProvider(String name){
+        String[] provider = new String[4];
         try {
-            String query = "SELECT * FROM Providers where code = '"+code+"'";
+            String query = "SELECT * FROM providers where name = '"+name+"'";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next())
             {
-                product[0] = code;
-                product[1] = rs.getString("name");
-                product[2] = rs.getString("brand");
-                product[3] = Double.toString(rs.getDouble("cost"));
-                product[4] = Double.toString(rs.getDouble("price"));
+                provider[0] = name;
+                provider[1] = rs.getString("brand");
+                provider[2] = rs.getString("codes");
+                provider[3] = rs.getString("img");
             }
             st.close();
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return product;
+        return provider;
     }
-    public void addProduct(String codigo,String nombre,String marca,double costo,double precio){
+    public void addProvider(String name,String brand,String codes,String img){
         try {
-            String query = "insert into Providers " +
-                    "(code,name,brand,cost,price) " +
+            String query = "insert into providers " +
+                    "(name,brand,codes,img) " +
                     "values (" +
-                    "'"+codigo+"'," +
-                    "'"+nombre+"'," +
-                    ""+marca+"," +
-                    ""+costo+"," +
-                    ""+precio+")";
+                    "'"+name+"'," +
+                    "'"+brand+"'," +
+                    "'"+codes+"'," +
+                    "'"+img+"')";
             Statement st = conn.createStatement();
             st.executeQuery(query);
             st.close();
@@ -76,15 +73,14 @@ public class BDProveedores {
             e.printStackTrace();
         }
     }
-    public void setProduct(String codigo,String nombre,String marca,double costo,double precio){
+    public void setProvider(String name,String brand,String codes,String img){
         try {
-            String query = "UPDATE Providers SET " +
-                    "code = '"+codigo+"'," +
-                    "name = '"+nombre+"'," +
-                    "brand = '"+marca+"'," +
-                    "cost = "+costo+"," +
-                    "price = "+precio +
-                    "where code = '"+codigo+"'";
+            String query = "UPDATE providers SET " +
+                    "name = '"+name+"'," +
+                    "brand = '"+brand+"'," +
+                    "codes = '"+codes+"'," +
+                    "img = '"+img +"'"+
+                    "where name = '"+name+"'";
             Statement st = conn.createStatement();
             st.executeQuery(query);
             st.close();
@@ -92,5 +88,24 @@ public class BDProveedores {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public String[] getCodes(String name){
+        String cds = "";
+        try {
+            String query = "SELECT codes FROM providers WHERE name = '"+name+"'";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next())
+            {
+                cds = rs.getString("codes");
+            }
+            st.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        String[] codes = cds.split(",");
+
+        return codes;
     }
 }

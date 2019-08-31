@@ -112,4 +112,21 @@ public class BDProductos {
             e.printStackTrace();
         }
     }
+    public String getCode(String name){
+        String code = "";
+        try {
+            String query = "SELECT code FROM products where name = '"+name+"'";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next())
+            {
+                code = rs.getString("code");
+            }
+            st.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return code;
+    }
 }

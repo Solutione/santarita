@@ -30,9 +30,6 @@ public class Producto {
         this.unidades = new SimpleIntegerProperty(unidades);
         this.subtotal = new SimpleDoubleProperty(subtotal);
     }
-    public Producto(String code,String name, String brand,double cost, double price){
-
-    }
 
     public String getCodigo() {
         return codigo.get();

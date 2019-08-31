@@ -5,6 +5,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -98,12 +100,18 @@ public class Principal {
         imgFinance.setImage(new Image("org/solutione/santarita/image/administracion.png"));
         imgConfig.setImage(new Image("org/solutione/santarita/image/ajustes.png"));
 
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrProvider.fxml"));
+
         BorderPane bp = null;
         try {
-            bp = (BorderPane) FXMLLoader.load(getClass().getResource("/org/solutione/santarita/view/PrProvider.fxml"));
+            bp = (BorderPane) loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        PrProvider controller = loader.<PrProvider>getController();
+        controller.initData(BPPrincipal);
         BPPrincipal.setCenter(bp);
     }
 
