@@ -80,8 +80,14 @@ public class PrInventory {
             }
         }
         if (!exits){
-            bpProduct.setVisible(true);
+            tfName.setText("");
+            tfCost.setText("");
+            tfPrice.setText("");
+            tfUnits.setText("");
+            tfBrand.setText("");
+            tfExpiration.setText("");
             tfCode.setText(code);
+            bpProduct.setVisible(true);
         }
     }
 

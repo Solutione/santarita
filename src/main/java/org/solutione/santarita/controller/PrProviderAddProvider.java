@@ -3,11 +3,7 @@ package org.solutione.santarita.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -70,6 +66,10 @@ public class PrProviderAddProvider {
     }
 
     void initData(Stage thisStage) {
+        this.thisStage = thisStage;
+    }
+
+    void initData(Stage thisStage,String name) {
         this.thisStage = thisStage;
     }
 
