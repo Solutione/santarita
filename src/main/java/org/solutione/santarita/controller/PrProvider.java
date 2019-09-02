@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.solutione.santarita.api.BDProveedores;
@@ -31,18 +32,27 @@ public class PrProvider {
         ObservableList<Proveedor> bdProviders = new BDProveedores().getProviders();
         ArrayList<VBox> vBoxProviders = new ArrayList<VBox>();
         for (Proveedor prov: bdProviders) {
+            BorderPane bpProv = new BorderPane();
+            bpProv.setStyle("-fx-background-color:#bc7837;");
             VBox bx =  new VBox();
             bx.setPrefHeight(80);
             bx.setPrefWidth(160);
             bx.setStyle("-fx-background-color:#bc7837;");
+            bx.setAlignment(Pos.CENTER);
+
             Label lbl =  new Label(prov.getName());
             lbl.setStyle("-fx-text-fill:#3f0d16;-fx-font-size:30px};");
             bx.getChildren().add(lbl);
-            Label lblEdit = new Label("Editar");
-            lblEdit.setStyle("-fx-text-fill:#3f0d16;-fx-font-size:30px};");
-            bx.getChildren().add(lblEdit);
-            bx.setAlignment(Pos.CENTER);
-            fwPnlProviders.getChildren().add(bx);
+
+            bpProv.setCenter(bx);
+            Label lblEdit = new Label("EDITAR");
+            lblEdit.setStyle("-fx-text-fill:#3f0d16;};");
+            BorderPane.setAlignment(lblEdit, Pos.CENTER);
+            lblEdit.setFont(new Font("Roboto", 14));
+            bpProv.setBottom(lblEdit);
+            lblEdit.setAlignment(Pos.CENTER);
+
+            fwPnlProviders.getChildren().add(bpProv);
             fwPnlProviders.setVgap(10);
             fwPnlProviders.setHgap(10);
             bx.setOnMouseClicked((e) ->{

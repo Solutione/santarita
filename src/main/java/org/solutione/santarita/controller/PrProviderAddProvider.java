@@ -71,6 +71,9 @@ public class PrProviderAddProvider {
 
     void initData(Stage thisStage,String name) {
         this.thisStage = thisStage;
+        tfNombre.setText(name);
+
+        lvMarcas.getSelectionModel().select(1);
     }
 
     public void btnGuardarMC(MouseEvent mouseEvent) {

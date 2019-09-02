@@ -28,7 +28,10 @@
                 <Insets />
             </BorderPane.margin>
          <content>
-            <FlowPane fx:id="fwPnlProviders" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #a49582;" />
+            <FlowPane fx:id="fwPnlProviders" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #a49582;">
+               <padding>
+                  <Insets left="25.0" right="25.0" />
+               </padding></FlowPane>
          </content>
         </ScrollPane>
    </center>
