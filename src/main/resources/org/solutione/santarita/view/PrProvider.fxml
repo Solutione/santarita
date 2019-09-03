@@ -36,7 +36,7 @@
         </ScrollPane>
    </center>
    <bottom>
-      <ImageView fitHeight="29.0" fitWidth="78.0" onMouseClicked="#btnAddMC" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
+      <ImageView fitHeight="35.0" fitWidth="91.0" onMouseClicked="#btnAddMC" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
          <image>
             <Image url="@../image/btnagregar.png" />
          </image>

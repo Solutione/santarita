@@ -1,6 +1,5 @@
 package org.solutione.santarita.controller;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,12 +40,12 @@ public class PrProvider {
             bx.setAlignment(Pos.CENTER);
 
             Label lbl =  new Label(prov.getName());
-            lbl.setStyle("-fx-text-fill:#3f0d16;-fx-font-size:30px};");
+            lbl.setStyle("-fx-text-fill:#3f0d16;-fx-font-size:30px");
             bx.getChildren().add(lbl);
 
             bpProv.setCenter(bx);
             Label lblEdit = new Label("EDITAR");
-            lblEdit.setStyle("-fx-text-fill:#3f0d16;};");
+            lblEdit.setStyle("-fx-text-fill:#3f0d16;");
             BorderPane.setAlignment(lblEdit, Pos.CENTER);
             lblEdit.setFont(new Font("Roboto", 14));
             bpProv.setBottom(lblEdit);
@@ -79,7 +78,7 @@ public class PrProvider {
                 }
 
                 PrProviderAddProvider controller = loader.<PrProviderAddProvider>getController();
-                controller.initData(stage,prov.getName());
+                controller.initData(bpPrincipal,stage,prov.getName());
 
                 stage.show();
             });
@@ -98,7 +97,7 @@ public class PrProvider {
         }
 
         PrProviderAddProvider controller = loader.<PrProviderAddProvider>getController();
-        controller.initData(stage);
+        controller.initData(bpPrincipal,stage);
 
         stage.show();
     }

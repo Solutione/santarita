@@ -36,18 +36,18 @@ public class BDProveedores {
         }
         return datos;
     }
-    public String[] getProvider(String name){
-        String[] provider = new String[4];
+    public Proveedor getProvider(String name){
+        Proveedor provider = null;
         try {
-            String query = "SELECT * FROM providers where name = '"+name+"'";
+            String query = String.format("SELECT * FROM providers where name = '%s'", name);
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next())
             {
-                provider[0] = name;
-                provider[1] = rs.getString("brand");
-                provider[2] = rs.getString("codes");
-                provider[3] = rs.getString("img");
+                provider = new Proveedor(name,
+                        rs.getString("brand"),
+                        rs.getString("codes"),
+                        rs.getString("img"));
             }
             st.close();
             conn.close();
@@ -73,14 +73,15 @@ public class BDProveedores {
             e.printStackTrace();
         }
     }
-    public void setProvider(String name,String brand,String codes,String img){
+    public void setProvider(String oldName, String name,String brand,String codes,String img){
         try {
             String query = "UPDATE providers SET " +
                     "name = '"+name+"'," +
                     "brand = '"+brand+"'," +
                     "codes = '"+codes+"'," +
                     "img = '"+img +"'"+
-                    "where name = '"+name+"'";
+                    "where name = '"+oldName+"'";
+
             Statement st = conn.createStatement();
             st.executeQuery(query);
             st.close();
@@ -88,24 +89,5 @@ public class BDProveedores {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-    public String[] getCodes(String name){
-        String cds = "";
-        try {
-            String query = "SELECT codes FROM providers WHERE name = '"+name+"'";
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(query);
-            while (rs.next())
-            {
-                cds = rs.getString("codes");
-            }
-            st.close();
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        String[] codes = cds.split(",");
-
-        return codes;
     }
 }

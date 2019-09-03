@@ -57,7 +57,7 @@
                <children>
                   <Label text="Total" textFill="#6c4b47">
                      <font>
-                        <Font name="Roboto Regular" size="19.0" />
+                        <Font name="Roboto Regular" size="23.0" />
                      </font>
                   </Label>
                   <Label fx:id="lblTotal" text="\$0000.00" textFill="#bc7837">
@@ -105,7 +105,7 @@
             <TextField fx:id="txtScanner" onAction="#txtScannerAdd" style="-fx-background-color: #a49582; -fx-text-fill: #a49582;" BorderPane.alignment="CENTER" />
          </bottom>
          <top>
-            <ImageView fx:id="imgBtnAgregar" fitHeight="26.0" fitWidth="66.0" onMouseClicked="#imgBtnAgregarMC" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
+            <ImageView fx:id="imgBtnAgregar" fitHeight="35.0" fitWidth="109.0" onMouseClicked="#imgBtnAgregarMC" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
                <image>
                   <Image url="@../image/btnagregar.png" />
                </image>

@@ -209,7 +209,7 @@
             <HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="872.0" BorderPane.alignment="CENTER">
                <children>
                   <TextField fx:id="txtScanner" onAction="#txtScannerAddProduct" style="-fx-background-color: #a49582;" visible="false" />
-                  <ImageView fitHeight="26.0" fitWidth="70.0" onMouseClicked="#btnAgregarMC" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="77.0" onMouseClicked="#btnAgregarMC" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/btnagregar.png" />
                      </image>

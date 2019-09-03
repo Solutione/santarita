@@ -53,23 +53,24 @@ public class PrProviderManager {
         this.provider = provider;
 
         lblBrand.setText(provider);
-        String[] codes = new BDProveedores().getCodes(provider);
+        String[] codes = new BDProveedores().getProvider(provider).getCodes().split(",");
         ObservableList<Producto> prod = new BDProductos().getProducts();
         for (String c:codes)
             for (Producto p:prod)
-                if (p.getCodigo().equals(c))products.add(p);
-        for (Producto p:products)
-            for (String c:codes)
-                if (!p.getCodigo().equals(c))
-                    if (!noproducts.contains(p))products.add(p);
+                if (p.getCodigo().equals(c))
+                    if (p.getUnidades()>0)
+                        products.add(p);
+                    else
+                        noproducts.add(p);
+
         tcNpName.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
         tcNpUnits.setCellValueFactory(cellData -> cellData.getValue().unidadesProperty());
-        tcNpCost.setCellValueFactory(cellData -> cellData.getValue().unidadesProperty());
+        tcNpCost.setCellValueFactory(cellData -> cellData.getValue().costoProperty());
         tcNpPrice.setCellValueFactory(cellData -> cellData.getValue().precioProperty());
 
         tcPName.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
         tcPUnits.setCellValueFactory(cellData -> cellData.getValue().unidadesProperty());
-        tcPCost.setCellValueFactory(cellData -> cellData.getValue().unidadesProperty());
+        tcPCost.setCellValueFactory(cellData -> cellData.getValue().costoProperty());
         tcPPrice.setCellValueFactory(cellData -> cellData.getValue().precioProperty());
 
         tvNoProducts.setItems(noproducts);

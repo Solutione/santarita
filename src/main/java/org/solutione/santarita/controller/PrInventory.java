@@ -31,20 +31,20 @@ public class PrInventory {
     public BorderPane bpProduct;
 
     private ObservableList<Producto> productos = FXCollections.observableArrayList();
+    private ObservableList<Producto> allProductos = FXCollections.observableArrayList();
 
     @FXML
     private void initialize(){
-        fillTable();
-    }
-
-    private void fillTable(){
         tcName.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
         tcUnits.setCellValueFactory(cellData -> cellData.getValue().unidadesProperty());
         tcCost.setCellValueFactory(cellData -> cellData.getValue().costoProperty());
         tcPrice.setCellValueFactory(cellData -> cellData.getValue().precioProperty());
         tcBrand.setCellValueFactory(cellData -> cellData.getValue().marcaProperty());
 
-        productos = new BDProductos().getProducts();
+        allProductos = new BDProductos().getProducts();
+        for (Producto p : allProductos)
+            if (p.getUnidades()>0)
+                productos.add(p);
         tvProducts.setItems(productos);
 
         tvProducts.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
@@ -71,12 +71,16 @@ public class PrInventory {
     }
     private void addProduct(String code){
         boolean exits = false;
-        for (Producto value : productos) {
+        for (Producto value : allProductos) {
             if (value.getCodigo().equals(code)) {
                 exits = true;
                 int u = value.getUnidades()+1;
                 new BDProductos().updateProduct(code,u);
                 value.setUnidades(value.getUnidades()+1);
+                productos.clear();
+                for (Producto p : allProductos)
+                    if (p.getUnidades()>0)
+                        productos.add(p);
             }
         }
         if (!exits){
@@ -106,8 +110,11 @@ public class PrInventory {
             tfBrand.setText("");
             tfExpiration.setText("");
             tfCode.setText("");
-            productos = new BDProductos().getProducts();
-            tvProducts.setItems(productos);
+            allProductos = new BDProductos().getProducts();
+            productos.clear();
+            for (Producto p : allProductos)
+                if (p.getUnidades()>0)
+                    productos.add(p);
         }else{
             new BDProductos().setProduct(
                     tfCode.getText(),
@@ -117,8 +124,12 @@ public class PrInventory {
                     Integer.parseInt(tfUnits.getText()),
                     tfBrand.getText(),
                     tfExpiration.getText());
-            productos = new BDProductos().getProducts();
-            tvProducts.setItems(productos);
+
+            allProductos = new BDProductos().getProducts();
+            productos.clear();
+            for (Producto p : allProductos)
+                if (p.getUnidades()>0)
+                    productos.add(p);
         }
         bpProduct.setVisible(false);
     }

@@ -3,13 +3,18 @@ package org.solutione.santarita.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.solutione.santarita.api.BDProductos;
 import org.solutione.santarita.api.BDProveedores;
 import org.solutione.santarita.api.Producto;
+import org.solutione.santarita.api.Proveedor;
+
+import java.io.IOException;
 
 public class PrProviderAddProvider {
     public ListView<String> lvMarcas;
@@ -23,6 +28,10 @@ public class PrProviderAddProvider {
     private ObservableList<String> productos = FXCollections.observableArrayList();
 
     private Stage thisStage;
+    private BorderPane principalPane;
+    private String name;
+
+    private boolean edit = false;
 
     @FXML
     void initialize(){
@@ -65,15 +74,23 @@ public class PrProviderAddProvider {
         });
     }
 
-    void initData(Stage thisStage) {
+    void initData(BorderPane principalPane,Stage thisStage) {
         this.thisStage = thisStage;
+        this.principalPane =  principalPane;
     }
 
-    void initData(Stage thisStage,String name) {
+    void initData(BorderPane principalPane, Stage thisStage, String name) {
         this.thisStage = thisStage;
+        this.principalPane =  principalPane;
+        this.name = name;
         tfNombre.setText(name);
-
-        lvMarcas.getSelectionModel().select(1);
+        Proveedor prov = new BDProveedores().getProvider(name);
+        lvMarcas.getSelectionModel().select(prov.getBrand());
+        String[] cds = prov.getCodes().split(",");
+        for (String s: cds){
+            lvProductos.getSelectionModel().select(new BDProductos().getProduct(s)[1]);
+        }
+        edit = true;
     }
 
     public void btnGuardarMC(MouseEvent mouseEvent) {
@@ -87,13 +104,28 @@ public class PrProviderAddProvider {
             }
         }
         String brand = lvMarcas.getSelectionModel().getSelectedItem();
-        if (!tfNombre.getText().equals("")){
-            new BDProveedores().addProvider(tfNombre.getText(),brand,cds.toString(),"");
-            thisStage.close();
+
+        if (!tfNombre.getText().equals(""))
+            if (!edit) new BDProveedores().addProvider(tfNombre.getText(), brand, cds.toString(), "");
+            else new BDProveedores().setProvider(name,tfNombre.getText(), brand, cds.toString(), "");
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrProvider.fxml"));
+        BorderPane bp = null;
+        try {
+            bp = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        principalPane.setCenter(bp);
+
+        PrProvider controller = loader.<PrProvider>getController();
+        controller.initData(principalPane);
+
+        thisStage.close();
     }
 
     public void btnCancelarMC(MouseEvent mouseEvent) {
         thisStage.close();
     }
+
 }
