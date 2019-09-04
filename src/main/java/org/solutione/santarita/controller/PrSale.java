@@ -175,6 +175,7 @@ public class PrSale {
         controller.initData(productos,lblTotal,stage);
 
         stage.show();
+        stage.setAlwaysOnTop(true);
     }
 
 }

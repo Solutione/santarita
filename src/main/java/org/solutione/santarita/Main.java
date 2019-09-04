@@ -2,16 +2,24 @@ package org.solutione.santarita;
  
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.solutione.santarita.api.BDProductos;
+import org.solutione.santarita.api.BDProveedores;
+import org.solutione.santarita.api.Producto;
+import org.solutione.santarita.api.Proveedor;
+import org.solutione.santarita.controller.PrSale;
 import org.solutione.santarita.controller.PrSaleFinish;
 import org.solutione.santarita.controller.Principal;
 import org.solutione.santarita.controller.Splash;
@@ -39,36 +47,48 @@ public class  Main extends Application {
         splash.setMaximized(true);
         splash.initStyle(StageStyle.UNDECORATED);
         splash.show();
+        splash.setAlwaysOnTop(true);
+
+        Thread t2 = new Thread(){
+            @Override
+            public void run(){
+            Platform.runLater(() -> {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/Principal.fxml"));
+                primaryStage.setMaximized(true);
+                primaryStage.initStyle(StageStyle.UNDECORATED);
+                try {
+                    primaryStage.setScene(new Scene((Pane) loader.load(),800, 600));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                ObservableList<Producto> products = new BDProductos().getProducts();
+                ObservableList<Proveedor> providers = new BDProveedores().getProviders();
+
+                Principal controller = loader.<Principal>getController();
+                controller.initData(primaryStage,products,providers);
+
+                primaryStage.show();
+                primaryStage.setOpacity(0.0);
+            });
+            }
+        };t2.start();
 
         Thread t = new Thread(){
             @Override
             public void run(){
-                try {
-                    Thread.sleep(5000);
+            try {
+                Thread.sleep(15000);
 
-                    Platform.runLater(() -> {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/Principal.fxml"));
-                        primaryStage.setMaximized(true);
-                        primaryStage.initStyle(StageStyle.UNDECORATED);
-                        try {
-                            primaryStage.setScene(new Scene((Pane) loader.load(),800, 600));
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
-                        Principal controller = loader.<Principal>getController();
-                        controller.initData(primaryStage);
-
-                        primaryStage.show();
-                        splash.close();
-                    });
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
+                Platform.runLater(() -> {
+                    primaryStage.setOpacity(1.0);
+                    primaryStage.setAlwaysOnTop(true);
+                    splash.close();
+                });
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
             }
-        };
-        t.start();
-
-
+            }
+        };t.start();
     }
 }

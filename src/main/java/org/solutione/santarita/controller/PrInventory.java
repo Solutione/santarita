@@ -60,6 +60,9 @@ public class PrInventory {
         });
     }
 
+    public void initData(BorderPane bpPrincipal) {
+    }
+
     public void btnAgregarMC(MouseEvent mouseEvent) {
         txtScanner.setVisible(true);
         txtScanner.requestFocus();
@@ -133,4 +136,5 @@ public class PrInventory {
         }
         bpProduct.setVisible(false);
     }
+
 }

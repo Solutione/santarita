@@ -3,6 +3,8 @@ package org.solutione.santarita.controller;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,11 +17,18 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import org.solutione.santarita.api.Producto;
+import org.solutione.santarita.api.Proveedor;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 
 public class Principal {
+
+    private Stage primaryStage;
+    private ObservableList<Producto> products;
+    private ObservableList<Proveedor> providers;
+    private ObservableList<BorderPane> panels;
 
     public BorderPane BPPrincipal;
 
@@ -43,6 +52,11 @@ public class Principal {
 
     public Label lblClock;
 
+    private BorderPane menuSale;
+    private BorderPane menuProvider;
+    private BorderPane menuInventory;
+    private BorderPane menuFinance;
+
     private String bgPnlSel = "-fx-background-color: rgba(246, 245, 250, 1);";
     private String bgPnlNotSel = "-fx-background-color: rgba(63, 13, 22, 1);";
 
@@ -60,7 +74,116 @@ public class Principal {
         clock.play();
     }
 
-    public void initData(Stage primaryStage) {}
+    public void initData(Stage primaryStage,
+                         ObservableList<Producto> products,
+                         ObservableList<Proveedor> providers) {
+        this.primaryStage = primaryStage;
+        this.products = products;
+        this.providers = providers;
+
+        //Sale
+        Thread tsale = new Thread(){
+            @Override
+            public void run(){
+            Platform.runLater(() -> {
+                FXMLLoader loaderSale = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrSale.fxml"));
+                try {
+                    menuSale = loaderSale.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                PrSale controllerSale = loaderSale.getController();
+                controllerSale.initData(BPPrincipal);
+                BPPrincipal.setCenter(menuSale);
+            });
+            }
+        };tsale.start();
+
+        //Provider
+        Thread tprovider = new Thread(){
+            @Override
+            public void run(){
+            try {
+                Thread.sleep(4000);
+                Platform.runLater(() -> {
+                    FXMLLoader loaderProvider = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrProvider.fxml"));
+                    try {
+                        menuProvider = loaderProvider.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    PrProvider controllerProvider = loaderProvider.<PrProvider>getController();
+                    controllerProvider.initData(BPPrincipal);
+                    BPPrincipal.setCenter(menuProvider);
+                });
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            }
+        };tprovider.start();
+
+        //Inventory
+        Thread tinventory = new Thread(){
+            @Override
+            public void run(){
+            try {
+                Thread.sleep(6000);
+
+                Platform.runLater(() -> {
+                    FXMLLoader loaderInventory = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrInventory.fxml"));
+                    try {
+                        menuInventory = loaderInventory.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    PrInventory controllerInventory = loaderInventory.<PrInventory>getController();
+                    controllerInventory.initData(BPPrincipal);
+                    BPPrincipal.setCenter(menuInventory);
+                });
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            }
+        };tinventory.start();
+
+        //Finance
+        Thread tfinance = new Thread(){
+            @Override
+            public void run(){
+            try {
+                Thread.sleep(11000);
+                Platform.runLater(() -> {
+                    FXMLLoader loaderFinance = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrFinance.fxml"));
+                    try {
+                        menuFinance = loaderFinance.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    PrFinance controllerFinance = loaderFinance.<PrFinance>getController();
+                    controllerFinance.initData(BPPrincipal);
+                    BPPrincipal.setCenter(menuFinance);
+                });
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            }
+        };tfinance.start();
+
+        Thread t = new Thread(){
+            @Override
+            public void run(){
+                try {
+                    Thread.sleep(13000);
+                    Platform.runLater(() -> {
+                        BPPrincipal.setCenter(new BorderPane());
+                    });
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        };t.start();
+
+    }
 
 
     public void bpSaleMC(MouseEvent mouseEvent) {
@@ -75,17 +198,7 @@ public class Principal {
         imgFinance.setImage(new Image("org/solutione/santarita/image/administracion.png"));
         imgConfig.setImage(new Image("org/solutione/santarita/image/ajustes.png"));
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrSale.fxml"));
-        BorderPane bp = null;
-        try {
-            bp = (BorderPane) loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        BPPrincipal.setCenter(bp);
-
-        PrSale controller = loader.<PrSale>getController();
-        controller.initData(BPPrincipal);
+        BPPrincipal.setCenter(menuSale);
     }
 
     public void bpProviderMC(MouseEvent mouseEvent) {
@@ -100,19 +213,7 @@ public class Principal {
         imgFinance.setImage(new Image("org/solutione/santarita/image/administracion.png"));
         imgConfig.setImage(new Image("org/solutione/santarita/image/ajustes.png"));
 
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrProvider.fxml"));
-
-        BorderPane bp = null;
-        try {
-            bp = (BorderPane) loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        PrProvider controller = loader.<PrProvider>getController();
-        controller.initData(BPPrincipal);
-        BPPrincipal.setCenter(bp);
+        BPPrincipal.setCenter(menuProvider);
     }
 
     public void bpInventoryMC(MouseEvent mouseEvent) {
@@ -127,13 +228,7 @@ public class Principal {
         imgFinance.setImage(new Image("org/solutione/santarita/image/administracion.png"));
         imgConfig.setImage(new Image("org/solutione/santarita/image/ajustes.png"));
 
-        BorderPane bp = null;
-        try {
-            bp = (BorderPane) FXMLLoader.load(getClass().getResource("/org/solutione/santarita/view/PrInventory.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        BPPrincipal.setCenter(bp);
+        BPPrincipal.setCenter(menuInventory);
 
     }
 
@@ -149,13 +244,7 @@ public class Principal {
         imgFinance.setImage(new Image("org/solutione/santarita/image/administracion-b.png"));
         imgConfig.setImage(new Image("org/solutione/santarita/image/ajustes.png"));
 
-        BorderPane bp = null;
-        try {
-            bp = (BorderPane) FXMLLoader.load(getClass().getResource("/org/solutione/santarita/view/PrFinance.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        BPPrincipal.setCenter(bp);
+        BPPrincipal.setCenter(menuFinance);
     }
 
     public void imgConfigMC(MouseEvent mouseEvent) {

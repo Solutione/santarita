@@ -4,4 +4,7 @@ import javafx.scene.layout.BorderPane;
 
 public class PrFinance {
     public BorderPane BPFincance;
+
+    public void initData(BorderPane bpPrincipal) {
+    }
 }
