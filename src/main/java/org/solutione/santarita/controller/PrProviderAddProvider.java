@@ -88,7 +88,7 @@ public class PrProviderAddProvider {
         lvMarcas.getSelectionModel().select(prov.getBrand());
         String[] cds = prov.getCodes().split(",");
         for (String s: cds){
-            lvProductos.getSelectionModel().select(new BDProductos().getProduct(s)[1]);
+            lvProductos.getSelectionModel().select(new BDProductos().getProduct(s).getNombre());
         }
         edit = true;
     }

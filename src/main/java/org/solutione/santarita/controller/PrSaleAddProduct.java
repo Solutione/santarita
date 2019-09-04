@@ -18,7 +18,7 @@ public class PrSaleAddProduct {
     private ObservableList<Producto> productos;
     private Label lblTotal;
 
-    Stage thisst;
+    private Stage thisst;
     @FXML
     void initialize(){}
 
@@ -38,8 +38,12 @@ public class PrSaleAddProduct {
         thisst.close();
     }
     private void addProduct(String code){
-        String[] product = new BDProductos().getProduct(code);
-        double price = Double.parseDouble(product[3]);
+        Producto product = null;
+        for (Producto p : Principal.products)
+            if (p.getCodigo().equals(code))
+                product = p;
+        assert product != null;
+        double price = product.getPrecio();
         int units = 1;
 
         for (Producto value : productos) {
@@ -51,7 +55,7 @@ public class PrSaleAddProduct {
         }
 
         if (units==1)
-            productos.add(new Producto(product[0],product[1],Double.parseDouble(product[3]),units,(price*units)));
+            productos.add(new Producto(product.getCodigo(),product.getNombre(),product.getPrecio(),units,product.getPrecio()));
 
         double total = 0;
         for (Producto producto : productos) total += producto.getSubtotal();

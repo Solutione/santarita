@@ -7,7 +7,6 @@ import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,7 +14,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.solutione.santarita.api.Producto;
 import org.solutione.santarita.api.Proveedor;
@@ -26,9 +24,8 @@ import java.time.LocalDateTime;
 public class Principal {
 
     private Stage primaryStage;
-    private ObservableList<Producto> products;
-    private ObservableList<Proveedor> providers;
-    private ObservableList<BorderPane> panels;
+    static ObservableList<Producto> products;
+    static ObservableList<Proveedor> providers;
 
     public BorderPane BPPrincipal;
 
@@ -56,9 +53,9 @@ public class Principal {
     private BorderPane menuProvider;
     private BorderPane menuInventory;
     private BorderPane menuFinance;
+    private BorderPane menuConfig;
 
-    private String bgPnlSel = "-fx-background-color: rgba(246, 245, 250, 1);";
-    private String bgPnlNotSel = "-fx-background-color: rgba(63, 13, 22, 1);";
+    private String actualMenu = "";
 
     @FXML
     void initialize() {
@@ -78,8 +75,8 @@ public class Principal {
                          ObservableList<Producto> products,
                          ObservableList<Proveedor> providers) {
         this.primaryStage = primaryStage;
-        this.products = products;
-        this.providers = providers;
+        Principal.products = products;
+        Principal.providers = providers;
 
         //Sale
         Thread tsale = new Thread(){
@@ -168,12 +165,34 @@ public class Principal {
             }
             }
         };tfinance.start();
-
+        //Config
+        Thread tconfig = new Thread(){
+            @Override
+            public void run(){
+                try {
+                    Thread.sleep(14500);
+                    Platform.runLater(() -> {
+                        FXMLLoader loaderFinance = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrConfig.fxml"));
+                        try {
+                            menuConfig = loaderFinance.load();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        PrConfig controllerFinance = loaderFinance.<PrConfig>getController();
+                        controllerFinance.initData(BPPrincipal);
+                        BPPrincipal.setCenter(menuConfig);
+                    });
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        };tconfig.start();
+        //Blank
         Thread t = new Thread(){
             @Override
             public void run(){
                 try {
-                    Thread.sleep(13000);
+                    Thread.sleep(14500);
                     Platform.runLater(() -> {
                         BPPrincipal.setCenter(new BorderPane());
                     });
@@ -184,91 +203,72 @@ public class Principal {
         };t.start();
 
     }
-
-
-    public void bpSaleMC(MouseEvent mouseEvent) {
-        pnlSale.setStyle(bgPnlSel);
-        pnlProvider.setStyle(bgPnlNotSel);
-        pnlInventory.setStyle(bgPnlNotSel);
-        pnlFinance.setStyle(bgPnlNotSel);
-
-        imgSale.setImage(new Image("org/solutione/santarita/image/venta-b.png"));
-        imgProvider.setImage(new Image("org/solutione/santarita/image/proveedor.png"));
-        imgInventory.setImage(new Image("org/solutione/santarita/image/inventario.png"));
-        imgFinance.setImage(new Image("org/solutione/santarita/image/administracion.png"));
-        imgConfig.setImage(new Image("org/solutione/santarita/image/ajustes.png"));
-
-        BPPrincipal.setCenter(menuSale);
-    }
-
-    public void bpProviderMC(MouseEvent mouseEvent) {
-        pnlSale.setStyle(bgPnlNotSel);
-        pnlProvider.setStyle(bgPnlSel);
-        pnlInventory.setStyle(bgPnlNotSel);
-        pnlFinance.setStyle(bgPnlNotSel);
-
-        imgSale.setImage(new Image("org/solutione/santarita/image/venta.png"));
-        imgProvider.setImage(new Image("org/solutione/santarita/image/proveedor-b.png"));
-        imgInventory.setImage(new Image("org/solutione/santarita/image/inventario.png"));
-        imgFinance.setImage(new Image("org/solutione/santarita/image/administracion.png"));
-        imgConfig.setImage(new Image("org/solutione/santarita/image/ajustes.png"));
-
-        BPPrincipal.setCenter(menuProvider);
-    }
-
-    public void bpInventoryMC(MouseEvent mouseEvent) {
-        pnlSale.setStyle(bgPnlNotSel);
-        pnlProvider.setStyle(bgPnlNotSel);
-        pnlInventory.setStyle(bgPnlSel);
-        pnlFinance.setStyle(bgPnlNotSel);
-
-        imgSale.setImage(new Image("org/solutione/santarita/image/venta.png"));
-        imgProvider.setImage(new Image("org/solutione/santarita/image/proveedor.png"));
-        imgInventory.setImage(new Image("org/solutione/santarita/image/inventario-b.png"));
-        imgFinance.setImage(new Image("org/solutione/santarita/image/administracion.png"));
-        imgConfig.setImage(new Image("org/solutione/santarita/image/ajustes.png"));
-
-        BPPrincipal.setCenter(menuInventory);
-
-    }
-
-    public void bpFinanceMC(MouseEvent mouseEvent) {
-        pnlSale.setStyle(bgPnlNotSel);
-        pnlProvider.setStyle(bgPnlNotSel);
-        pnlInventory.setStyle(bgPnlNotSel);
-        pnlFinance.setStyle(bgPnlSel);
-
-        imgSale.setImage(new Image("org/solutione/santarita/image/venta.png"));
-        imgProvider.setImage(new Image("org/solutione/santarita/image/proveedor.png"));
-        imgInventory.setImage(new Image("org/solutione/santarita/image/inventario.png"));
-        imgFinance.setImage(new Image("org/solutione/santarita/image/administracion-b.png"));
-        imgConfig.setImage(new Image("org/solutione/santarita/image/ajustes.png"));
-
-        BPPrincipal.setCenter(menuFinance);
-    }
-
-    public void imgConfigMC(MouseEvent mouseEvent) {
-
-        pnlSale.setStyle(bgPnlNotSel);
-        pnlProvider.setStyle(bgPnlNotSel);
-        pnlInventory.setStyle(bgPnlNotSel);
-        pnlFinance.setStyle(bgPnlNotSel);
-
-        imgSale.setImage(new Image("org/solutione/santarita/image/venta.png"));
-        imgProvider.setImage(new Image("org/solutione/santarita/image/proveedor.png"));
-        imgInventory.setImage(new Image("org/solutione/santarita/image/inventario.png"));
-        imgFinance.setImage(new Image("org/solutione/santarita/image/administracion.png"));
-        imgConfig.setImage(new Image("org/solutione/santarita/image/ajustes-b.png"));
-
-        BorderPane bp = null;
-        try {
-            bp = (BorderPane) FXMLLoader.load(getClass().getResource("/org/solutione/santarita/view/PrConfig.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
+    private void changeMenu(String menu){
+        String bgPnlNotSel = "-fx-background-color: rgba(63, 13, 22, 1);";
+        String bgPnlSel = "-fx-background-color: rgba(246, 245, 250, 1);";
+        switch (actualMenu){
+            case "sale":
+                imgSale.setImage(new Image("org/solutione/santarita/image/venta.png"));
+                pnlSale.setStyle(bgPnlNotSel);
+                break;
+            case "provider":
+                imgProvider.setImage(new Image("org/solutione/santarita/image/proveedor.png"));
+                pnlProvider.setStyle(bgPnlNotSel);
+                break;
+            case "inventory":
+                imgInventory.setImage(new Image("org/solutione/santarita/image/inventario.png"));
+                pnlInventory.setStyle(bgPnlNotSel);
+                break;
+            case "finance":
+                pnlFinance.setStyle(bgPnlNotSel);
+                imgFinance.setImage(new Image("org/solutione/santarita/image/administracion.png"));
+                break;
+            case "settings":
+                imgConfig.setImage(new Image("org/solutione/santarita/image/ajustes.png"));
+                break;
         }
-        BPPrincipal.setCenter(bp);
+        switch (menu){
+            case "sale":
+                imgSale.setImage(new Image("org/solutione/santarita/image/venta-b.png"));
+                pnlSale.setStyle(bgPnlSel);
+                BPPrincipal.setCenter(menuSale);
+                actualMenu = "sale";
+                break;
+            case "provider":
+                imgProvider.setImage(new Image("org/solutione/santarita/image/proveedor-b.png"));
+                pnlProvider.setStyle(bgPnlSel);
+                BPPrincipal.setCenter(menuProvider);
+                actualMenu = "provider";
+                break;
+            case "inventory":
+                imgInventory.setImage(new Image("org/solutione/santarita/image/inventario-b.png"));
+                pnlInventory.setStyle(bgPnlSel);
+                BPPrincipal.setCenter(menuInventory);
+                actualMenu = "inventory";
+                break;
+            case "finance":
+                pnlFinance.setStyle(bgPnlSel);
+                imgFinance.setImage(new Image("org/solutione/santarita/image/administracion-b.png"));
+                BPPrincipal.setCenter(menuFinance);
+                actualMenu = "finance";
+                break;
+            case "settings":
+                imgConfig.setImage(new Image("org/solutione/santarita/image/ajustes-b.png"));
+                BPPrincipal.setCenter(menuConfig);
+                actualMenu = "settings";
+                break;
+        }
     }
 
-    public void lblClockMC(MouseEvent mouseEvent) {
-    }
+    public void bpSaleMC(MouseEvent mouseEvent) {changeMenu("sale");}
+
+    public void bpProviderMC(MouseEvent mouseEvent) {changeMenu("provider");}
+
+    public void bpInventoryMC(MouseEvent mouseEvent) {changeMenu("inventory");}
+
+    public void bpFinanceMC(MouseEvent mouseEvent) {changeMenu("finance");}
+
+    public void imgConfigMC(MouseEvent mouseEvent) {changeMenu("settings");}
+
+    public void lblClockMC(MouseEvent mouseEvent) {}
 }

@@ -67,6 +67,7 @@ public class PrSaleFinish {
         controller.initData(oblProductos,bpPrincipal,stage,stg);
 
         stage.show();
+        stage.setAlwaysOnTop(true);
     }
 
 }

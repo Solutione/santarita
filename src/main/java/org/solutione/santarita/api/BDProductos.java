@@ -39,21 +39,21 @@ public class BDProductos {
         }
         return datos;
     }
-    public String[] getProduct(String code){
-        String[] product = new String[7];
+    public Producto getProduct(String code){
+        Producto product =  null;
         try {
             String query = "SELECT * FROM products where code = '"+code+"'";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next())
             {
-                product[0] = code;
-                product[1] = rs.getString("name");
-                product[2] = Double.toString(rs.getDouble("cost"));
-                product[3] = Double.toString(rs.getDouble("price"));
-                product[4] = Integer.toString(rs.getInt("units"));
-                product[5] = rs.getString("brand");
-                product[6] = rs.getString("expiration");
+                product = new Producto(code,
+                        rs.getString("name"),
+                        rs.getDouble("cost"),
+                        rs.getDouble("price"),
+                        rs.getInt("units"),
+                        rs.getString("brand"),
+                        rs.getString("expiration"));
             }
             st.close();
             conn.close();

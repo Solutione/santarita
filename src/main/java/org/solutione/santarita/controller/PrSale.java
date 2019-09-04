@@ -38,6 +38,7 @@ public class PrSale {
     private BorderPane bpPrincipal;
 
     private ObservableList<Producto> productos = FXCollections.observableArrayList();
+    private ObservableList<Producto> allProducts;
 
     private boolean family = false;
     private boolean money = true;
@@ -76,24 +77,31 @@ public class PrSale {
         tvPrSale.setContextMenu(menu);
     }
 
-    void initData(BorderPane bpPrincipal) {this.bpPrincipal = bpPrincipal;}
+    void initData(BorderPane bpPrincipal) {
+        this.bpPrincipal = bpPrincipal;
+        this.allProducts = Principal.products;
+    }
 
     private void addProduct(String code){
-        String[] product = new BDProductos().getProduct(code);
-        double price = Double.parseDouble(product[3]);
-        int units = 1;
+        Producto product = null;
+        for (Producto p : allProducts)
+            if (p.getCodigo().equals(code))
+                product = p;
 
+        int units = 1;
         for (Producto value : productos) {
             if (value.getCodigo().equals(code)) {
                 units += value.getUnidades();
                 value.setUnidades(units);
-                value.setSubtotal(price * units);
+                assert product != null;
+                value.setSubtotal(product.getPrecio() * units);
             }
         }
 
-        if (units==1)
-            productos.add(new Producto(product[0],product[1],Double.parseDouble(product[3]),units,(price*units)));
-
+        if (units==1) {
+            assert product != null;
+            productos.add(new Producto(product.getCodigo(),product.getNombre(),product.getPrecio(),units,product.getPrecio()));
+        }
         double total = 0;
         for (Producto producto : productos) total += producto.getSubtotal();
         lblTotal.setText(Double.toString(total));
@@ -112,6 +120,7 @@ public class PrSale {
         controller.initData(productos,bpPrincipal,stage,lblTotal.getText());
 
         stage.show();
+        stage.setAlwaysOnTop(true);
     }
 
     public void txtScannerAdd(ActionEvent actionEvent) {
