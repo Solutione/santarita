@@ -68,6 +68,7 @@ public class PrSaleFinish {
 
         stage.show();
         stage.setAlwaysOnTop(true);
+        stage.toFront();
     }
 
 }

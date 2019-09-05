@@ -72,5 +72,6 @@ public class PrSaleFinishConfirm {
 
         PrSale controller = loader.<PrSale>getController();
         controller.initData(bpPrincipal);
+        oblProductos.clear();
     }
 }

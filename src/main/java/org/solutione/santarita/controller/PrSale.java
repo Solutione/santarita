@@ -121,6 +121,7 @@ public class PrSale {
 
         stage.show();
         stage.setAlwaysOnTop(true);
+        stage.toFront();
     }
 
     public void txtScannerAdd(ActionEvent actionEvent) {
@@ -183,6 +184,7 @@ public class PrSale {
 
         stage.show();
         stage.setAlwaysOnTop(true);
+        stage.toFront();
     }
 
 }

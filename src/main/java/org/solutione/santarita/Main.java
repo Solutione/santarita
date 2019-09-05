@@ -82,7 +82,7 @@ public class  Main extends Application {
 
                 Platform.runLater(() -> {
                     primaryStage.setOpacity(1.0);
-                    primaryStage.setAlwaysOnTop(true);
+                    primaryStage.toFront();
                     splash.close();
                 });
             } catch (InterruptedException ex) {
