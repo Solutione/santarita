@@ -132,9 +132,8 @@ public class PrSale {
         if(!family){
             family=true;
             btnFamily.setImage(new Image("org/solutione/santarita/image/family-b.png"));
-            ObservableList<Producto> productosBD = new BDProductos().getProducts();
             for (Producto value : productos)
-                for (Producto v : productosBD)
+                for (Producto v : Principal.products)
                     if (v.getCodigo().equals(value.getCodigo())){
                         value.setPrecio(v.getCosto());
                         value.setSubtotal(v.getCosto()*value.getUnidades());
@@ -145,9 +144,8 @@ public class PrSale {
         }else {
             family = false;
             btnFamily.setImage(new Image("org/solutione/santarita/image/family.png"));
-            ObservableList<Producto> productosBD = new BDProductos().getProducts();
             for (Producto value : productos)
-                for (Producto v : productosBD)
+                for (Producto v : Principal.products)
                     if (v.getCodigo().equals(value.getCodigo())){
                         value.setPrecio(v.getPrecio());
                         value.setSubtotal(v.getPrecio()*value.getUnidades());
