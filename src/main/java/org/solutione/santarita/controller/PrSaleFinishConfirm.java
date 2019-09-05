@@ -1,6 +1,5 @@
 package org.solutione.santarita.controller;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,10 +8,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.solutione.santarita.api.BDData_F;
+import org.solutione.santarita.api.BDHistory;
 import org.solutione.santarita.api.BDProductos;
 import org.solutione.santarita.api.Producto;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class PrSaleFinishConfirm {
     public ImageView imgBtnAceptar;
@@ -26,10 +29,9 @@ public class PrSaleFinishConfirm {
     @FXML
     void initialize() {}
 
-    void initData(ObservableList<Producto> oblProductos,BorderPane bpPrincipal, Stage thisStage, Stage stg) {
+    void initData(ObservableList<Producto> oblProductos, Stage thisStage, Stage stg) {
         this.stg = stg;
         this.thisStage = thisStage;
-        this.bpPrincipal = bpPrincipal;
         this.oblProductos = oblProductos;
     }
 
@@ -44,9 +46,10 @@ public class PrSaleFinishConfirm {
     }
 
     private void newSale(){
+        double total = 0;
+        double benefits = 0;
         for (Producto value : oblProductos) {
-            ObservableList<Producto> productos = new BDProductos().getProducts();
-            for (Producto v : productos)
+            for (Producto v : Principal.products)
                 if (v.getCodigo().equals(value.getCodigo())){
                     int u = v.getUnidades() - value.getUnidades();
                     new BDProductos().setProduct(
@@ -57,21 +60,22 @@ public class PrSaleFinishConfirm {
                             u,
                             v.getMarca(),
                             v.getCaducidad());
+                    double benefit = v.getPrecio()-v.getCosto();
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    LocalDateTime now = LocalDateTime.now();
+                    String date = dtf.format(now);
+                    for (int i = 0; i < value.getUnidades(); i++){
+                        new BDHistory().addHistory(v.getCodigo(),v.getNombre(),v.getCosto(),v.getPrecio(),benefit,date);
+                        total += value.getPrecio();
+                        benefits += benefit;
+                    }
                 }
         }
+        new BDData_F().updateTotal(new BDData_F().getTotal()+total);
+        new BDData_F().updateBenefit(new BDData_F().getBenefit()+benefits);
         thisStage.close();
         stg.close();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrSale.fxml"));
-        BorderPane bp = null;
-        try {
-            bp = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        bpPrincipal.setCenter(bp);
-
-        PrSale controller = loader.<PrSale>getController();
-        controller.initData(bpPrincipal);
         oblProductos.clear();
+        Principal.products.setAll(new BDProductos().getProducts());
     }
 }

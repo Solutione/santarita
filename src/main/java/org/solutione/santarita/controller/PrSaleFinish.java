@@ -24,18 +24,16 @@ public class PrSaleFinish {
     public Label lblExchange;
     public ImageView imgBtnFinish;
     private Stage stg;
-    private BorderPane bpPrincipal;
     private double total;
     private ObservableList<Producto> oblProductos;
 
     @FXML
     void initialize() {}
 
-    void initData(ObservableList<Producto> oblProductos,BorderPane bpPrincipal, Stage stg, String total) {
+    void initData(ObservableList<Producto> oblProductos, Stage stg, String total) {
         this.total = Double.parseDouble(total);
         tfMoney.setText(total);
         this.stg = stg;
-        this.bpPrincipal = bpPrincipal;
         this.oblProductos = oblProductos;
     }
 
@@ -64,7 +62,7 @@ public class PrSaleFinish {
         }
 
         PrSaleFinishConfirm controller = loader.<PrSaleFinishConfirm>getController();
-        controller.initData(oblProductos,bpPrincipal,stage,stg);
+        controller.initData(oblProductos,stage,stg);
 
         stage.show();
         stage.setAlwaysOnTop(true);

@@ -39,7 +39,7 @@
                               <Font name="Roboto Regular" size="19.0" />
                            </font>
                         </Label>
-                        <Label text="\$00000.00" textFill="#bc7837">
+                        <Label fx:id="tfNoBenefit" text="\$00000.00" textFill="#bc7837">
                            <font>
                               <Font name="Lexend Exa Regular" size="46.0" />
                            </font>
@@ -58,7 +58,7 @@
                               <Font name="Roboto Regular" size="19.0" />
                            </font>
                         </Label>
-                        <Label text="\$00000.00" textFill="#bc7837">
+                        <Label fx:id="tfBenefit" text="\$00000.00" textFill="#bc7837">
                            <font>
                               <Font name="Lexend Exa Regular" size="46.0" />
                            </font>

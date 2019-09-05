@@ -117,10 +117,9 @@ public class PrSale {
         }
 
         PrSaleFinish controller = loader.<PrSaleFinish>getController();
-        controller.initData(productos,bpPrincipal,stage,lblTotal.getText());
+        controller.initData(productos,stage,lblTotal.getText());
 
         stage.show();
-        stage.setAlwaysOnTop(true);
         stage.toFront();
     }
 
