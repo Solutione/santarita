@@ -1,5 +1,6 @@
 package org.solutione.santarita.controller;
 
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,7 +15,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.solutione.santarita.api.BDProductos;
 import org.solutione.santarita.api.Producto;
 
 import java.io.IOException;
@@ -43,6 +43,8 @@ public class PrSale {
     private boolean family = false;
     private boolean money = true;
 
+    public static SimpleDoubleProperty dbTotal;
+
     @FXML
     void initialize(){
         tcCodigo.setCellValueFactory(cellData -> cellData.getValue().codigoProperty());
@@ -50,6 +52,9 @@ public class PrSale {
         tcCantidad.setCellValueFactory(cellData -> cellData.getValue().unidadesProperty());
         tcPrecio.setCellValueFactory(cellData -> cellData.getValue().precioProperty());
         tcSubtotal.setCellValueFactory(cellData -> cellData.getValue().subtotalProperty());
+
+        dbTotal = new SimpleDoubleProperty(0);
+        lblTotal.textProperty().bind(dbTotal.asString());
 
         tvPrSale.setItems(productos);
         txtScanner.requestFocus();
@@ -61,14 +66,14 @@ public class PrSale {
                 productos.remove(item);
                 double total = 0;
                 for (Producto producto : productos) total += producto.getSubtotal();
-                lblTotal.setText(Double.toString(total));
+                dbTotal.set(total);
             }else{
                 int units = item.getUnidades()-1;
                 item.setUnidades(units);
                 item.setSubtotal(item.getPrecio() * units);
                 double total = 0;
                 for (Producto producto : productos) total += producto.getSubtotal();
-                lblTotal.setText(Double.toString(total));
+                dbTotal.set(total);
             }
         });
 
@@ -79,7 +84,7 @@ public class PrSale {
 
     void initData(BorderPane bpPrincipal) {
         this.bpPrincipal = bpPrincipal;
-        this.allProducts = Principal.products;
+        this.allProducts = Principal.PRODUCTS;
     }
 
     private void addProduct(String code){
@@ -104,7 +109,7 @@ public class PrSale {
         }
         double total = 0;
         for (Producto producto : productos) total += producto.getSubtotal();
-        lblTotal.setText(Double.toString(total));
+        dbTotal.set(total);
     }
 
     public void lblFinishMouseClick(MouseEvent mouseEvent) {
@@ -117,7 +122,7 @@ public class PrSale {
         }
 
         PrSaleFinish controller = loader.<PrSaleFinish>getController();
-        controller.initData(productos,stage,lblTotal.getText());
+        controller.initData(productos,stage);
 
         stage.show();
         stage.toFront();
@@ -133,25 +138,25 @@ public class PrSale {
             family=true;
             btnFamily.setImage(new Image("org/solutione/santarita/image/family-b.png"));
             for (Producto value : productos)
-                for (Producto v : Principal.products)
+                for (Producto v : Principal.PRODUCTS)
                     if (v.getCodigo().equals(value.getCodigo())){
                         value.setPrecio(v.getCosto());
                         value.setSubtotal(v.getCosto()*value.getUnidades());
                         double total = 0;
                         for (Producto producto : productos) total += producto.getSubtotal();
-                        lblTotal.setText(Double.toString(total));
+                        dbTotal.set(total);
                     }
         }else {
             family = false;
             btnFamily.setImage(new Image("org/solutione/santarita/image/family.png"));
             for (Producto value : productos)
-                for (Producto v : Principal.products)
+                for (Producto v : Principal.PRODUCTS)
                     if (v.getCodigo().equals(value.getCodigo())){
                         value.setPrecio(v.getPrecio());
                         value.setSubtotal(v.getPrecio()*value.getUnidades());
                         double total = 0;
                         for (Producto producto : productos) total += producto.getSubtotal();
-                        lblTotal.setText(Double.toString(total));
+                        dbTotal.set(total);
                     }
         }
     }
@@ -159,12 +164,12 @@ public class PrSale {
     public void btnMoneyMC(MouseEvent mouseEvent) {
         if(money){
             money = false;
-            lblTotal.setText("0");
+            dbTotal.set(0);
         }else{
             money = true;
             double total = 0;
             for (Producto producto : productos) total += producto.getSubtotal();
-            lblTotal.setText(Double.toString(total));
+            dbTotal.set(total);
         }
 
     }
@@ -179,11 +184,18 @@ public class PrSale {
         }
 
         PrSaleAddProduct controller = loader.<PrSaleAddProduct>getController();
-        controller.initData(productos,lblTotal,stage);
+        controller.initData(productos,stage);
 
         stage.show();
         stage.setAlwaysOnTop(true);
         stage.toFront();
     }
 
+    public void focusAction(MouseEvent mouseEvent) {
+        txtScanner.requestFocus();
+    }
+
+    public void cleanTable(MouseEvent mouseEvent) {
+        productos.clear();
+    }
 }

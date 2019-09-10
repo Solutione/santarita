@@ -24,15 +24,13 @@ public class PrSaleFinish {
     public Label lblExchange;
     public ImageView imgBtnFinish;
     private Stage stg;
-    private double total;
     private ObservableList<Producto> oblProductos;
 
     @FXML
     void initialize() {}
 
-    void initData(ObservableList<Producto> oblProductos, Stage stg, String total) {
-        this.total = Double.parseDouble(total);
-        tfMoney.setText(total);
+    void initData(ObservableList<Producto> oblProductos, Stage stg) {
+        tfMoney.setText(Double.toString(PrSale.dbTotal.get()));
         this.stg = stg;
         this.oblProductos = oblProductos;
     }
@@ -41,7 +39,7 @@ public class PrSaleFinish {
         double mon = 0;
         if(!tfMoney.getText().equals(""))
             mon = Double.parseDouble(tfMoney.getText());
-        double ex = mon - total;
+        double ex = mon - PrSale.dbTotal.get();
         lblExchange.setText(Double.toString(ex));
     }
 

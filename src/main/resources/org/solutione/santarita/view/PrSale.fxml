@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="BPSale" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="469.0" prefWidth="872.0" style="-fx-background-color: #a49582;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.PrSale">
+<BorderPane fx:id="BPSale" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseEntered="#focusAction" prefHeight="469.0" prefWidth="872.0" style="-fx-background-color: #a49582;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.PrSale">
    <top>
       <FlowPane alignment="CENTER_RIGHT" columnHalignment="CENTER" prefHeight="50.0" prefWidth="730.0" BorderPane.alignment="CENTER">
          <children>
@@ -55,19 +55,22 @@
          <center>
             <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Total" textFill="#6c4b47">
-                     <font>
-                        <Font name="Roboto Regular" size="23.0" />
-                     </font>
-                  </Label>
                   <Label fx:id="lblTotal" text="\$0000.00" textFill="#bc7837">
                      <font>
-                        <Font name="Lexend Exa Regular" size="50.0" />
+                        <Font name="Lexend Exa Regular" size="60.0" />
                      </font>
+                     <padding>
+                        <Insets bottom="-10.0" />
+                     </padding>
                   </Label>
                   <Label fx:id="lblFinish" onMouseClicked="#lblFinishMouseClick" text="Terminar Venta" textFill="#53292c">
                      <font>
-                        <Font name="Lexend Exa Regular" size="25.0" />
+                        <Font name="Lexend Exa Regular" size="32.0" />
+                     </font>
+                  </Label>
+                  <Label onMouseClicked="#cleanTable" text="Limpiar Tabla" textFill="#52292cb7">
+                     <font>
+                        <Font name="Roboto Light Italic" size="16.0" />
                      </font>
                   </Label>
                </children>

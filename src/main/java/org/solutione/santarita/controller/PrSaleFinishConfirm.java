@@ -1,5 +1,6 @@
 package org.solutione.santarita.controller;
 
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,10 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import org.solutione.santarita.api.BDData_F;
-import org.solutione.santarita.api.BDHistory;
-import org.solutione.santarita.api.BDProductos;
-import org.solutione.santarita.api.Producto;
+import org.solutione.santarita.api.*;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -49,7 +47,7 @@ public class PrSaleFinishConfirm {
         double total = 0;
         double benefits = 0;
         for (Producto value : oblProductos) {
-            for (Producto v : Principal.products)
+            for (Producto v : Principal.PRODUCTS)
                 if (v.getCodigo().equals(value.getCodigo())){
                     int u = v.getUnidades() - value.getUnidades();
                     new BDProductos().setProduct(
@@ -65,17 +63,26 @@ public class PrSaleFinishConfirm {
                     LocalDateTime now = LocalDateTime.now();
                     String date = dtf.format(now);
                     for (int i = 0; i < value.getUnidades(); i++){
-                        new BDHistory().addHistory(v.getCodigo(),v.getNombre(),v.getCosto(),v.getPrecio(),benefit,date);
+                        String tcode = v.getCodigo();
+                        String tname = v.getNombre();
+                        double tcost = v.getCosto();
+                        double tprice = v.getPrecio();
+                        new BDHistory().addHistory(tcode,tname,tcost,tprice,benefit,date);
+                        Principal.HISTORY.add(new History(tcode,tname,tcost,tprice,benefit,date));
                         total += value.getPrecio();
                         benefits += benefit;
                     }
                 }
         }
-        new BDData_F().updateTotal(new BDData_F().getTotal()+total);
-        new BDData_F().updateBenefit(new BDData_F().getBenefit()+benefits);
         thisStage.close();
         stg.close();
         oblProductos.clear();
-        Principal.products.setAll(new BDProductos().getProducts());
+        PrSale.dbTotal.set(0);
+        Principal.TOTAL.set(Principal.TOTAL.get()+total);
+        Principal.BENEFIT.set(Principal.BENEFIT.get()+benefits);
+        new BDData_F().updateTotal(Principal.TOTAL.get());
+        new BDData_F().updateBenefit(Principal.BENEFIT.get());
+        Principal.PRODUCTS.setAll(new BDProductos().getProducts());
+        PrFinance.updateData();
     }
 }

@@ -31,7 +31,6 @@ public class PrInventory {
     public BorderPane bpProduct;
 
     private ObservableList<Producto> productos = FXCollections.observableArrayList();
-    private ObservableList<Producto> allProductos = FXCollections.observableArrayList();
 
     @FXML
     private void initialize(){
@@ -41,8 +40,7 @@ public class PrInventory {
         tcPrice.setCellValueFactory(cellData -> cellData.getValue().precioProperty());
         tcBrand.setCellValueFactory(cellData -> cellData.getValue().marcaProperty());
 
-        allProductos = new BDProductos().getProducts();
-        for (Producto p : allProductos)
+        for (Producto p : Principal.PRODUCTS)
             if (p.getUnidades()>0)
                 productos.add(p);
         tvProducts.setItems(productos);
@@ -74,14 +72,14 @@ public class PrInventory {
     }
     private void addProduct(String code){
         boolean exits = false;
-        for (Producto value : allProductos) {
+        for (Producto value : Principal.PRODUCTS) {
             if (value.getCodigo().equals(code)) {
                 exits = true;
                 int u = value.getUnidades()+1;
                 new BDProductos().updateProduct(code,u);
                 value.setUnidades(value.getUnidades()+1);
                 productos.clear();
-                for (Producto p : allProductos)
+                for (Producto p : Principal.PRODUCTS)
                     if (p.getUnidades()>0)
                         productos.add(p);
             }
@@ -100,11 +98,26 @@ public class PrInventory {
 
     public void btnGSave(MouseEvent mouseEvent) {
         boolean exits = false;
-        for (Producto value : productos) if (value.getCodigo().equals(tfCode.getText()))exits = true;
+        String  tCode   =   tfCode.getText();
+        String  tName   =   tfName.getText();
+        double  tCost   =   Double.parseDouble(tfCost.getText());
+        double  tPrice  =   Double.parseDouble(tfPrice.getText());
+        int     tUnits  =   Integer.parseInt(tfUnits.getText());
+        String  tBrand  =   tfBrand.getText();
+        String  tExpiration =   tfExpiration.getText();
+
+        for (Producto value : Principal.PRODUCTS)
+            if (value.getCodigo().equals(tCode)){
+                exits = true;
+                new BDProductos().setProduct(tCode,tName,tCost,tPrice,tUnits,tBrand,tExpiration);
+                value.setAll(tCode,tName,tCost,tPrice,tUnits,tBrand,tExpiration);
+                productos.clear();
+                for (Producto p : Principal.PRODUCTS)
+                    if (p.getUnidades()>0)
+                        productos.add(p);
+            }
         if (!exits){
-            new BDProductos().addProduct(tfCode.getText(),tfName.getText(),
-                    Double.parseDouble(tfCost.getText()),Double.parseDouble(tfPrice.getText()),
-                    Integer.parseInt(tfUnits.getText()),tfBrand.getText(),tfExpiration.getText());
+            new BDProductos().addProduct(tCode,tName,tCost,tPrice,tUnits,tBrand,tExpiration);
             bpProduct.setVisible(false);
             tfName.setText("");
             tfCost.setText("");
@@ -113,28 +126,33 @@ public class PrInventory {
             tfBrand.setText("");
             tfExpiration.setText("");
             tfCode.setText("");
-            allProductos = new BDProductos().getProducts();
+            Principal.PRODUCTS.add(new Producto(tCode,tName,tCost,tPrice,tUnits,tBrand,tExpiration));
             productos.clear();
-            for (Producto p : allProductos)
-                if (p.getUnidades()>0)
-                    productos.add(p);
-        }else{
-            new BDProductos().setProduct(
-                    tfCode.getText(),
-                    tfName.getText(),
-                    Double.parseDouble(tfCost.getText()),
-                    Double.parseDouble(tfPrice.getText()),
-                    Integer.parseInt(tfUnits.getText()),
-                    tfBrand.getText(),
-                    tfExpiration.getText());
-
-            allProductos = new BDProductos().getProducts();
-            productos.clear();
-            for (Producto p : allProductos)
+            for (Producto p : Principal.PRODUCTS)
                 if (p.getUnidades()>0)
                     productos.add(p);
         }
         bpProduct.setVisible(false);
     }
 
+    public void btnEDelete(MouseEvent mouseEvent) {
+        String  tCode   =   tfCode.getText();
+        String  tName   =   tfName.getText();
+        double  tCost   =   Double.parseDouble(tfCost.getText());
+        double  tPrice  =   Double.parseDouble(tfPrice.getText());
+        int     tUnits  =   0;
+        String  tBrand  =   tfBrand.getText();
+        String  tExpiration =   tfExpiration.getText();
+
+        for (Producto value : Principal.PRODUCTS)
+            if (value.getCodigo().equals(tCode)){
+                value.setUnidades(tUnits);
+                productos.clear();
+                for (Producto p : Principal.PRODUCTS)
+                    if (p.getUnidades()>0)
+                        productos.add(p);
+            }
+        bpProduct.setVisible(false);
+        new BDProductos().setProduct(tCode,tName,tCost,tPrice,tUnits,tBrand,tExpiration);
+    }
 }

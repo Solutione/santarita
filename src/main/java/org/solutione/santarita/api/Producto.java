@@ -126,4 +126,14 @@ public class Producto {
     public void setSubtotal(double subtotal) {
         this.subtotal.set(subtotal);
     }
+
+    public void setAll(String code, String name, double cost, double price, int units, String brand, String expiration) {
+        this.codigo = new SimpleStringProperty(code);
+        this.nombre = new SimpleStringProperty(name);
+        this.costo = new SimpleDoubleProperty(cost);
+        this.precio = new SimpleDoubleProperty(price);
+        this.unidades = new SimpleIntegerProperty(units);
+        this.marca = new SimpleStringProperty(brand);
+        this.caducidad = new SimpleStringProperty(expiration);
+    }
 }

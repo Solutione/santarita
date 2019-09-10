@@ -15,10 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.solutione.santarita.api.BDProductos;
-import org.solutione.santarita.api.BDProveedores;
-import org.solutione.santarita.api.Producto;
-import org.solutione.santarita.api.Proveedor;
+import org.solutione.santarita.api.*;
 import org.solutione.santarita.controller.PrSale;
 import org.solutione.santarita.controller.PrSaleFinish;
 import org.solutione.santarita.controller.Principal;
@@ -64,9 +61,12 @@ public class  Main extends Application {
 
                 ObservableList<Producto> products = new BDProductos().getProducts();
                 ObservableList<Proveedor> providers = new BDProveedores().getProviders();
+                ObservableList<History> history = new BDHistory().getHistory();
+                double total = new BDData_F().getTotal();
+                double benefit = new BDData_F().getBenefit();
 
                 Principal controller = loader.<Principal>getController();
-                controller.initData(primaryStage,products,providers);
+                controller.initData(primaryStage,products,providers,history,total,benefit);
 
                 primaryStage.show();
                 primaryStage.setOpacity(0.0);
@@ -78,7 +78,7 @@ public class  Main extends Application {
             @Override
             public void run(){
             try {
-                Thread.sleep(15000);
+                Thread.sleep(16000);
 
                 Platform.runLater(() -> {
                     primaryStage.setOpacity(1.0);

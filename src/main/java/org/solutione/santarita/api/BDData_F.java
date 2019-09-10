@@ -1,5 +1,8 @@
 package org.solutione.santarita.api;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.sql.*;
 
 public class BDData_F {

@@ -173,7 +173,7 @@
                               </VBox>
                               <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fitHeight="30.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="30.0" fitWidth="70.0" onMouseClicked="#btnEDelete" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../image/btnEliminar.png" />
                                        </image>
