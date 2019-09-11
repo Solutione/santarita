@@ -9,15 +9,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import org.solutione.santarita.api.BDHistory;
-import org.solutione.santarita.api.History;
-import org.solutione.santarita.api.Producto;
-import org.solutione.santarita.api.Reporte;
+import org.solutione.santarita.api.*;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 
 public class PrFinance {
     public BorderPane BPFincance;
@@ -56,6 +54,40 @@ public class PrFinance {
 
         tvTopProducts.setItems(productos);
 
+        ObservableList<Producto> prods = FXCollections.observableArrayList();
+
+        for (History h : Principal.HISTORY) {
+            if (prods.size() == 0) {
+                for (Producto p : Principal.PRODUCTS) {
+                    if (p.getCodigo().equals(h.getCode())) {
+                        prods.add(new Producto(p.getCodigo(), p.getNombre(), 1, p.getMarca()));
+                    }
+                }
+            }else{
+                boolean exits = false;
+                for (Producto p : prods){
+                    if (p.getCodigo().equals(h.getCode())) {
+                        p.setUnidades(p.getUnidades() + 1);
+                        exits = true;
+                    }
+                }
+                if (!exits){
+                    for (Producto p : Principal.PRODUCTS) {
+                        if (p.getCodigo().equals(h.getCode())) {
+                            prods.add(new Producto(p.getCodigo(), p.getNombre(), 1, p.getMarca()));
+                        }
+                    }
+                }
+            }
+
+        }
+        prods.sort(Comparator.comparing(Producto::getUnidades));
+        int size = prods.size();
+        productos.add(prods.get(size-1));
+        productos.add(prods.get(size-2));
+        productos.add(prods.get(size-3));
+        productos.add(prods.get(size-4));
+        productos.add(prods.get(size-5));
 
         updateData();
     }
