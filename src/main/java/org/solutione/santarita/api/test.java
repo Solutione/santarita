@@ -3,49 +3,42 @@ package org.solutione.santarita.api;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 public class test {
     public static void main(String[] args) {
-        Calendar c = Calendar.getInstance();
-        c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        DateFormat dfDay = new SimpleDateFormat("EEEE");
-        ObservableList<Reporte> reportes = FXCollections.observableArrayList();
+        ObservableList<History> history = new BDHistory().getHistory();
+        ObservableList<Producto> products = new BDProductos().getProducts();
+        ObservableList<Producto> productos = FXCollections.observableArrayList();
 
-        for (int i = 0; i < 7; i++) {
-            reportes.add(new Reporte(df.format(c.getTime()),dfDay.format(c.getTime()),0.0));
-            c.add(Calendar.DATE, 1);
+
+        for (History h : history) {
+            if (productos.size() == 0) {
+                for (Producto p : products) {
+                    if (p.getCodigo().equals(h.getCode())) {
+                        productos.add(new Producto(p.getCodigo(), p.getNombre(), 1, p.getMarca()));
+                    }
+                }
+            }else{
+                boolean exits = true;
+                for (Producto p : productos){
+                    if (p.getCodigo().equals(h.getCode())) {
+                        p.setUnidades(p.getUnidades() + 1);
+                    } else {
+                        exits = false;
+                    }
+                }
+                if (!exits){
+                    for (Producto p : products) {
+                        if (p.getCodigo().equals(h.getCode())) {
+                            productos.add(new Producto(p.getCodigo(), p.getNombre(), 1, p.getMarca()));
+                        }
+                    }
+                }
+            }
+
         }
 
-        ObservableList<History> history =  new BDHistory().getHistory();
-
-        double bigger = 0.0;
-        for(Reporte r: reportes) {
-            for (History h : history)
-                if (h.getDate().equals(r.getDate()))
-                    r.setMount(r.getMount() + h.getBenefit());
-
-            if (bigger<r.getMount())
-                bigger= r.getMount();
-        }
-
-        int value = (int) ((reportes.get(0).getMount()*500)/bigger);
-
-        System.out.println(value);
-    }
-    private static Date convertDateProduct(String date_product){
-        Date dateProduct = null;
-        try {
-            dateProduct=new SimpleDateFormat("dd/MM/yyyy").parse(date_product);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return dateProduct;
+        for (Producto p:productos)
+            System.out.println(p.getNombre()+" "+p.getUnidades());
     }
 
 }

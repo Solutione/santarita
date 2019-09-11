@@ -30,6 +30,12 @@ public class Producto {
         this.unidades = new SimpleIntegerProperty(unidades);
         this.subtotal = new SimpleDoubleProperty(subtotal);
     }
+    public Producto(String codigo,String nombre, int unidades,String marca){
+        this.codigo = new SimpleStringProperty(codigo);
+        this.nombre = new SimpleStringProperty(nombre);
+        this.unidades = new SimpleIntegerProperty(unidades);
+        this.marca = new SimpleStringProperty(marca);
+    }
 
     public String getCodigo() {
         return codigo.get();

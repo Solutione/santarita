@@ -16,6 +16,7 @@ import org.solutione.santarita.api.Reporte;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class PrFinance {
@@ -54,6 +55,26 @@ public class PrFinance {
         tcBrand.setCellValueFactory(cellData -> cellData.getValue().marcaProperty());
 
         tvTopProducts.setItems(productos);
+
+        Producto pr1 = null,pr2 = null,pr3 = null,pr4 = null,pr5 = null;
+
+        ObservableList<History> tmpHistory = FXCollections.observableArrayList();
+
+        for (History h : Principal.HISTORY) {
+            if (productos.size() == 0) {
+                for (Producto p : Principal.PRODUCTS)
+                    if (p.getCodigo().equals(h.getCode()))
+                        productos.add(new Producto(p.getCodigo(), p.getNombre(), 1, p.getMarca()));
+                break;
+            }
+            for (Producto p : productos){
+                if (p.getCodigo().equals(h.getCode())) p.setUnidades(p.getUnidades() + 1);
+                else
+                    for (Producto pa : Principal.PRODUCTS)
+                        if (pa.getCodigo().equals(h.getCode()))
+                            productos.add(new Producto(pa.getCodigo(), pa.getNombre(), 1, pa.getMarca()));
+            }
+        }
 
         updateData();
     }
