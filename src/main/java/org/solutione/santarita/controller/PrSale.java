@@ -164,9 +164,11 @@ public class PrSale {
     public void btnMoneyMC(MouseEvent mouseEvent) {
         if(money){
             money = false;
+            btnMoney.setImage(new Image("org/solutione/santarita/image/efectivo-b.png"));
             dbTotal.set(0);
         }else{
             money = true;
+            btnMoney.setImage(new Image("org/solutione/santarita/image/efectivo.png"));
             double total = 0;
             for (Producto producto : productos) total += producto.getSubtotal();
             dbTotal.set(total);

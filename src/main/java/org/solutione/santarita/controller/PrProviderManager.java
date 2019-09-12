@@ -53,6 +53,9 @@ public class PrProviderManager {
         this.provider = provider;
 
         lblBrand.setText(provider);
+
+        double st = 0;
+
         String[] codes = new BDProveedores().getProvider(provider).getCodes().split(",");
         ObservableList<Producto> prod = new BDProductos().getProducts();
         for (String c:codes)
@@ -60,8 +63,11 @@ public class PrProviderManager {
                 if (p.getCodigo().equals(c))
                     if (p.getUnidades()>0)
                         products.add(p);
-                    else
+                    else{
                         noproducts.add(p);
+                        st+=p.getCosto();
+                    }
+
 
         tcNpName.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
         tcNpUnits.setCellValueFactory(cellData -> cellData.getValue().unidadesProperty());
@@ -72,6 +78,11 @@ public class PrProviderManager {
         tcPUnits.setCellValueFactory(cellData -> cellData.getValue().unidadesProperty());
         tcPCost.setCellValueFactory(cellData -> cellData.getValue().costoProperty());
         tcPPrice.setCellValueFactory(cellData -> cellData.getValue().precioProperty());
+
+        int porcent = products.size()*(100/(noproducts.size() + products.size()));
+
+        lblPorcent.setText(porcent+"%");
+        lblTotal.setText(""+st*2);
 
         tvNoProducts.setItems(noproducts);
         tvProducts.setItems(products);

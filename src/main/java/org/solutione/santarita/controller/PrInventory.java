@@ -82,6 +82,7 @@ public class PrInventory {
                 for (Producto p : Principal.PRODUCTS)
                     if (p.getUnidades()>0)
                         productos.add(p);
+                tvProducts.getSelectionModel().select(value);
             }
         }
         if (!exits){
