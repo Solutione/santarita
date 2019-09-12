@@ -1,17 +1,14 @@
 package org.solutione.santarita.controller;
 
-import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.solutione.santarita.api.*;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -80,6 +77,7 @@ public class PrSaleFinishConfirm {
         PrSale.dbTotal.set(0);
         Principal.TOTAL.set(Principal.TOTAL.get()+total);
         Principal.BENEFIT.set(Principal.BENEFIT.get()+benefits);
+        Principal.NOBENEFIT.set(Principal.TOTAL.get() - Principal.BENEFIT.get());
         new BDData_F().updateTotal(Principal.TOTAL.get());
         new BDData_F().updateBenefit(Principal.BENEFIT.get());
         Principal.PRODUCTS.setAll(new BDProductos().getProducts());

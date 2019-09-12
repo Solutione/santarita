@@ -35,17 +35,17 @@
                <children>
                   <VBox alignment="CENTER_RIGHT" prefHeight="167.0" prefWidth="346.0">
                      <children>
-                        <Label text="Reservas" textFill="#6c4b47">
+                        <Label text="Total" textFill="#6c4b47">
                            <font>
                               <Font name="Roboto Regular" size="19.0" />
                            </font>
                         </Label>
-                        <Label fx:id="tfNoBenefit" text="\$00000.00" textFill="#bc7837">
+                        <Label fx:id="tfTotal" text="\$00000.00" textFill="#bc7837">
                            <font>
                               <Font name="Lexend Exa Regular" size="46.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="38.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="38.0" fitWidth="76.0" onMouseClicked="#btnRetirar" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../image/btnRetirar.png" />
                            </image>
@@ -64,11 +64,20 @@
                               <Font name="Lexend Exa Regular" size="46.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="38.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../image/btnRetirar.png" />
-                           </image>
-                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER_RIGHT" layoutX="195.0" layoutY="10.0" prefHeight="167.0" prefWidth="346.0">
+                     <children>
+                        <Label text="Reservas" textFill="#6c4b47">
+                           <font>
+                              <Font name="Roboto Regular" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tfNoBenefit" text="\$00000.00" textFill="#bc7837">
+                           <font>
+                              <Font name="Lexend Exa Regular" size="46.0" />
+                           </font>
+                        </Label>
                      </children>
                   </VBox>
                </children>

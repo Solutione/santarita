@@ -4,13 +4,19 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.solutione.santarita.api.*;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,8 +25,11 @@ import java.util.Comparator;
 
 public class PrFinance {
     public BorderPane BPFincance;
+
     public Label tfNoBenefit;
     public Label tfBenefit;
+    public Label tfTotal;
+
     public Pane pnlLunes;
     public Pane pnlMartes;
     public Pane pnlMiercoles;
@@ -39,7 +48,8 @@ public class PrFinance {
     @FXML
     void initialize(){
         tfBenefit.textProperty().bind(Principal.BENEFIT.asString());
-        tfNoBenefit.textProperty().bind(Principal.TOTAL.asString());
+        tfNoBenefit.textProperty().bind(Principal.NOBENEFIT.asString());
+        tfTotal.textProperty().bind(Principal.TOTAL.asString());
         pnlLunes.prefWidthProperty().bind(Principal.LUNES);
         pnlMartes.prefWidthProperty().bind(Principal.MARTES);
         pnlMiercoles.prefWidthProperty().bind(Principal.MIERCOLES);
@@ -150,5 +160,22 @@ public class PrFinance {
 
         day.set((int) ((reportes.get(0).getMount()*400)/bigger));
 
+    }
+
+    public void btnRetirar(MouseEvent mouseEvent) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrFinanceRetirar.fxml"));
+        Stage stage = new Stage(StageStyle.DECORATED);
+        try {
+            stage.setScene(new Scene((Pane) loader.load()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        PrFinanceRetirar controller = loader.<PrFinanceRetirar>getController();
+        controller.initData(stage);
+
+        stage.show();
+        stage.setAlwaysOnTop(true);
+        stage.toFront();
     }
 }

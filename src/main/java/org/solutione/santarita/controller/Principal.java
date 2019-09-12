@@ -4,6 +4,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.beans.binding.BooleanExpression;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableList;
@@ -34,6 +35,7 @@ public class Principal {
     static ObservableList<History> HISTORY;
     static SimpleDoubleProperty TOTAL;
     static SimpleDoubleProperty BENEFIT;
+    static SimpleDoubleProperty NOBENEFIT;
     static SimpleDoubleProperty LUNES;
     static SimpleDoubleProperty MARTES;
     static SimpleDoubleProperty MIERCOLES;
@@ -92,13 +94,13 @@ public class Principal {
                          ObservableList<Producto> products,
                          ObservableList<Proveedor> providers,
                          ObservableList<History> history,
-                         double total, double benefit) {
+                         double total, double benefit,double nobenefit) {
         this.primaryStage = primaryStage;
-        System.out.println(total);
         Principal.PRODUCTS = products;
         Principal.PROVIDERS = providers;
         Principal.HISTORY = history;
         Principal.TOTAL = new SimpleDoubleProperty(total);
+        Principal.NOBENEFIT = new SimpleDoubleProperty(nobenefit);
         Principal.BENEFIT = new SimpleDoubleProperty(benefit);
         Principal.LUNES = new SimpleDoubleProperty(0.0);
         Principal.MARTES = new SimpleDoubleProperty(0.0);
@@ -177,7 +179,7 @@ public class Principal {
             @Override
             public void run(){
             try {
-                Thread.sleep(10500);
+                Thread.sleep(11500);
                 Platform.runLater(() -> {
                     FXMLLoader loaderFinance = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrConfig.fxml"));
                     try {

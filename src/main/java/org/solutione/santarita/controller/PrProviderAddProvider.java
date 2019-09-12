@@ -21,7 +21,6 @@ public class PrProviderAddProvider {
     public ListView<String> lvProductos;
     public ImageView btnCancelar;
     public ImageView btnGuardar;
-    public ImageView imgLogo;
     public TextField tfNombre;
 
     private ObservableList<String> marcas = FXCollections.observableArrayList();

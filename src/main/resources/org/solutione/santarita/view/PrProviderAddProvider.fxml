@@ -79,16 +79,6 @@
    </bottom>
    <top>
       <BorderPane prefHeight="85.0" prefWidth="603.0" BorderPane.alignment="CENTER">
-         <left>
-            <ImageView fx:id="imgLogo" fitHeight="71.0" fitWidth="156.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-               <image>
-                  <Image url="@../image/clickLogo.png" />
-               </image>
-               <BorderPane.margin>
-                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-               </BorderPane.margin>
-            </ImageView>
-         </left>
          <right>
             <VBox alignment="CENTER_RIGHT" prefHeight="94.0" prefWidth="418.0" BorderPane.alignment="CENTER">
                <children>

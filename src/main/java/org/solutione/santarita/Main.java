@@ -66,7 +66,7 @@ public class  Main extends Application {
                 double benefit = new BDData_F().getBenefit();
 
                 Principal controller = loader.<Principal>getController();
-                controller.initData(primaryStage,products,providers,history,total,benefit);
+                controller.initData(primaryStage,products,providers,history,total,benefit,new Double(total-benefit).shortValue());
 
                 primaryStage.show();
                 primaryStage.setOpacity(0.0);

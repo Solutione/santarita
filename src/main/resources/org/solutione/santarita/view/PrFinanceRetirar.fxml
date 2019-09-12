@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="298.0" prefWidth="600.0" style="-fx-background-color: #3f0d16;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.PrFinanceRetirar">
+   <bottom>
+      <Label text="El retiro se obtendrá de la ganancia neta. Se recurrirá al efectivo de las reservas si excede el monto, lo que le ocasionaría un desequilibrio en los resultados financieros de su negocio." textAlignment="CENTER" textFill="#a1907e" wrapText="true" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Roboto Light Italic" size="13.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="25.0" right="25.0" top="25.0" />
+         </BorderPane.margin>
+      </Label>
+   </bottom>
+   <center>
+      <TextField fx:id="tfRetiro" onAction="#onEnter" promptText="\$000.00" style="-fx-prompt-text-fill: #3f0d16; -fx-background-color: #a49582; -fx-text-fill: #3f0d16;" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Lexend Exa Regular" size="27.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets left="25.0" right="25.0" />
+         </BorderPane.margin>
+      </TextField>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="218.0">
+               <children>
+                  <Label text="Ganancia Neta" textFill="#a1907e">
+                     <font>
+                        <Font name="Roboto Light" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblBenefit" text="0000.00" textFill="#a1907e">
+                     <font>
+                        <Font name="Lexend Exa Regular" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="218.0">
+               <children>
+                  <Label text="Total" textFill="#a1907e">
+                     <font>
+                        <Font name="Roboto Light" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTotal" text="0000.00" textFill="#a1907e">
+                     <font>
+                        <Font name="Lexend Exa Regular" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
