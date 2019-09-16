@@ -70,4 +70,21 @@ public class PrConfig {
         stage.setAlwaysOnTop(true);
         stage.toFront();
     }
+
+    public void searchMC(MouseEvent mouseEvent) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/Search.fxml"));
+        Stage stage = new Stage(StageStyle.DECORATED);
+        try {
+            stage.setScene(new Scene((Pane) loader.load()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Search controller = loader.<Search>getController();
+        controller.initData(stage);
+
+        stage.show();
+        stage.setAlwaysOnTop(true);
+        stage.toFront();
+    }
 }

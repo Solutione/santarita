@@ -4,13 +4,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.solutione.santarita.api.BDProductos;
 import org.solutione.santarita.api.Producto;
+
+import java.io.IOException;
 
 public class PrInventory {
     public BorderPane BPInventory;
@@ -155,5 +162,22 @@ public class PrInventory {
             }
         bpProduct.setVisible(false);
         new BDProductos().setProduct(tCode,tName,tCost,tPrice,tUnits,tBrand,tExpiration);
+    }
+
+    public void searchMC(MouseEvent mouseEvent) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/Search.fxml"));
+        Stage stage = new Stage(StageStyle.DECORATED);
+        try {
+            stage.setScene(new Scene((Pane) loader.load()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Search controller = loader.<Search>getController();
+        controller.initData(stage);
+
+        stage.show();
+        stage.setAlwaysOnTop(true);
+        stage.toFront();
     }
 }

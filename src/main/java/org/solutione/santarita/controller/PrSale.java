@@ -16,6 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.solutione.santarita.api.Producto;
+import org.solutione.santarita.api.test;
 
 import java.io.IOException;
 
@@ -200,5 +201,22 @@ public class PrSale {
     public void cleanTable(MouseEvent mouseEvent) {
         productos.clear();
         dbTotal.set(0.0);
+    }
+
+    public void searchMC(MouseEvent mouseEvent) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/Search.fxml"));
+        Stage stage = new Stage(StageStyle.DECORATED);
+        try {
+            stage.setScene(new Scene((Pane) loader.load()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Search controller = loader.<Search>getController();
+        controller.initData(stage);
+
+        stage.show();
+        stage.setAlwaysOnTop(true);
+        stage.toFront();
     }
 }

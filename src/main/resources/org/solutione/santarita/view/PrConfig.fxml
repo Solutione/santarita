@@ -16,7 +16,7 @@
     <top>
         <FlowPane alignment="CENTER_RIGHT" columnHalignment="CENTER" prefHeight="50.0" prefWidth="730.0" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fitHeight="42.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="42.0" fitWidth="33.0" onMouseClicked="#searchMC" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../image/search.png" />
                     </image>
