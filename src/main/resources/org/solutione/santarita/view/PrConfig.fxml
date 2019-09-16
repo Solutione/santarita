@@ -3,11 +3,12 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -34,9 +35,9 @@
          <content>
             <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #a49582;">
                <children>
-                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                  <BorderPane prefHeight="253.0" prefWidth="870.0">
                      <top>
-                        <Label text="Roles" textFill="#6c4b47" BorderPane.alignment="TOP_LEFT">
+                        <Label text="Productos Variables" textFill="#6c4b47" BorderPane.alignment="TOP_LEFT">
                            <font>
                               <Font name="Roboto Light" size="20.0" />
                            </font>
@@ -45,114 +46,8 @@
                            </BorderPane.margin>
                         </Label>
                      </top>
-                     <center>
-                        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="89.0" prefWidth="870.0">
-                                 <children>
-                                    <ImageView fitHeight="43.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../image/user.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets left="30.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <Label text="Administrador" textFill="#5d3737">
-                                       <font>
-                                          <Font name="Roboto Regular" size="21.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="15.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <FlowPane alignment="CENTER" columnHalignment="CENTER" prefHeight="160.0" prefWidth="232.0">
-                                       <children>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="97.0">
-                                             <children>
-                                                <ImageView fitHeight="30.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../image/btnRadioSelected.png" />
-                                                   </image>
-                                                   <HBox.margin>
-                                                      <Insets right="10.0" />
-                                                   </HBox.margin>
-                                                </ImageView>
-                                                <Label text="Ventas">
-                                                   <font>
-                                                      <Font name="Roboto Regular" size="16.0" />
-                                                   </font>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox alignment="CENTER_LEFT" layoutX="58.0" layoutY="35.0" prefHeight="40.0" prefWidth="97.0">
-                                             <children>
-                                                <ImageView fitHeight="30.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../image/btnRadioSelected.png" />
-                                                   </image>
-                                                   <HBox.margin>
-                                                      <Insets right="10.0" />
-                                                   </HBox.margin>
-                                                </ImageView>
-                                                <Label text="Ventas">
-                                                   <font>
-                                                      <Font name="Roboto Regular" size="16.0" />
-                                                   </font>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox alignment="CENTER_LEFT" layoutX="58.0" layoutY="55.0" prefHeight="40.0" prefWidth="97.0">
-                                             <children>
-                                                <ImageView fitHeight="30.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../image/btnRadioSelected.png" />
-                                                   </image>
-                                                   <HBox.margin>
-                                                      <Insets right="10.0" />
-                                                   </HBox.margin>
-                                                </ImageView>
-                                                <Label text="Ventas">
-                                                   <font>
-                                                      <Font name="Roboto Regular" size="16.0" />
-                                                   </font>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                          <HBox alignment="CENTER_LEFT" layoutX="58.0" layoutY="90.0" prefHeight="40.0" prefWidth="97.0">
-                                             <children>
-                                                <ImageView fitHeight="30.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../image/btnRadioSelected.png" />
-                                                   </image>
-                                                   <HBox.margin>
-                                                      <Insets right="10.0" />
-                                                   </HBox.margin>
-                                                </ImageView>
-                                                <Label text="Ventas">
-                                                   <font>
-                                                      <Font name="Roboto Regular" size="16.0" />
-                                                   </font>
-                                                </Label>
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </FlowPane>
-                                    <ImageView fitHeight="29.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../image/btnGuardar.png" />
-                                       </image>
-                                       <HBox.margin>
-                                          <Insets left="60.0" />
-                                       </HBox.margin>
-                                    </ImageView>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </center>
                      <bottom>
-                        <ImageView fitHeight="31.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
+                        <ImageView fx:id="btnNew" fitHeight="31.0" fitWidth="75.0" onMouseClicked="#bntNewMC" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">
                            <image>
                               <Image url="@../image/btnNuevo.png" />
                            </image>
@@ -161,6 +56,24 @@
                            </BorderPane.margin>
                         </ImageView>
                      </bottom>
+                     <center>
+                        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" style="-fx-border-width: 0; -fx-border-insets: 0; -fx-background-color: #a49582;" BorderPane.alignment="CENTER">
+                           <content>
+                              <TableView fx:id="tvPrVar" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #a49582;" stylesheets="@../style/table.css">
+                                 <columns>
+                                    <TableColumn fx:id="tcCode" maxWidth="3000.0" prefWidth="75.0" text="Codigo" />
+                                    <TableColumn fx:id="tcName" maxWidth="9000.0" prefWidth="155.0" text="Nombre Producto" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </content>
+                           <BorderPane.margin>
+                              <Insets left="30.0" right="30.0" />
+                           </BorderPane.margin>
+                        </ScrollPane>
+                     </center>
                   </BorderPane>
                </children>
             </VBox>

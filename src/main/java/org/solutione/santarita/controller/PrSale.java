@@ -43,7 +43,7 @@ public class PrSale {
     private boolean family = false;
     private boolean money = true;
 
-    public static SimpleDoubleProperty dbTotal;
+    static SimpleDoubleProperty dbTotal;
 
     @FXML
     void initialize(){
@@ -68,7 +68,7 @@ public class PrSale {
                 for (Producto producto : productos) total += producto.getSubtotal();
                 dbTotal.set(total);
             }else{
-                int units = item.getUnidades()-1;
+                double units = item.getUnidades()-1;
                 item.setUnidades(units);
                 item.setSubtotal(item.getPrecio() * units);
                 double total = 0;
@@ -93,7 +93,7 @@ public class PrSale {
             if (p.getCodigo().equals(code))
                 product = p;
 
-        int units = 1;
+        double units = 1;
         for (Producto value : productos) {
             if (value.getCodigo().equals(code)) {
                 units += value.getUnidades();
@@ -199,5 +199,6 @@ public class PrSale {
 
     public void cleanTable(MouseEvent mouseEvent) {
         productos.clear();
+        dbTotal.set(0.0);
     }
 }

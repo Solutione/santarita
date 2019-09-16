@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="204.0" prefWidth="487.0" style="-fx-background-color: #3f0d16;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.PrConfigAdd">
+   <top>
+      <Label text="CODIGO" textFill="#a1907e" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Roboto Light" size="34.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets left="15.0" right="15.0" top="15.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+   <center>
+      <TextField fx:id="tfCode" alignment="CENTER" onAction="#onEnter" promptText="-------" style="-fx-background-color: #a49582; -fx-text-fill: #3f0d16; -fx-prompt-text-fill: #3f0d16;" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Lexend Exa Regular" size="20.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets left="60.0" right="60.0" />
+         </BorderPane.margin>
+      </TextField>
+   </center>
+   <bottom>
+      <ImageView fx:id="imgBtnTerminar" fitHeight="34.0" fitWidth="154.0" onMouseClicked="#imgBtnTerminarMC" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../image/btnTerminar.png" />
+         </image>
+         <BorderPane.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" />
+         </BorderPane.margin>
+      </ImageView>
+   </bottom>
+</BorderPane>

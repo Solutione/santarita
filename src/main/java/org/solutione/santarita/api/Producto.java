@@ -1,7 +1,6 @@
 package org.solutione.santarita.api;
 
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Producto {
@@ -9,32 +8,36 @@ public class Producto {
     private SimpleStringProperty nombre;
     private SimpleDoubleProperty costo = null;
     private SimpleDoubleProperty precio;
-    private SimpleIntegerProperty unidades;
+    private SimpleDoubleProperty unidades;
     private SimpleStringProperty marca = null;
     private SimpleStringProperty caducidad = null;
     private SimpleDoubleProperty subtotal = null;
 
-    public Producto(String codigo,String nombre,double costo,double precio, int unidades,String marca,String caducidad){
+    public Producto(String codigo,String nombre,double costo,double precio, double unidades,String marca,String caducidad){
         this.codigo = new SimpleStringProperty(codigo);
         this.nombre = new SimpleStringProperty(nombre);
         this.costo = new SimpleDoubleProperty(costo);
         this.precio = new SimpleDoubleProperty(precio);
-        this.unidades = new SimpleIntegerProperty(unidades);
+        this.unidades = new SimpleDoubleProperty(unidades);
         this.marca = new SimpleStringProperty(marca);
         this.caducidad = new SimpleStringProperty(caducidad);
     }
-    public Producto(String codigo,String nombre,double precio, int unidades,double subtotal){
+    public Producto(String codigo,String nombre,double precio, double unidades,double subtotal){
         this.codigo = new SimpleStringProperty(codigo);
         this.nombre = new SimpleStringProperty(nombre);
         this.precio = new SimpleDoubleProperty(precio);
-        this.unidades = new SimpleIntegerProperty(unidades);
+        this.unidades = new SimpleDoubleProperty(unidades);
         this.subtotal = new SimpleDoubleProperty(subtotal);
     }
-    public Producto(String codigo,String nombre, int unidades,String marca){
+    public Producto(String codigo,String nombre, double unidades,String marca){
         this.codigo = new SimpleStringProperty(codigo);
         this.nombre = new SimpleStringProperty(nombre);
-        this.unidades = new SimpleIntegerProperty(unidades);
+        this.unidades = new SimpleDoubleProperty(unidades);
         this.marca = new SimpleStringProperty(marca);
+    }
+    public Producto(String codigo,String nombre){
+        this.codigo = new SimpleStringProperty(codigo);
+        this.nombre = new SimpleStringProperty(nombre);
     }
 
     public String getCodigo() {
@@ -85,15 +88,15 @@ public class Producto {
         this.precio.set(precio);
     }
 
-    public int getUnidades() {
+    public double getUnidades() {
         return unidades.get();
     }
 
-    public SimpleIntegerProperty unidadesProperty() {
+    public SimpleDoubleProperty unidadesProperty() {
         return unidades;
     }
 
-    public void setUnidades(int unidades) {
+    public void setUnidades(double unidades) {
         this.unidades.set(unidades);
     }
 
@@ -133,12 +136,12 @@ public class Producto {
         this.subtotal.set(subtotal);
     }
 
-    public void setAll(String code, String name, double cost, double price, int units, String brand, String expiration) {
+    public void setAll(String code, String name, double cost, double price, double units, String brand, String expiration) {
         this.codigo = new SimpleStringProperty(code);
         this.nombre = new SimpleStringProperty(name);
         this.costo = new SimpleDoubleProperty(cost);
         this.precio = new SimpleDoubleProperty(price);
-        this.unidades = new SimpleIntegerProperty(units);
+        this.unidades = new SimpleDoubleProperty(units);
         this.marca = new SimpleStringProperty(brand);
         this.caducidad = new SimpleStringProperty(expiration);
     }

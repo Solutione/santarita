@@ -51,7 +51,7 @@ public class PrInventory {
             tfName.setText(pr.getNombre());
             tfCost.setText(Double.toString(pr.getCosto()));
             tfPrice.setText(Double.toString(pr.getPrecio()));
-            tfUnits.setText(Integer.toString(pr.getUnidades()));
+            tfUnits.setText(Double.toString(pr.getUnidades()));
             tfBrand.setText(pr.getMarca());
             tfExpiration.setText(pr.getCaducidad());
             tfCode.setText(pr.getCodigo());
@@ -75,7 +75,7 @@ public class PrInventory {
         for (Producto value : Principal.PRODUCTS) {
             if (value.getCodigo().equals(code)) {
                 exits = true;
-                int u = value.getUnidades()+1;
+                double u = value.getUnidades()+1;
                 new BDProductos().updateProduct(code,u);
                 value.setUnidades(value.getUnidades()+1);
                 productos.clear();
@@ -103,7 +103,7 @@ public class PrInventory {
         String  tName   =   tfName.getText();
         double  tCost   =   Double.parseDouble(tfCost.getText());
         double  tPrice  =   Double.parseDouble(tfPrice.getText());
-        int     tUnits  =   Integer.parseInt(tfUnits.getText());
+        double     tUnits  =   Double.parseDouble(tfUnits.getText());
         String  tBrand  =   tfBrand.getText();
         String  tExpiration =   tfExpiration.getText();
 
@@ -141,7 +141,7 @@ public class PrInventory {
         String  tName   =   tfName.getText();
         double  tCost   =   Double.parseDouble(tfCost.getText());
         double  tPrice  =   Double.parseDouble(tfPrice.getText());
-        int     tUnits  =   0;
+        double     tUnits  =   0;
         String  tBrand  =   tfBrand.getText();
         String  tExpiration =   tfExpiration.getText();
 

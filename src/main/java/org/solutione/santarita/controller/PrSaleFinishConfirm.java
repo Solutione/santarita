@@ -46,7 +46,7 @@ public class PrSaleFinishConfirm {
         for (Producto value : oblProductos) {
             for (Producto v : Principal.PRODUCTS)
                 if (v.getCodigo().equals(value.getCodigo())){
-                    int u = v.getUnidades() - value.getUnidades();
+                    double u = v.getUnidades() - value.getUnidades();
                     new BDProductos().setProduct(
                             v.getCodigo(),
                             v.getNombre(),
