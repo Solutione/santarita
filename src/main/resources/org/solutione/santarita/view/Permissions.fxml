@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="384.0" prefWidth="372.0" style="-fx-background-color: #3f0d16;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.Permissions">
+   <top>
+      <Label text="Permisos" textFill="#a1907e" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Roboto Light" size="34.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets left="15.0" right="15.0" top="15.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+   <bottom>
+      <ImageView fx:id="btnTerminar" fitHeight="34.0" fitWidth="154.0" onMouseClicked="#btnTerminarMC" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../image/btnTerminar.png" />
+         </image>
+         <BorderPane.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" />
+         </BorderPane.margin>
+      </ImageView>
+   </bottom>
+   <center>
+      <VBox prefHeight="385.0" prefWidth="558.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="sales" alignment="CENTER" onMouseClicked="#salesMC" prefHeight="48.0" prefWidth="558.0">
+               <children>
+                  <ImageView fx:id="cbSale" fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/btnRadioNotSelected.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Ventas        " textFill="#a1907e">
+                     <font>
+                        <Font name="Lexend Exa Regular" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="providers" alignment="CENTER" layoutX="10.0" layoutY="10.0" onMouseClicked="#providersMC" prefHeight="48.0" prefWidth="558.0">
+               <children>
+                  <ImageView fx:id="cbProviders" fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/btnRadioNotSelected.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Provedores" textFill="#a1907e">
+                     <font>
+                        <Font name="Lexend Exa Regular" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="products" alignment="CENTER" layoutX="10.0" layoutY="58.0" onMouseClicked="#productsMC" prefHeight="48.0" prefWidth="558.0">
+               <children>
+                  <ImageView fx:id="cbProducts" fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/btnRadioNotSelected.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Inventario " textFill="#a1907e">
+                     <font>
+                        <Font name="Lexend Exa Regular" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="finance" alignment="CENTER" layoutX="10.0" layoutY="106.0" onMouseClicked="#financeMC" prefHeight="48.0" prefWidth="558.0">
+               <children>
+                  <ImageView fx:id="cbFinance" fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/btnRadioNotSelected.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Estadistica" textFill="#a1907e">
+                     <font>
+                        <Font name="Lexend Exa Regular" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="config" alignment="CENTER" layoutX="10.0" layoutY="154.0" onMouseClicked="#configMC" prefHeight="48.0" prefWidth="558.0">
+               <children>
+                  <ImageView fx:id="cbConfig" fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/btnRadioNotSelected.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="Ajustes       " textFill="#a1907e">
+                     <font>
+                        <Font name="Lexend Exa Regular" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </children></VBox>
+   </center>
+</BorderPane>

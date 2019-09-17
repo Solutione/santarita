@@ -9,7 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import org.solutione.santarita.api.BDProductos;
 import org.solutione.santarita.api.Producto;
 
 public class Search {

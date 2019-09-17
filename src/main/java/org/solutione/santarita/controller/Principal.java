@@ -10,6 +10,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -18,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.solutione.santarita.api.History;
 import org.solutione.santarita.api.Producto;
@@ -43,6 +45,12 @@ public class Principal {
     static SimpleDoubleProperty VIERNES;
     static SimpleDoubleProperty SABADO;
     static SimpleDoubleProperty DOMINGO;
+
+    static boolean isSalePM = true;
+    static boolean isProviderPM = true;
+    static boolean isInventoryPM = true;
+    static boolean isFinancePM = true;
+    static boolean isConfigPM = true;
 
     public BorderPane BPPrincipal;
 
@@ -223,6 +231,11 @@ public class Principal {
             }
         };tsale.start();
 
+        isSalePM = true;
+        isProviderPM = true;
+        isInventoryPM = true;
+        isFinancePM = true;
+        isConfigPM = true;
     }
     private void changeMenu(String menu){
         switch (actualMenu){
@@ -290,4 +303,21 @@ public class Principal {
     public void imgConfigMC(MouseEvent mouseEvent) {changeMenu("settings");}
 
     public void lblClockMC(MouseEvent mouseEvent) {}
+
+    public void btnLogo(MouseEvent mouseEvent) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/Permissions.fxml"));
+        Stage stage = new Stage(StageStyle.DECORATED);
+        try {
+            stage.setScene(new Scene((Pane) loader.load()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Permissions controller = loader.<Permissions>getController();
+        controller.initData(stage,bpSale,bpProvider,bpInventory,bpFinance,imgConfig);
+
+        stage.show();
+        stage.toFront();
+
+    }
 }

@@ -16,7 +16,7 @@
             <Insets />
          </opaqueInsets>
          <top>
-            <Label text="SR" textFill="#bc7837" BorderPane.alignment="CENTER">
+            <Label onMouseClicked="#btnLogo" text="SR" textFill="#bc7837" BorderPane.alignment="CENTER">
                <font>
                   <Font name="Lexend Exa Regular" size="31.0" />
                </font>
