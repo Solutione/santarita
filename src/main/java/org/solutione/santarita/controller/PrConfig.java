@@ -7,18 +7,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.solutione.santarita.api.BDUsers;
 import org.solutione.santarita.api.BDVarProducts;
 import org.solutione.santarita.api.Producto;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class PrConfig {
@@ -27,6 +26,9 @@ public class PrConfig {
     public TableView<Producto> tvPrVar;
     public TableColumn<Producto, String> tcCode;
     public TableColumn<Producto, String> tcName;
+    public TextField pass;
+    public TextField newPass;
+    public TextField repNewPass;
 
     private ObservableList<Producto> productos = FXCollections.observableArrayList();
 
@@ -86,5 +88,23 @@ public class PrConfig {
         stage.show();
         stage.setAlwaysOnTop(true);
         stage.toFront();
+    }
+
+    public void btnSavePassMC(MouseEvent mouseEvent) {
+        if (pass.getText().equals(new BDUsers().getPassword()))
+            if (newPass.getText().equals(repNewPass.getText()))
+                newPassword();
+            else
+                JOptionPane.showMessageDialog(null, "Contraseñas no coinciden!!");
+        else
+            JOptionPane.showMessageDialog(null,"Contraseña actual incorrecta!!");
+    }
+
+    private void newPassword() {
+        new BDUsers().setPassword(newPass.getText());
+        pass.setText("");
+        newPass.setText("");
+        repNewPass.setText("");
+        JOptionPane.showMessageDialog(null, "Contraseña actualizada correctamente!!");
     }
 }

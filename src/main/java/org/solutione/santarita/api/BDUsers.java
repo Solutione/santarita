@@ -30,7 +30,7 @@ public class BDUsers {
     }
     public void setPassword(String pass){
         try {
-            String query = "UPDATE user SET password = "+pass+" where name = 'root'";
+            String query = "UPDATE user SET password = '"+pass+"' where name = 'root'";
             Statement st = conn.createStatement();
             st.executeQuery(query);
             st.close();

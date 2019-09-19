@@ -5,14 +5,16 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="BPConfig" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="469.0" prefWidth="872.0" style="-fx-background-color: #a49582;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.PrConfig">
+<BorderPane fx:id="BPConfig" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="469.0" prefWidth="962.0" style="-fx-background-color: #a49582;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.PrConfig">
     <top>
         <FlowPane alignment="CENTER_RIGHT" columnHalignment="CENTER" prefHeight="50.0" prefWidth="730.0" BorderPane.alignment="CENTER">
             <children>
@@ -75,6 +77,36 @@
                         </ScrollPane>
                      </center>
                   </BorderPane>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Contraseña:">
+                           <HBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="pass" style="-fx-text-fill: #3f0d16; -fx-background-color: #a49582;" />
+                        <Label text="Nueva Contraseña:">
+                           <HBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="newPass" style="-fx-background-color: #a49582; -fx-text-fill: #3f0d16;" />
+                        <Label text="Repetir:">
+                           <HBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="repNewPass" style="-fx-background-color: #a49582; -fx-text-fill: #3f0d16;" />
+                        <ImageView fitHeight="28.0" fitWidth="79.0" onMouseClicked="#btnSavePassMC" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/btnGuardar-b.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </content>
