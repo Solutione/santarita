@@ -38,7 +38,7 @@
 <bottom>
     <BorderPane prefHeight="187.0" prefWidth="872.0" BorderPane.alignment="CENTER">
         <center>
-            <BorderPane fx:id="bpProduct" prefHeight="201.0" prefWidth="872.0" visible="false" BorderPane.alignment="CENTER">
+            <BorderPane fx:id="bpProduct" prefHeight="201.0" prefWidth="872.0" visible="true" BorderPane.alignment="CENTER">
                 <left>
                     <ImageView fitHeight="125.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                         <image>
@@ -155,6 +155,14 @@
                                             </TextField>
                                         </children>
                                     </VBox>
+                              <ImageView fx:id="btnAgregar" fitHeight="27.0" fitWidth="71.0" onMouseClicked="#btnAgregarMC" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../image/btnagregar.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </HBox.margin>
+                              </ImageView>
                                 </children>
                             </HBox>
                         </children>

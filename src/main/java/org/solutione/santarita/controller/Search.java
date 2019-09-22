@@ -6,9 +6,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.solutione.santarita.api.BDProductos;
 import org.solutione.santarita.api.Producto;
 
 public class Search {
@@ -30,10 +33,12 @@ public class Search {
     public TextField tfExpiration;
     public TextField tfCode;
     public TextField tfSearchBar;
+    public ImageView btnAgregar;
 
     private Stage stage;
 
     private ObservableList<Producto> data = FXCollections.observableArrayList();
+    private ObservableList<Producto> productos = null;
 
     @FXML
     private void initialize(){
@@ -63,11 +68,25 @@ public class Search {
         tfSearchBar.requestFocus();
     }
 
+    public void initData(Stage stage,ObservableList<Producto> productos) {
+        this.stage =  stage;
+        this.productos = productos;
+        tfSearchBar.requestFocus();
+    }
+
     public void tfSearchBarMC(KeyEvent keyEvent) {
         data.clear();
         for (Producto p: Principal.PRODUCTS)
             if (p.getNombre().toLowerCase().contains(tfSearchBar.getText().toLowerCase()))
                 data.add(p);
+
+    }
+
+    public void btnAgregarMC(MouseEvent mouseEvent) {
+        if (productos!=null) {
+            productos.add(new BDProductos().getProduct(tfCode.getText()));
+            stage.close();
+        }
 
     }
 }

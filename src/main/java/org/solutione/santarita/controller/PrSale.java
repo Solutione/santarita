@@ -213,7 +213,7 @@ public class PrSale {
         }
 
         Search controller = loader.<Search>getController();
-        controller.initData(stage);
+        controller.initData(stage,productos);
 
         stage.show();
         stage.setAlwaysOnTop(true);
