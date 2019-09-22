@@ -40,6 +40,8 @@ public class Search {
     private ObservableList<Producto> data = FXCollections.observableArrayList();
     private ObservableList<Producto> productos = null;
 
+    boolean modeSale = false;
+
     @FXML
     private void initialize(){
         tcName.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
@@ -72,6 +74,8 @@ public class Search {
         this.stage =  stage;
         this.productos = productos;
         tfSearchBar.requestFocus();
+        modeSale = true;
+
     }
 
     public void tfSearchBarMC(KeyEvent keyEvent) {
@@ -88,5 +92,12 @@ public class Search {
             stage.close();
         }
 
+    }
+
+    public void addProd(KeyEvent keyEvent) {
+        if (productos!=null && tfCode.getText()!=null){
+            productos.add(new BDProductos().getProduct(tfCode.getText()));
+            stage.close();
+        }
     }
 }

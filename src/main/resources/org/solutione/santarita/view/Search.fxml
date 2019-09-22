@@ -21,7 +21,7 @@
             <Insets left="30.0" right="30.0" />
         </BorderPane.margin>
         <content>
-            <TableView fx:id="tvProducts" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #a49582;" stylesheets="@../style/table.css">
+            <TableView fx:id="tvProducts" onKeyPressed="#addProd" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #a49582;" stylesheets="@../style/table.css">
                 <columns>
                     <TableColumn fx:id="tcName" maxWidth="9000.0" prefWidth="155.0" text="Nombre Producto" />
                     <TableColumn fx:id="tcUnits" maxWidth="2000.0" prefWidth="100.0" text="Unidades" />
@@ -38,7 +38,7 @@
 <bottom>
     <BorderPane prefHeight="187.0" prefWidth="872.0" BorderPane.alignment="CENTER">
         <center>
-            <BorderPane fx:id="bpProduct" prefHeight="201.0" prefWidth="872.0" visible="true" BorderPane.alignment="CENTER">
+            <BorderPane fx:id="bpProduct" prefHeight="201.0" prefWidth="872.0" visible="false" BorderPane.alignment="CENTER">
                 <left>
                     <ImageView fitHeight="125.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                         <image>
