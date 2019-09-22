@@ -69,7 +69,6 @@ public class PrConfig {
         controller.initData(productos,stage);
 
         stage.show();
-        stage.setAlwaysOnTop(true);
         stage.toFront();
     }
 
