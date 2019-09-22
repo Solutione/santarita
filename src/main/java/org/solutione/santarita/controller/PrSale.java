@@ -18,6 +18,7 @@ import javafx.stage.StageStyle;
 import org.solutione.santarita.api.Producto;
 import org.solutione.santarita.api.test;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class PrSale {
@@ -44,7 +45,7 @@ public class PrSale {
     private boolean family = false;
     private boolean money = true;
 
-    static SimpleDoubleProperty dbTotal;
+    public static SimpleDoubleProperty dbTotal;
 
     @FXML
     void initialize(){
@@ -78,8 +79,23 @@ public class PrSale {
             }
         });
 
+        MenuItem miSetUn = new MenuItem("Cambiar Unidades");
+        miSetUn.setOnAction((ActionEvent event) -> {
+            Producto item = tvPrSale.getSelectionModel().getSelectedItem();
+            double un = Double.parseDouble(JOptionPane.showInputDialog("Ingresa las unidades"));
+            if (un != 0){
+                item.setUnidades(un);
+                double st = item.getPrecio()*un;
+                item.setSubtotal(st);
+                double total = 0;
+                for (Producto producto : productos) total += producto.getSubtotal();
+                dbTotal.set(total);
+            }
+        });
+
         ContextMenu menu = new ContextMenu();
         menu.getItems().add(miCancel);
+        menu.getItems().add(miSetUn);
         tvPrSale.setContextMenu(menu);
     }
 

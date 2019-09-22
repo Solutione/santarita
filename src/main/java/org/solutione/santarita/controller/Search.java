@@ -88,7 +88,10 @@ public class Search {
 
     public void btnAgregarMC(MouseEvent mouseEvent) {
         if (productos!=null) {
-            productos.add(new BDProductos().getProduct(tfCode.getText()));
+            Producto p = new BDProductos().getProduct(tfCode.getText());
+            p.setSubtotal(p.getPrecio());
+            productos.add(p);
+            PrSale.dbTotal.set(PrSale.dbTotal.get()+p.getSubtotal());
             stage.close();
         }
 
@@ -96,7 +99,11 @@ public class Search {
 
     public void addProd(KeyEvent keyEvent) {
         if (productos!=null && tfCode.getText()!=null){
-            productos.add(new BDProductos().getProduct(tfCode.getText()));
+            Producto p = new BDProductos().getProduct(tfCode.getText());
+            p.setSubtotal(p.getPrecio());
+            p.setUnidades(1);
+            productos.add(p);
+            PrSale.dbTotal.set(PrSale.dbTotal.get()+p.getSubtotal());
             stage.close();
         }
     }
