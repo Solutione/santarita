@@ -117,7 +117,7 @@ public class PrConfig {
             if(System.getProperty("os.name").equals("Windows"))
                 comando= "shutdown -s";
             if(System.getProperty("os.name").equals("Linux"))
-                comando= "halt";
+                comando= "shutdown now";
             try{
                 Runtime.getRuntime().exec(comando);
             }catch(Exception e){
