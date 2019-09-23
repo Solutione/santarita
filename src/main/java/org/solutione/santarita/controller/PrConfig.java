@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -29,6 +30,7 @@ public class PrConfig {
     public TextField pass;
     public TextField newPass;
     public TextField repNewPass;
+    public ImageView btnApagar;
 
     private ObservableList<Producto> productos = FXCollections.observableArrayList();
 
@@ -105,5 +107,22 @@ public class PrConfig {
         newPass.setText("");
         repNewPass.setText("");
         JOptionPane.showMessageDialog(null, "Contraseña actualizada correctamente!!");
+    }
+
+    public void btnApagarMC(MouseEvent mouseEvent) {
+        int op = JOptionPane.showConfirmDialog(null,
+                "El equipo se apagara!!", "Apagar Equipo", JOptionPane.OK_CANCEL_OPTION);
+        if (op==0){
+            String comando= "";
+            if(System.getProperty("os.name").equals("Windows"))
+                comando= "shutdown -s";
+            if(System.getProperty("os.name").equals("Linux"))
+                comando= "halt";
+            try{
+                Runtime.getRuntime().exec(comando);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 }
