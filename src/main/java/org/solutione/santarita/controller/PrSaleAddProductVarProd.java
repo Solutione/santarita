@@ -34,13 +34,17 @@ public class PrSaleAddProductVarProd {
         for (Producto value : productos) {
             if (value.getCodigo().equals(product.getCodigo())) {
                 value.setUnidades(value.getUnidades()+units);
+                double cost = value.getCosto()+(value.getCosto()*value.getUnidades());
                 value.setSubtotal(product.getPrecio() * value.getUnidades());
+                value.setCosto(cost);
                 exists = true;
             }
         }
 
+        double cost = product.getCosto()*units;
+        System.out.println(cost);
         if (!exists)
-            productos.add(new Producto(product.getCodigo(),product.getNombre(),product.getPrecio(),units,price));
+            productos.add(new Producto(product.getCodigo(),product.getNombre(),product.getPrecio(),units,price,cost));
 
         double total = 0;
         for (Producto producto : productos) total += producto.getSubtotal();

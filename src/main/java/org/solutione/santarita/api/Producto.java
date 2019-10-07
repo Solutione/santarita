@@ -24,12 +24,13 @@ public class Producto {
 
         this.subtotal = new SimpleDoubleProperty(0);
     }
-    public Producto(String codigo,String nombre,double precio, double unidades,double subtotal){
+    public Producto(String codigo,String nombre,double precio, double unidades,double subtotal, double costo){
         this.codigo = new SimpleStringProperty(codigo);
         this.nombre = new SimpleStringProperty(nombre);
         this.precio = new SimpleDoubleProperty(precio);
         this.unidades = new SimpleDoubleProperty(unidades);
         this.subtotal = new SimpleDoubleProperty(subtotal);
+        this.costo = new SimpleDoubleProperty(costo);
     }
     public Producto(String codigo,String nombre, double unidades,String marca){
         this.codigo = new SimpleStringProperty(codigo);

@@ -122,7 +122,7 @@ public class PrSale {
 
         if (units==1) {
             assert product != null;
-            productos.add(new Producto(product.getCodigo(),product.getNombre(),product.getPrecio(),units,product.getPrecio()));
+            productos.add(new Producto(product.getCodigo(),product.getNombre(),product.getPrecio(),units,product.getPrecio(),product.getCosto()));
         }
         double total = 0;
         for (Producto producto : productos) total += producto.getSubtotal();

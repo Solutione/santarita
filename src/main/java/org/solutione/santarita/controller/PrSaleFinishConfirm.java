@@ -45,7 +45,7 @@ public class PrSaleFinishConfirm {
         double benefits = 0;
         for (Producto value : oblProductos) {
             for (Producto v : Principal.PRODUCTS)
-                if (v.getCodigo().equals(value.getCodigo())){
+                if (v.getCodigo().equals(value.getCodigo())) {
                     double u = v.getUnidades() - value.getUnidades();
                     new BDProductos().setProduct(
                             v.getCodigo(),
@@ -55,19 +55,39 @@ public class PrSaleFinishConfirm {
                             u,
                             v.getMarca(),
                             v.getCaducidad());
-                    double benefit = v.getPrecio()-v.getCosto();
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                     LocalDateTime now = LocalDateTime.now();
                     String date = dtf.format(now);
-                    for (int i = 0; i < value.getUnidades(); i++){
+
+                    ObservableList<Producto> varProductos = new BDVarProducts().getProducts();
+
+                    boolean vprod = false;
+                    for (Producto vp : varProductos)
+                        if (vp.getCodigo().equals(v.getCodigo()))
+                            vprod = true;
+
+                    if (!vprod){
+                        for (int i = 0; i < value.getUnidades(); i++) {
+                            String tcode = v.getCodigo();
+                            String tname = v.getNombre();
+                            double tcost = v.getCosto();
+                            double tprice = v.getPrecio();
+                            new BDHistory().addHistory(tcode, tname, tcost, tprice, v.getPrecio()-v.getCosto(), date);
+                            Principal.HISTORY.add(new History(tcode, tname, tcost, tprice, v.getPrecio()-v.getCosto(), date));
+                            total += value.getPrecio();
+                            benefits+= v.getPrecio()-v.getCosto();
+                        }
+                    }
+                    else {
                         String tcode = v.getCodigo();
                         String tname = v.getNombre();
-                        double tcost = v.getCosto();
-                        double tprice = v.getPrecio();
-                        new BDHistory().addHistory(tcode,tname,tcost,tprice,benefit,date);
-                        Principal.HISTORY.add(new History(tcode,tname,tcost,tprice,benefit,date));
+                        double tcost = value.getCosto();
+                        double tprice = value.getPrecio()*value.getUnidades();
+                        double benefit = tprice-tcost;
+                        new BDHistory().addHistory(tcode, tname, tcost, tprice, benefit, date);
+                        Principal.HISTORY.add(new History(tcode, tname, tcost, tprice, benefit, date));
                         total += value.getPrecio();
-                        benefits += benefit;
+                        benefits+= benefit;
                     }
                 }
         }

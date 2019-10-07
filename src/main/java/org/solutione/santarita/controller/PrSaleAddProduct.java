@@ -66,7 +66,7 @@ public class PrSaleAddProduct {
             }
 
             if (units==1)
-                productos.add(new Producto(product.getCodigo(),product.getNombre(),product.getPrecio(),units,product.getPrecio()));
+                productos.add(new Producto(product.getCodigo(),product.getNombre(),product.getPrecio(),units,product.getPrecio(),product.getCosto()));
 
             double total = 0;
             for (Producto producto : productos) total += producto.getSubtotal();
