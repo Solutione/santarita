@@ -40,7 +40,7 @@ public class  Main extends Application {
         }
 
         Stage splash = new Stage();
-        splash.setScene(new Scene(root, 800, 640));
+        splash.setScene(new Scene(root, 1360, 768));
         splash.setMaximized(true);
         splash.initStyle(StageStyle.UNDECORATED);
         splash.show();
@@ -54,7 +54,7 @@ public class  Main extends Application {
                 primaryStage.setMaximized(true);
                 primaryStage.initStyle(StageStyle.UNDECORATED);
                 try {
-                    primaryStage.setScene(new Scene((Pane) loader.load(),800, 600));
+                    primaryStage.setScene(new Scene((Pane) loader.load(),1360, 768));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
