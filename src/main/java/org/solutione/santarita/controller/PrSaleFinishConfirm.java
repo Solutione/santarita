@@ -86,7 +86,7 @@ public class PrSaleFinishConfirm {
                         double benefit = tprice-tcost;
                         new BDHistory().addHistory(tcode, tname, tcost, tprice, benefit, date);
                         Principal.HISTORY.add(new History(tcode, tname, tcost, tprice, benefit, date));
-                        total += value.getPrecio();
+                        total += tprice;
                         benefits+= benefit;
                     }
                 }
