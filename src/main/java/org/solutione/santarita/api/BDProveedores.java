@@ -90,4 +90,113 @@ public class BDProveedores {
             e.printStackTrace();
         }
     }
+    public void addVisitProvider(String name){
+        try {
+            String query = "insert into providers_visit " +
+                    "(name) " +
+                    "values (" +
+                    "'"+name+"')";
+            Statement st = conn.createStatement();
+            st.executeQuery(query);
+            st.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public String getDateVisit(String name){
+        String dateVisit= null;
+        try {
+            String query = String.format("select max(date) from providers_visit where name = '%s'", name);
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next())
+            {
+                dateVisit = rs.getString(1);
+            }
+            st.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if(dateVisit!=null){
+            String year=dateVisit.substring(0, 4);
+            String month=dateVisit.substring(5, 7);
+            String day=dateVisit.substring(8, 10);
+            dateVisit=day+"/"+month+"/"+year;
+        }        
+        return dateVisit;       
+    }
+    public ObservableList<Producto> getViewVisit(String dateVisitProvider,String nameProvider){
+        ObservableList<Producto> datos = FXCollections.observableArrayList();
+        try {
+            String query = "select history.name, count(history.name) as units, sum(history.benefit) as benefit from history "+
+                        "inner join products "+ 
+                        "on history.code=products.code "+ 
+                        "where products.brand=\'"+nameProvider+"\' and "+
+                        "STR_TO_DATE(history.date, \'%d/%m/%Y\') >STR_TO_DATE(\'"+dateVisitProvider+"\', \'%d/%m/%Y\') "+
+                        "group by history.name order by count(history.name) desc";        
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next())
+            {
+                String name = rs.getString("name");
+                double units = rs.getDouble("units");
+                double benefit = rs.getDouble("benefit");
+              
+
+                datos.add(new Producto(name,units,benefit));
+            }
+            st.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return datos;
+        
+    }
+    public String getTotalVisit(String dateVisitProvider,String nameProvider){
+        String totalVisit= null;
+        try {
+            String query = "select sum(history.benefit) as benefit from history "+
+                        "inner join products "+ 
+                        "on history.code=products.code "+ 
+                        "where products.brand=\'"+nameProvider+"\' and "+
+                        "STR_TO_DATE(history.date, \'%d/%m/%Y\') >STR_TO_DATE(\'"+dateVisitProvider+"\', \'%d/%m/%Y\') ";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next())
+            {
+                totalVisit = rs.getString(1);
+            }
+            st.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return totalVisit;       
+    }
+    public String getTotalProducts(String dateVisitProvider,String nameProvider){
+        String total= null;
+        try {
+            String query = "select count(history.name)  from history "+
+                        "inner join products "+ 
+                        "on history.code=products.code "+ 
+                        "where products.brand=\'"+nameProvider+"\' and "+
+                        "STR_TO_DATE(history.date, \'%d/%m/%Y\') >STR_TO_DATE(\'"+dateVisitProvider+"\', \'%d/%m/%Y\') ";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next())
+            {
+                total= rs.getString(1);
+            }
+            st.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return total;       
+    }
+    
+    
 }

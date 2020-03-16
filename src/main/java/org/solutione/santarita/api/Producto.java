@@ -12,6 +12,7 @@ public class Producto {
     private SimpleStringProperty marca = null;
     private SimpleStringProperty caducidad = null;
     private SimpleDoubleProperty subtotal = null;
+    private SimpleDoubleProperty beneficio = null;
 
     public Producto(String codigo,String nombre,double costo,double precio, double unidades,String marca,String caducidad){
         this.codigo = new SimpleStringProperty(codigo);
@@ -46,7 +47,14 @@ public class Producto {
 
         this.subtotal = new SimpleDoubleProperty(0);
     }
+    public Producto(String nombre,double unidades,double beneficio){
+        this.nombre = new SimpleStringProperty(nombre);
+        this.unidades = new SimpleDoubleProperty(unidades);
+        this.beneficio = new SimpleDoubleProperty(beneficio);
 
+        this.subtotal = new SimpleDoubleProperty(0);
+    }
+    
     public String getCodigo() {
         return codigo.get();
     }
@@ -141,6 +149,17 @@ public class Producto {
 
     public void setSubtotal(double subtotal) {
         this.subtotal.set(subtotal);
+    }
+    public double getBeneficio() {
+        return beneficio.get();
+    }
+
+    public SimpleDoubleProperty beneficioProperty() {
+        return beneficio;
+    }
+
+    public void setBeneficio(double beneficio) {
+        this.beneficio.set(beneficio);
     }
 
     public void setAll(String code, String name, double cost, double price, double units, String brand, String expiration) {

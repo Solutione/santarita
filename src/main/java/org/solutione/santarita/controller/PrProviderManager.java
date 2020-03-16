@@ -14,6 +14,24 @@ import org.solutione.santarita.api.BDProductos;
 import org.solutione.santarita.api.BDProveedores;
 import org.solutione.santarita.api.Producto;
 
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+
 import java.io.IOException;
 
 public class PrProviderManager {
@@ -44,7 +62,7 @@ public class PrProviderManager {
     private ObservableList<Producto> noproducts = FXCollections.observableArrayList();
 
     @FXML
-    void initialize(){
+    void initialize(){  
 
     }
 
@@ -102,4 +120,38 @@ public class PrProviderManager {
         controller.initData(bpPrincipal);
         bpPrincipal.setCenter(bp);
     }
+    
+    public void btnAddVisit(MouseEvent mouseEvent) {
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrProviderVisit.fxml"));
+                Stage stage = new Stage(StageStyle.DECORATED);
+                try {
+                    stage.setScene(new Scene((Pane) loader.load()));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
+                PrProviderVisit controller = loader.<PrProviderVisit>getController();
+                controller.initData(bpPrincipal,stage,provider);
+
+                stage.show();
+
+    }
+    public void btnViewVisit(MouseEvent mouseEvent) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrProviderView.fxml"));
+                Stage stage = new Stage(StageStyle.DECORATED);
+                try {
+                    stage.setScene(new Scene((Pane) loader.load()));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
+                PrProviderView controller = loader.<PrProviderView>getController();
+                controller.initData(bpPrincipal,stage,provider);
+
+                stage.show();   
+     
+
+        
+    }
+    
 }
