@@ -68,13 +68,13 @@ public class PrProviderView {
             tcGanancia.setCellValueFactory(cellData -> cellData.getValue().beneficioProperty());
    
             String total=new BDProveedores().getTotalVisit(date1,provider);
-            lblTotalGanancias.setText("Ganancia total: "+total);
+            lblTotalGanancias.setText("Costo total: "+total);
             String totalP=new BDProveedores().getTotalProducts(date1,provider);
             lblTotalProductos.setText("Productos Vendidos: "+totalP);
             tProducts.setItems(products);
         }else{
             lblDate.setText("Fecha de Visita del proveedor "+provider+" no disponible");
-            lblTotalGanancias.setText("Ganancia total: 0.0");
+            lblTotalGanancias.setText("Vendido total: 0.0");
             lblTotalProductos.setText("Productos Vendidos: 0.0");
         }
         

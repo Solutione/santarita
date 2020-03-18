@@ -134,7 +134,7 @@ public class BDProveedores {
                         "inner join products "+ 
                         "on history.code=products.code "+ 
                         "where products.brand=\'"+nameProvider+"\' and "+
-                        "STR_TO_DATE(history.date, \'%d/%m/%Y\') >STR_TO_DATE(\'"+dateVisitProvider+"\', \'%d/%m/%Y\') "+
+                        "STR_TO_DATE(history.date, \'%d/%m/%Y\') >= STR_TO_DATE(\'"+dateVisitProvider+"\', \'%d/%m/%Y\') "+
                         "group by history.name order by count(history.name) desc";        
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
@@ -158,11 +158,11 @@ public class BDProveedores {
     public String getTotalVisit(String dateVisitProvider,String nameProvider){
         String totalVisit= null;
         try {
-            String query = "select sum(history.benefit) as benefit from history "+
+            String query = "select sum(history.cost) as benefit from history "+
                         "inner join products "+ 
                         "on history.code=products.code "+ 
                         "where products.brand=\'"+nameProvider+"\' and "+
-                        "STR_TO_DATE(history.date, \'%d/%m/%Y\') >STR_TO_DATE(\'"+dateVisitProvider+"\', \'%d/%m/%Y\') ";
+                        "STR_TO_DATE(history.date, \'%d/%m/%Y\') >= STR_TO_DATE(\'"+dateVisitProvider+"\', \'%d/%m/%Y\') ";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next())
@@ -183,7 +183,7 @@ public class BDProveedores {
                         "inner join products "+ 
                         "on history.code=products.code "+ 
                         "where products.brand=\'"+nameProvider+"\' and "+
-                        "STR_TO_DATE(history.date, \'%d/%m/%Y\') >STR_TO_DATE(\'"+dateVisitProvider+"\', \'%d/%m/%Y\') ";
+                        "STR_TO_DATE(history.date, \'%d/%m/%Y\') >= STR_TO_DATE(\'"+dateVisitProvider+"\', \'%d/%m/%Y\') ";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next())
