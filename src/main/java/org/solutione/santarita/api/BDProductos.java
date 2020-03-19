@@ -13,7 +13,7 @@ public class BDProductos {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
+    } 
     public ObservableList<Producto> getProducts(){
         ObservableList<Producto> datos = FXCollections.observableArrayList();
         try {
@@ -129,4 +129,27 @@ public class BDProductos {
         }
         return code;
     }
+    public ObservableList<Producto> getSaleProduct(String fecha){
+        ObservableList<Producto> datos = FXCollections.observableArrayList();
+        try {
+            String query = "SELECT name,cost,price,benefit FROM history where date = '"+fecha+"';";        
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next())
+            {
+                String name = rs.getString("name");
+                double units = rs.getDouble("cost");
+                double price = rs.getDouble("price");
+                double benefit = rs.getDouble("benefit");
+              
+
+                datos.add(new Producto(name,units,price,benefit));
+            }
+            st.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return datos;
+     }
 }

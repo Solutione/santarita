@@ -18,6 +18,11 @@
    <top>
       <FlowPane alignment="CENTER_RIGHT" columnHalignment="CENTER" prefHeight="50.0" prefWidth="730.0" BorderPane.alignment="CENTER">
          <children>
+            <ImageView fx:id="btnSaleView" fitHeight="29.0" fitWidth="78.0" onMouseClicked="#btnSaleView" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_LEFT">
+                     <image>
+                        <Image url="@../image/btnViewVisit.png" />
+                     </image>
+            </ImageView>
             <ImageView fitHeight="42.0" fitWidth="33.0" onMouseClicked="#searchMC" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/search.png" />
@@ -26,8 +31,9 @@
                   <Insets right="15.0" />
                </FlowPane.margin>
             </ImageView>
+            
          </children>
-      </FlowPane>
+      </FlowPane>  
    </top>
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" style="-fx-border-width: 0; -fx-border-insets: 0; -fx-background-color: #a49582;" BorderPane.alignment="CENTER">

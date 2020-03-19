@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -15,7 +21,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="703.0" style="-fx-background-color: #a49582;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.PrProviderView">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="703.0" style="-fx-background-color: #a49582;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.PrSaleView">
 
    <bottom>
       <HBox alignment="CENTER_RIGHT" prefHeight="38.0" prefWidth="603.0" BorderPane.alignment="CENTER">
@@ -28,14 +34,7 @@
                   <Insets bottom="5.0" left="5.0" right="25.0" top="5.0" />
                </HBox.margin>
             </ImageView>
-            <ImageView fx:id="btnGuardar" fitHeight="28.0" fitWidth="71.0" layoutX="521.0" layoutY="15.0" onMouseClicked="#btnGuardarMC" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/btnGuardar-b.png" />
-               </image>
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="25.0" top="5.0" />
-               </HBox.margin>
-            </ImageView>
+           
          </children></HBox>
    </bottom>
    <center>
@@ -49,7 +48,8 @@
                   <TableView fx:id="tProducts" prefWidth="600.0" stylesheets="@../style/table.css">
                     <columns>
                       <TableColumn fx:id="tcProductName" maxWidth="5000.0" prefWidth="75.0" text="Producto" />
-                      <TableColumn fx:id="tcCantidad" maxWidth="3000.0" prefWidth="75.0" text="Unidades vendidas" />
+                      <TableColumn fx:id="tcCosto" maxWidth="2000.0" prefWidth="75.0" text="Costo" />
+                      <TableColumn fx:id="tcPrecio" maxWidth="2000.0" prefWidth="75.0" text="Precio" />
                       <TableColumn fx:id="tcGanancia" maxWidth="2000.0" prefWidth="75.0" text="Ganancia" />
                     </columns>
                      <columnResizePolicy>
@@ -58,7 +58,7 @@
                   </TableView>
                   <VBox alignment="CENTER_RIGHT" prefHeight="59.0" prefWidth="870.0">
                      <children>
-                        <Label fx:id="lblTotalProductos" text="Total de productos vendidos" textFill="#6c4b47">
+                        <Label fx:id="lblTotalProductos" text="" textFill="#6c4b47">
                            <font>
                               <Font name="Roboto Light" size="14.0" />
                            </font>
@@ -66,7 +66,7 @@
                               <Insets right="25.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="lblTotalGanancias" text="0.0" textFill="#bc7837">
+                        <Label fx:id="lblTotalGanancias" text="" textFill="#bc7837">
                            <font>
                               <Font name="Lexend Exa Regular" size="36.0" />
                            </font>
@@ -82,29 +82,24 @@
         </ScrollPane>
     </center>
    <top>
-     <BorderPane prefHeight="85.0" prefWidth="703.0" BorderPane.alignment="CENTER">
-         <right>
-            <VBox alignment="CENTER_LEFT" prefHeight="94.0"  prefWidth="680.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label text="Productos Vendidos :" textFill="#3f0d16">
-                     <font>
-                        <Font name="Roboto Light" size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets right="25.0" />
-                     </VBox.margin>
-                  </Label>                  
-                  <Label fx:id="lblDate" text="BIMBO" alignment="CENTER_RIGHT"  textFill="#3f0d16" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="Lexend Exa Regular" size="26.0" />
-                           </font>
-                           <BorderPane.margin>
-                              <Insets bottom="15.0" left="25.0" right="15.0" top="15.0" />
-                           </BorderPane.margin>
-                   </Label>
-               </children>
-            </VBox>
-         </right>
-      </BorderPane>
+     <GridPane prefHeight="85.0" prefWidth="700.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <Label prefHeight="24.0" prefWidth="240.0" text="Selecciona una fecha: " GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" textFill="#3f0d16">
+        <font>
+            <Font name="Roboto Light" size="24.0" />
+            </font>
+            <VBox.margin>
+               <Insets right="25.0" />
+            </VBox.margin>
+         </Label>
+            <DatePicker fx:id="dateSale" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="76.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
    </top>
 </BorderPane>

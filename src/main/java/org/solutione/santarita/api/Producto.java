@@ -54,7 +54,14 @@ public class Producto {
 
         this.subtotal = new SimpleDoubleProperty(0);
     }
-    
+    public Producto(String nombre,double costo,double precio,double beneficio){
+        this.nombre = new SimpleStringProperty(nombre);
+        this.costo = new SimpleDoubleProperty(costo);
+        this.beneficio = new SimpleDoubleProperty(beneficio);
+        this.precio = new SimpleDoubleProperty(precio);
+
+        this.subtotal = new SimpleDoubleProperty(0);
+    }
     public String getCodigo() {
         return codigo.get();
     }

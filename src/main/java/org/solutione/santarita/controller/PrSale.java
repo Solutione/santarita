@@ -23,6 +23,7 @@ import java.io.IOException;
 
 public class PrSale {
 
+
     public BorderPane BPSale;
     public TableView<Producto> tvPrSale;
     public TableColumn<Producto, String> tcCodigo;
@@ -36,6 +37,7 @@ public class PrSale {
     public ImageView btnFamily;
     public ImageView btnMoney;
     public ImageView imgBtnAgregar;
+    public ImageView btnSaleView;
 
     private BorderPane bpPrincipal;
 
@@ -234,5 +236,19 @@ public class PrSale {
         stage.show();
         stage.setAlwaysOnTop(true);
         stage.toFront();
+    }
+    public void btnSaleView(MouseEvent mouseEvent) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrSaleView.fxml"));
+                Stage stage = new Stage(StageStyle.DECORATED);
+                try {
+                    stage.setScene(new Scene((Pane) loader.load()));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
+                PrSaleView controller = loader.<PrSaleView>getController();
+                controller.initData(stage);
+
+                stage.show();   
     }
 }
