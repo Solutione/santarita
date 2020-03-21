@@ -152,4 +152,78 @@ public class BDProductos {
         }
         return datos;
      }
+      public String getTotalSale(String dateSale){
+        String totalVisit= null;
+        try {
+            String query = "select sum(history.price) from history "+
+                        "inner join products "+ 
+                        "on history.code=products.code "+ 
+                        "where "+
+                        "STR_TO_DATE(history.date, \'%d/%m/%Y\') = STR_TO_DATE(\'"+dateSale+"\', \'%d/%m/%Y\') ";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next())
+            {
+                totalVisit = rs.getString(1);
+            }
+            st.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return totalVisit;       
+    }
+    public String getProductsSale(String dateSale){
+        String totalVisit= null;
+        try {
+            String query = "select count(history.name) as benefit from history "+
+                        "inner join products "+ 
+                        "on history.code=products.code "+ 
+                        "where "+
+                        "STR_TO_DATE(history.date, \'%d/%m/%Y\') = STR_TO_DATE(\'"+dateSale+"\', \'%d/%m/%Y\') ";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next())
+            {
+                totalVisit = rs.getString(1);
+            }
+            st.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return totalVisit;       
+    }
+    public String getTotalBenefit(String dateSale){
+        String totalVisit= null;
+        try {
+            String query = "select sum(history.benefit) as benefit from history "+
+                        "inner join products "+ 
+                        "on history.code=products.code "+ 
+                        "where "+
+                        "STR_TO_DATE(history.date, \'%d/%m/%Y\') = STR_TO_DATE(\'"+dateSale+"\', \'%d/%m/%Y\') ";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next())
+            {
+                totalVisit = rs.getString(1);
+            }
+            st.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return totalVisit;       
+    }
+    public void deleteProduct(String codigo){
+        try {
+            String query = "DELETE FROM products WHERE code="+codigo+"";
+            Statement st = conn.createStatement();
+            st.executeQuery(query);
+            st.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

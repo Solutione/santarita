@@ -30,6 +30,7 @@ public class PrSaleView {
     public Label lblTotalProductos;
     public Label lblTotalGanancias;
     public TableView<Producto> tProducts;
+    public int count=0;
 
     public TableColumn <Producto, String> tcProductName;
     public TableColumn <Producto, Number> tcCosto;
@@ -57,7 +58,7 @@ public class PrSaleView {
             System.out.println(date);
 
         if(date1!=null){
-            //ObservableList<Producto> prod = new BDProveedores().getViewVisit("10/03/2020","BIMBO");
+            if(count==0){
             ObservableList<Producto> prod = new BDProductos().getSaleProduct(date);
             for (Producto p:prod)
                 products.add(p);
@@ -66,18 +67,37 @@ public class PrSaleView {
             tcCosto.setCellValueFactory(cellData -> cellData.getValue().costoProperty());
             tcPrecio.setCellValueFactory(cellData -> cellData.getValue().precioProperty());
             tcGanancia.setCellValueFactory(cellData -> cellData.getValue().beneficioProperty());
-   
-            //String total=new BDProveedores().getTotalVisit(date1,provider);
-            //lblTotalGanancias.setText("Costo total: "+total);
-            //String totalP=new BDProveedores().getTotalProducts(date1,provider);
-            //lblTotalProductos.setText("Productos Vendidos: "+totalP);*/
-
             tProducts.setItems(products);
+            count++;
+            String totalVentas=new BDProductos().getTotalSale(date);
+            String totalGanancias=new BDProductos().getTotalBenefit(date);
+            lblTotalGanancias.setText("Ventas: "+totalVentas+"  Ganancias: "+totalGanancias);
+            String totalProductos=  new BDProductos().getProductsSale(date);
+            lblTotalProductos.setText("Productos Vendidos: "+totalProductos);
+            }else{
+            tProducts.getItems().clear();
+            ObservableList<Producto> prod = new BDProductos().getSaleProduct(date);
+            for (Producto p:prod)
+                products.add(p);
 
+            tcProductName.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+            tcCosto.setCellValueFactory(cellData -> cellData.getValue().costoProperty());
+            tcPrecio.setCellValueFactory(cellData -> cellData.getValue().precioProperty());
+            tcGanancia.setCellValueFactory(cellData -> cellData.getValue().beneficioProperty());
+            tProducts.setItems(products);
+            String totalVentas=new BDProductos().getTotalSale(date);
+            String totalGanancias=new BDProductos().getTotalBenefit(date);
+            lblTotalGanancias.setText("Ventas: "+totalVentas+"  Ganancias: "+totalGanancias);
+            String totalProductos=  new BDProductos().getProductsSale(date);
+            lblTotalProductos.setText("Productos Vendidos: "+totalProductos);
+            
+            }
+              
         }else{
-            //lblTotalGanancias.setText("Vendido total: 0.0");
-            //lblTotalProductos.setText("Productos Vendidos: 0.0");
+            lblTotalGanancias.setText("Vendido total: 0.0");
+            lblTotalProductos.setText("Productos Vendidos: 0.0");
         }
+      
 
 
         });

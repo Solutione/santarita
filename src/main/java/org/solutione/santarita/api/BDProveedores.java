@@ -196,6 +196,5 @@ public class BDProveedores {
             e.printStackTrace();
         }
         return total;       
-    }
-    
+    } 
 }

@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -29,6 +30,7 @@ public class PrFinance {
     public Label tfNoBenefit;
     public Label tfBenefit;
     public Label tfTotal;
+    public ImageView btnSaleView;
 
     public Pane pnlLunes;
     public Pane pnlMartes;
@@ -46,7 +48,7 @@ public class PrFinance {
     private ObservableList<Producto> productos = FXCollections.observableArrayList();
 
     @FXML
-    void initialize(){
+    void initialize(){ 
         tfBenefit.textProperty().bind(Principal.BENEFIT.asString());
         tfNoBenefit.textProperty().bind(Principal.NOBENEFIT.asString());
         tfTotal.textProperty().bind(Principal.TOTAL.asString());
@@ -193,5 +195,19 @@ public class PrFinance {
         stage.show();
         stage.setAlwaysOnTop(true);
         stage.toFront();
+    }
+    public void btnSaleView(MouseEvent mouseEvent) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrSaleView.fxml"));
+                Stage stage = new Stage(StageStyle.DECORATED);
+                try {
+                    stage.setScene(new Scene((Pane) loader.load()));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
+                PrSaleView controller = loader.<PrSaleView>getController();
+                controller.initData(stage);
+
+                stage.show();   
     }
 }

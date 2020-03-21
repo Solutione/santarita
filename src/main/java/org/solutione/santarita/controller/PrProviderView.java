@@ -13,7 +13,7 @@ import org.solutione.santarita.api.BDProductos;
 import org.solutione.santarita.api.BDProveedores;
 import org.solutione.santarita.api.Producto;
 import org.solutione.santarita.api.Proveedor;
-import java.util.*;
+import java.util.*; 
 
 import java.io.IOException;
 import javafx.scene.control.Label;
@@ -52,13 +52,13 @@ public class PrProviderView {
         this.thisStage = thisStage;
         this.principalPane =  principalPane;
         this.provider = provider;
-        int año = fecha.get(Calendar.YEAR);
+        int year = fecha.get(Calendar.YEAR);
         int mes = fecha.get(Calendar.MONTH);
         int dia = fecha.get(Calendar.DAY_OF_MONTH);
         String date1=new BDProveedores().getDateVisit(provider);
 
         if(date1!=null){
-            lblDate.setText("Del "+date1+" al "+dia + "/" + (mes+1) + "/" + año);
+            lblDate.setText("Del "+date1+" al "+dia + "/" + (mes+1) + "/" + year);
             ObservableList<Producto> prod = new BDProveedores().getViewVisit(date1,provider);
             for (Producto p:prod)
                 products.add(p);

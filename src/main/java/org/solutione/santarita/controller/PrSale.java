@@ -237,18 +237,4 @@ public class PrSale {
         stage.setAlwaysOnTop(true);
         stage.toFront();
     }
-    public void btnSaleView(MouseEvent mouseEvent) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrSaleView.fxml"));
-                Stage stage = new Stage(StageStyle.DECORATED);
-                try {
-                    stage.setScene(new Scene((Pane) loader.load()));
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-
-                PrSaleView controller = loader.<PrSaleView>getController();
-                controller.initData(stage);
-
-                stage.show();   
-    }
 }

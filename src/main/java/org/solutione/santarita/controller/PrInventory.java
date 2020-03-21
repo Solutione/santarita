@@ -39,7 +39,7 @@ public class PrInventory {
 
     private ObservableList<Producto> productos = FXCollections.observableArrayList();
 
-    @FXML
+    @FXML 
     private void initialize(){
         tcName.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
         tcUnits.setCellValueFactory(cellData -> cellData.getValue().unidadesProperty());
@@ -151,8 +151,9 @@ public class PrInventory {
         double     tUnits  =   0;
         String  tBrand  =   tfBrand.getText();
         String  tExpiration =   tfExpiration.getText();
+        System.out.println(tCode);
 
-        for (Producto value : Principal.PRODUCTS)
+       for (Producto value : Principal.PRODUCTS)
             if (value.getCodigo().equals(tCode)){
                 value.setUnidades(tUnits);
                 productos.clear();
@@ -161,7 +162,8 @@ public class PrInventory {
                         productos.add(p);
             }
         bpProduct.setVisible(false);
-        new BDProductos().setProduct(tCode,tName,tCost,tPrice,tUnits,tBrand,tExpiration);
+        //new BDProductos().setProduct(tCode,tName,tCost,tPrice,tUnits,tBrand,tExpiration);*/
+        new BDProductos().deleteProduct(tCode);
     }
 
     public void searchMC(MouseEvent mouseEvent) {
