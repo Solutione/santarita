@@ -37,7 +37,7 @@ public class PrInventory {
     public TextField tfCode;
     public BorderPane bpProduct;
 
-    private ObservableList<Producto> productos = FXCollections.observableArrayList();
+    public static ObservableList<Producto> productos = FXCollections.observableArrayList();
 
     @FXML 
     private void initialize(){
@@ -167,7 +167,7 @@ public class PrInventory {
     }
 
     public void searchMC(MouseEvent mouseEvent) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/Search.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/SearchProducts.fxml"));
         Stage stage = new Stage(StageStyle.DECORATED);
         try {
             stage.setScene(new Scene((Pane) loader.load()));
@@ -175,7 +175,7 @@ public class PrInventory {
             e.printStackTrace();
         }
 
-        Search controller = loader.<Search>getController();
+        SearchProducts controller = loader.<SearchProducts>getController();
         controller.initData(stage);
 
         stage.show();

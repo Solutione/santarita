@@ -226,4 +226,34 @@ public class BDProductos {
             e.printStackTrace();
         }
     }
+    public boolean searchProductVar(String code){
+        String totalVisit= null;
+        boolean encontrado=false;
+        try {
+            String query = "select code from products_var where code='"+code+"' ";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next())
+            {
+                totalVisit = rs.getString(1);
+                encontrado=true;
+            }
+            st.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return encontrado;       
+    }
+    public void setProductVar(String codigo, String name){
+        try {
+            String query = "UPDATE products_var SET name ='"+name+"' where code = '"+codigo+"'";
+            Statement st = conn.createStatement();
+            st.executeQuery(query);
+            st.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

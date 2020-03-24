@@ -14,9 +14,9 @@ import javafx.stage.Stage;
 import org.solutione.santarita.api.BDProductos;
 import org.solutione.santarita.api.Producto;
 
-public class Search {
+public class SearchProducts {
 
-    public BorderPane BPSearch;
+    public BorderPane BPSearchProducts;
     public BorderPane bpProduct;
 
     public TableView<Producto> tvProducts;
@@ -34,6 +34,7 @@ public class Search {
     public TextField tfCode;
     public TextField tfSearchBar;
     public ImageView btnAgregar;
+    public ImageView btnGuardar;
 
     private Stage stage;
 
@@ -105,6 +106,52 @@ public class Search {
             productos.add(p);
             PrSale.dbTotal.set(PrSale.dbTotal.get()+p.getSubtotal());
             stage.close();
+        }
+    }
+    public void btnGuardar(MouseEvent mouseEvent) {
+        String  tCode   =   tfCode.getText();
+        String  tName   =   tfName.getText();
+        double  tCost   =   Double.parseDouble(tfCost.getText());
+        double  tPrice  =   Double.parseDouble(tfPrice.getText());
+        double  tUnits  =   Double.parseDouble(tfUnits.getText());;
+        String  tBrand  =   tfBrand.getText();
+        String  tExpiration =   tfExpiration.getText();
+        boolean search= new BDProductos().searchProductVar(tCode);
+        if(!search){
+            bpProduct.setVisible(false);
+            for (Producto value : Principal.PRODUCTS)
+                if (value.getCodigo().equals(tCode)){
+                    new BDProductos().setProduct(tCode,tName,tCost,tPrice,tUnits,tBrand,tExpiration);
+                    value.setUnidades(tUnits);
+                    value.setPrecio(tPrice);
+                    value.setCodigo(tCode);
+                    value.setCosto(tCost);
+                    value.setNombre(tName);
+                    value.setMarca(tBrand);
+                    value.setCaducidad(tExpiration);
+                    PrInventory.productos.clear();
+                    for (Producto p : Principal.PRODUCTS)
+                        if (p.getUnidades()>0)
+                            PrInventory.productos.add(p);
+                }
+        }else{
+            bpProduct.setVisible(false);
+            for (Producto value : Principal.PRODUCTS)
+                if (value.getCodigo().equals(tCode)){
+                    new BDProductos().setProduct(tCode,tName,tCost,tPrice,tUnits,tBrand,tExpiration);
+                    new BDProductos().setProductVar(tCode,tName);
+                    value.setUnidades(tUnits);
+                    value.setPrecio(tPrice);
+                    value.setCodigo(tCode);
+                    value.setCosto(tCost);
+                    value.setNombre(tName);
+                    value.setMarca(tBrand);
+                    value.setCaducidad(tExpiration);
+                    PrInventory.productos.clear();
+                    for (Producto p : Principal.PRODUCTS)
+                        if (p.getUnidades()>0)
+                            PrInventory.productos.add(p);
+                }
         }
     }
 }
