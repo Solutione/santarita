@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="392.0" prefWidth="603.0" style="-fx-background-color: #6c4b47;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.PrProviderAddProvider">
+   <center>
+      <BorderPane prefWidth="603.0" BorderPane.alignment="CENTER">
+         <left>
+            <BorderPane prefHeight="260.0" prefWidth="229.0" BorderPane.alignment="CENTER">
+               <top>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="MARCAS" textFill="#a49582" BorderPane.alignment="CENTER_RIGHT">
+                     <font>
+                        <Font name="Roboto Light" size="18.0" />
+                     </font>
+                     <BorderPane.margin>
+                        <Insets right="25.0" />
+                     </BorderPane.margin>
+                  </Label>
+               </top>
+               <center>
+                  <ListView fx:id="lvMarcas" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #83695f;" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="5.0" left="25.0" right="25.0" top="5.0" />
+                     </BorderPane.margin>
+                  </ListView>
+               </center>
+            </BorderPane>
+         </left>
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <top>
+                  <Label text="PRODUCTOS" textFill="#a49582" BorderPane.alignment="CENTER_RIGHT">
+                     <BorderPane.margin>
+                        <Insets right="25.0" />
+                     </BorderPane.margin>
+                     <font>
+                        <Font name="Roboto Light" size="18.0" />
+                     </font>
+                  </Label>
+               </top>
+               <center>
+                  <ListView fx:id="lvProductos" accessibleRole="LIST_ITEM" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #83695f;" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="5.0" left="25.0" right="25.0" top="5.0" />
+                     </BorderPane.margin>
+                  </ListView>
+               </center></BorderPane>
+         </center></BorderPane>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" prefHeight="38.0" prefWidth="603.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="btnCancelar" fitHeight="28.0" fitWidth="71.0" onMouseClicked="#btnCancelarMC" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/btnCancelar.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="25.0" top="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="btnGuardar" fitHeight="28.0" fitWidth="71.0" layoutX="521.0" layoutY="15.0" onMouseClicked="#btnGuardarMC" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/btnGuardar-b.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="25.0" top="5.0" />
+               </HBox.margin>
+            </ImageView>
+         </children></HBox>
+   </bottom>
+   <top>
+      <BorderPane prefHeight="85.0" prefWidth="603.0" BorderPane.alignment="CENTER">
+         <right>
+            <VBox alignment="CENTER_RIGHT" prefHeight="94.0" prefWidth="418.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Nombre" textFill="#a49582">
+                     <font>
+                        <Font name="Roboto Light" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets right="25.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="tfNombre" alignment="CENTER_RIGHT" prefWidth="273.0" promptText="BIMBO" style="-fx-background-color: #6c4b47; -fx-prompt-text-fill: #3f0d16; -fx-text-fill: #3f0d16;">
+                     <font>
+                        <Font name="Lexend Zetta Regular" size="24.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </VBox>
+         </right>
+      </BorderPane>
+   </top>
+</BorderPane>

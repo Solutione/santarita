@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="688.0" style="-fx-background-color: #3f0d16;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.Splash">
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="999.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="SANTA RITA" textAlignment="CENTER" textFill="#ba7738">
+               <font>
+                  <Font name="Lexend Peta Regular" size="150.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <ImageView fx:id="spinner" fitHeight="87.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/spinner.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </ImageView>
+         </children>
+         <padding>
+            <Insets top="80.0" />
+         </padding>
+         <BorderPane.margin>
+            <Insets top="100.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+   <bottom>
+      <FlowPane alignment="BOTTOM_CENTER" columnHalignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Powered by" textFill="#e5e5e5">
+               <font>
+                  <Font name="Roboto Light" size="26.0" />
+               </font>
+            </Label>
+            <Label text="solution" textFill="#e6e6e6">
+               <font>
+                  <Font name="Montserrat Regular" size="36.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets bottom="4.0" left="6.0" />
+               </FlowPane.margin>
+            </Label>
+            <Label rotate="-15.0" text="e" textFill="#e4cb4c">
+               <font>
+                  <Font name="Montserrat Regular" size="36.0" />
+               </font>
+               <FlowPane.margin>
+                  <Insets bottom="4.0" />
+               </FlowPane.margin>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="30.0" />
+         </BorderPane.margin>
+      </FlowPane>
+   </bottom>
+</BorderPane>

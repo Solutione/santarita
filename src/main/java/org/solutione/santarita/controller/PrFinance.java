@@ -162,7 +162,7 @@ public class PrFinance {
 
         day.set((int) ((reportes.get(0).getMount()*400)/bigger));
 
-    }
+    } 
 
     public void btnRetirar(MouseEvent mouseEvent) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/solutione/santarita/view/PrFinanceRetirar.fxml"));

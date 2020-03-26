@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="BPPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="693.0" style="-fx-background-color: #a49582ff;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.Principal">
+   <left>
+      <BorderPane prefHeight="467.0" prefWidth="58.0" style="-fx-background-color: #3f0d16FF;" BorderPane.alignment="CENTER">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <top>
+            <Label onMouseClicked="#btnLogo" text="SR" textFill="#bc7837" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Lexend Exa Regular" size="31.0" />
+               </font>
+            </Label>
+         </top>
+         <center>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <BorderPane fx:id="bpSale" onMouseClicked="#bpSaleMC" prefHeight="65.0" prefWidth="81.0">
+                     <center>
+                        <ImageView fx:id="imgSale" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../image/venta.png" />
+                           </image>
+                           <BorderPane.margin>
+                              <Insets left="2.0" />
+                           </BorderPane.margin>
+                        </ImageView>
+                     </center>
+                     <right>
+                        <Pane fx:id="pnlSale" prefHeight="65.0" prefWidth="2.0" BorderPane.alignment="CENTER" />
+                     </right>
+                  </BorderPane>
+                  <BorderPane fx:id="bpProvider" layoutX="10.0" layoutY="10.0" onMouseClicked="#bpProviderMC" prefHeight="65.0" prefWidth="81.0">
+                     <center>
+                        <ImageView fx:id="imgProvider" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../image/proveedor.png" />
+                           </image>
+                           <BorderPane.margin>
+                              <Insets left="2.0" />
+                           </BorderPane.margin>
+                        </ImageView>
+                     </center>
+                     <right>
+                        <Pane fx:id="pnlProvider" prefHeight="65.0" prefWidth="2.0" BorderPane.alignment="CENTER" />
+                     </right>
+                  </BorderPane>
+                  <BorderPane fx:id="bpInventory" layoutX="10.0" layoutY="75.0" onMouseClicked="#bpInventoryMC" prefHeight="65.0" prefWidth="81.0">
+                     <center>
+                        <ImageView fx:id="imgInventory" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../image/inventario.png" />
+                           </image>
+                           <BorderPane.margin>
+                              <Insets left="2.0" />
+                           </BorderPane.margin>
+                        </ImageView>
+                     </center>
+                     <right>
+                        <Pane fx:id="pnlInventory" prefHeight="65.0" prefWidth="2.0" BorderPane.alignment="CENTER" />
+                     </right>
+                  </BorderPane>
+                  <BorderPane fx:id="bpFinance" layoutX="10.0" layoutY="140.0" onMouseClicked="#bpFinanceMC" prefHeight="65.0" prefWidth="81.0">
+                     <center>
+                        <ImageView fx:id="imgFinance" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../image/administracion.png" />
+                           </image>
+                           <BorderPane.margin>
+                              <Insets left="2.0" />
+                           </BorderPane.margin>
+                        </ImageView>
+                     </center>
+                     <right>
+                        <Pane fx:id="pnlFinance" prefHeight="65.0" prefWidth="2.0" BorderPane.alignment="CENTER" />
+                     </right>
+                  </BorderPane>
+               </children>
+               <BorderPane.margin>
+                  <Insets top="10.0" />
+               </BorderPane.margin>
+            </VBox>
+         </center>
+         <bottom>
+            <VBox alignment="BOTTOM_CENTER" prefHeight="125.0" prefWidth="81.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="imgConfig" fitHeight="42.0" fitWidth="45.0" onMouseClicked="#imgConfigMC" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/ajustes.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lblClock" onMouseClicked="#lblClockMC" text="17:04:00" textFill="#a39583">
+                     <font>
+                        <Font name="Roboto Light" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="15.0" top="15.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </VBox>
+         </bottom>
+      </BorderPane>
+   </left>
+</BorderPane>

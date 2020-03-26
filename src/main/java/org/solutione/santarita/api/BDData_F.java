@@ -26,6 +26,17 @@ public class BDData_F {
             e.printStackTrace();
         }
     }
+    public void updatePrice(double price){
+        try {
+            String query = "UPDATE data_f SET mount = "+price+" where type = 'precio'";
+            Statement st = conn.createStatement();
+            st.executeQuery(query);
+            st.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void updateBenefit(double benefit){
         try {
             String query = "UPDATE data_f SET mount = "+benefit+" where type = 'benefit'";

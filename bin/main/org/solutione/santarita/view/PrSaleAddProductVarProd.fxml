@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0" prefWidth="558.0" style="-fx-background-color: #3f0d16;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.PrSaleAddProductVarProd">
+   <top>
+      <Label text="Inserta gramos o precio" textFill="#a1907e" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Roboto Light" size="34.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets left="15.0" right="15.0" top="15.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+   <bottom>
+      <ImageView fx:id="btnTerminar" fitHeight="34.0" fitWidth="154.0" onMouseClicked="#btnTerminarMC" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../image/btnTerminar.png" />
+         </image>
+         <BorderPane.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" />
+         </BorderPane.margin>
+      </ImageView>
+   </bottom>
+   <center>
+      <VBox prefHeight="385.0" prefWidth="558.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="48.0" prefWidth="487.0">
+               <children>
+                  <Label text="Gramos:" textFill="#a1907e">
+                     <font>
+                        <Font name="Roboto Regular" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfGramos" onKeyReleased="#tfGramosKT" prefHeight="33.0" prefWidth="250.0" style="-fx-background-color: #a49582; -fx-text-fill: #3f0d16; -fx-prompt-text-fill: #3f0d16;">
+                     <HBox.margin>
+                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Lexend Exa Regular" size="16.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="487.0">
+               <children>
+                  <Label text="   Precio:" textFill="#a1907e">
+                     <font>
+                        <Font name="Roboto Regular" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfPrecio" onKeyReleased="#tfPrecioKT" prefHeight="33.0" prefWidth="250.0" style="-fx-background-color: #a49582; -fx-text-fill: #3f0d16; -fx-prompt-text-fill: #3f0d16;">
+                     <HBox.margin>
+                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Lexend Exa Regular" size="16.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <BorderPane prefHeight="89.0" prefWidth="558.0">
+               <bottom>
+                  <Label fx:id="lblGramosPrecio" text="Gramos o Precio" textFill="#a1907e" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="Roboto Regular" size="16.0" />
+                     </font>
+                     <BorderPane.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" />
+                     </BorderPane.margin>
+                  </Label>
+               </bottom>
+               <center>
+                  <Label fx:id="lblRes" alignment="CENTER" text="000000" textFill="#a1907e" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="Lexend Exa Regular" size="53.0" />
+                     </font>
+                     <BorderPane.margin>
+                        <Insets bottom="-10.0" left="15.0" right="15.0" />
+                     </BorderPane.margin>
+                  </Label>
+               </center>
+            </BorderPane>
+         </children></VBox>
+   </center>
+</BorderPane>

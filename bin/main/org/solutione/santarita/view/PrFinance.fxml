@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="BPFincance" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="469.0" prefWidth="1062.0" style="-fx-background-color: #a49582;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.PrFinance">
+    <top>
+        <FlowPane alignment="CENTER_RIGHT" columnHalignment="CENTER" prefHeight="50.0" prefWidth="730.0" BorderPane.alignment="CENTER">
+            <children>
+            <ImageView fx:id="btnSaleView" fitHeight="29.0" fitWidth="78.0" onMouseClicked="#btnSaleView" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_LEFT">
+                     <image>
+                        <Image url="@../image/btnViewVisit.png" />
+                     </image>
+            </ImageView>
+                <ImageView fx:id="search" fitHeight="42.0" fitWidth="33.0" onMouseClicked="#searchMC" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../image/search.png" />
+                    </image>
+                    <FlowPane.margin>
+                        <Insets right="15.0" />
+                    </FlowPane.margin>
+                </ImageView>
+            </children>
+        </FlowPane>
+    </top>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <center>
+            <HBox alignment="TOP_CENTER" prefHeight="69.0" prefWidth="872.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER_RIGHT" prefHeight="167.0" prefWidth="346.0">
+                     <children>
+                        <Label text="Total" textFill="#6c4b47">
+                           <font>
+                              <Font name="Roboto Regular" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tfTotal" text="\$00000.00" textFill="#bc7837">
+                           <font>
+                              <Font name="Lexend Exa Regular" size="46.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="38.0" fitWidth="76.0" onMouseClicked="#btnRetirar" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/btnRetirar.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER_RIGHT" layoutX="273.0" layoutY="10.0" prefHeight="167.0" prefWidth="346.0">
+                     <children>
+                        <Label text="Ganancia Neta" textFill="#6c4b47">
+                           <font>
+                              <Font name="Roboto Regular" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tfBenefit" text="\$00000.00" textFill="#bc7837">
+                           <font>
+                              <Font name="Lexend Exa Regular" size="46.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER_RIGHT" layoutX="195.0" layoutY="10.0" prefHeight="167.0" prefWidth="346.0">
+                     <children>
+                        <Label text="Reservas" textFill="#6c4b47">
+                           <font>
+                              <Font name="Roboto Regular" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tfNoBenefit" text="\$00000.00" textFill="#bc7837">
+                           <font>
+                              <Font name="Lexend Exa Regular" size="46.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </center>
+         <top>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <left>
+                  <VBox prefHeight="238.0" prefWidth="456.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="507.0">
+                           <children>
+                              <BorderPane maxWidth="35.0" minWidth="35.0" prefHeight="34.0" prefWidth="35.0">
+                                 <center>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" text="L" textAlignment="CENTER" textFill="#3f0d16" BorderPane.alignment="CENTER">
+                                       <font>
+                                          <Font name="Lexend Exa Regular" size="26.0" />
+                                       </font>
+                                    </Label>
+                                 </center></BorderPane>
+                              <BorderPane maxWidth="400.0" minWidth="400.0" prefHeight="15.0" prefWidth="400.0" style="-fx-background-color: #6c4b47;">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" right="1.0" top="10.0" />
+                                 </HBox.margin>
+                                 <left>
+                                    <Pane fx:id="pnlLunes" maxWidth="400.0" prefHeight="16.0" prefWidth="300.0" style="-fx-background-color: #3f0d16;" BorderPane.alignment="CENTER" />
+                                 </left>
+                              </BorderPane>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="37.0" prefWidth="507.0">
+                           <children>
+                              <BorderPane prefHeight="34.0" prefWidth="35.0">
+                                 <right>
+                                    <BorderPane maxWidth="35.0" minWidth="35.0" prefHeight="34.0" prefWidth="35.0" BorderPane.alignment="CENTER">
+                                       <center>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" text="M" textAlignment="CENTER" textFill="#3f0d16" BorderPane.alignment="CENTER">
+                                             <font>
+                                                <Font name="Lexend Exa Regular" size="26.0" />
+                                             </font>
+                                          </Label>
+                                       </center>
+                                    </BorderPane>
+                                 </right>
+                              </BorderPane>
+                              <BorderPane maxWidth="400.0" minWidth="400.0" prefHeight="15.0" prefWidth="400.0" style="-fx-background-color: #6c4b47;">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" right="1.0" top="10.0" />
+                                 </HBox.margin>
+                                 <left>
+                                    <Pane fx:id="pnlMartes" maxWidth="400.0" prefHeight="16.0" prefWidth="271.0" style="-fx-background-color: #3f0d16;" BorderPane.alignment="CENTER" />
+                                 </left>
+                              </BorderPane>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="47.0" prefHeight="37.0" prefWidth="507.0">
+                           <children>
+                              <BorderPane maxWidth="35.0" minWidth="35.0" prefHeight="34.0" prefWidth="35.0">
+                                 <center>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" text="M" textAlignment="CENTER" textFill="#3f0d16" BorderPane.alignment="CENTER">
+                                       <font>
+                                          <Font name="Lexend Exa Regular" size="26.0" />
+                                       </font>
+                                    </Label>
+                                 </center>
+                              </BorderPane>
+                              <BorderPane maxWidth="400.0" minWidth="400.0" prefHeight="15.0" prefWidth="400.0" style="-fx-background-color: #6c4b47;">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" right="1.0" top="10.0" />
+                                 </HBox.margin>
+                                 <left>
+                                    <Pane fx:id="pnlMiercoles" maxWidth="400.0" prefHeight="16.0" prefWidth="321.0" style="-fx-background-color: #3f0d16;" BorderPane.alignment="CENTER" />
+                                 </left>
+                              </BorderPane>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="84.0" prefHeight="37.0" prefWidth="461.0">
+                           <children>
+                              <BorderPane maxWidth="35.0" minWidth="35.0" prefHeight="34.0" prefWidth="35.0">
+                                 <center>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" text="J" textAlignment="CENTER" textFill="#3f0d16" BorderPane.alignment="CENTER">
+                                       <font>
+                                          <Font name="Lexend Exa Regular" size="26.0" />
+                                       </font>
+                                    </Label>
+                                 </center>
+                              </BorderPane>
+                              <BorderPane maxWidth="400.0" minWidth="400.0" prefHeight="15.0" prefWidth="400.0" style="-fx-background-color: #6c4b47;">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" right="1.0" top="10.0" />
+                                 </HBox.margin>
+                                 <left>
+                                    <Pane fx:id="pnlJueves" maxWidth="400.0" prefHeight="16.0" prefWidth="292.0" style="-fx-background-color: #3f0d16;" BorderPane.alignment="CENTER" />
+                                 </left>
+                              </BorderPane>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="121.0" prefHeight="37.0" prefWidth="507.0">
+                           <children>
+                              <BorderPane maxWidth="35.0" minWidth="35.0" prefHeight="34.0" prefWidth="35.0">
+                                 <center>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" text="V" textAlignment="CENTER" textFill="#3f0d16" BorderPane.alignment="CENTER">
+                                       <font>
+                                          <Font name="Lexend Exa Regular" size="26.0" />
+                                       </font>
+                                    </Label>
+                                 </center>
+                              </BorderPane>
+                              <BorderPane maxWidth="400.0" minWidth="400.0" prefHeight="15.0" prefWidth="400.0" style="-fx-background-color: #6c4b47;">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" right="1.0" top="10.0" />
+                                 </HBox.margin>
+                                 <left>
+                                    <Pane fx:id="pnlViernes" maxWidth="400.0" prefHeight="16.0" prefWidth="384.0" style="-fx-background-color: #3f0d16;" BorderPane.alignment="CENTER" />
+                                 </left>
+                              </BorderPane>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="158.0" prefHeight="37.0" prefWidth="507.0">
+                           <children>
+                              <BorderPane maxWidth="35.0" minWidth="35.0" prefHeight="34.0" prefWidth="35.0">
+                                 <center>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" text="S" textAlignment="CENTER" textFill="#3f0d16" BorderPane.alignment="CENTER">
+                                       <font>
+                                          <Font name="Lexend Exa Regular" size="26.0" />
+                                       </font>
+                                    </Label>
+                                 </center>
+                              </BorderPane>
+                              <BorderPane maxWidth="400.0" minWidth="400.0" prefHeight="15.0" prefWidth="400.0" style="-fx-background-color: #6c4b47;">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" right="1.0" top="10.0" />
+                                 </HBox.margin>
+                                 <left>
+                                    <Pane fx:id="pnlSabado" maxWidth="400.0" prefHeight="16.0" prefWidth="313.0" style="-fx-background-color: #3f0d16;" BorderPane.alignment="CENTER" />
+                                 </left>
+                              </BorderPane>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="195.0" prefHeight="37.0" prefWidth="507.0">
+                           <children>
+                              <BorderPane maxWidth="35.0" minWidth="35.0" prefHeight="34.0" prefWidth="35.0">
+                                 <center>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" text="D" textAlignment="CENTER" textFill="#3f0d16" BorderPane.alignment="CENTER">
+                                       <font>
+                                          <Font name="Lexend Exa Regular" size="26.0" />
+                                       </font>
+                                    </Label>
+                                 </center>
+                              </BorderPane>
+                              <BorderPane maxWidth="400.0" minWidth="400.0" prefHeight="15.0" prefWidth="400.0" style="-fx-background-color: #6c4b47;">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" right="1.0" top="10.0" />
+                                 </HBox.margin>
+                                 <left>
+                                    <Pane fx:id="pnlDomingo" maxWidth="400.0" prefHeight="16.0" prefWidth="396.0" style="-fx-background-color: #3f0d16;" BorderPane.alignment="CENTER" />
+                                 </left>
+                              </BorderPane>
+                           </children>
+                        </HBox>
+                     </children>
+                     <BorderPane.margin>
+                        <Insets left="30.0" />
+                     </BorderPane.margin>
+                  </VBox>
+               </left>
+               <center>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <center>
+                        <TableView fx:id="tvTopProducts" prefHeight="238.0" prefWidth="316.0" stylesheets="@../style/table.css" BorderPane.alignment="CENTER">
+                          <columns>
+                            <TableColumn fx:id="tcName" prefWidth="130.0" text="Nombre" />
+                            <TableColumn fx:id="tcUnits" maxWidth="3000.0" prefWidth="75.0" text="Unidades" />
+                              <TableColumn fx:id="tcBrand" prefWidth="75.0" text="Marca" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                           <BorderPane.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </BorderPane.margin>
+                        </TableView>
+                     </center>
+                     <top>
+                        <Label text="Top 5 productos populares" textFill="#3d0d16ba" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </top>
+                  </BorderPane>
+               </center>
+            </BorderPane>
+         </top></BorderPane>
+   </center>
+</BorderPane>
