@@ -14,6 +14,7 @@ import org.solutione.santarita.api.BDProveedores;
 import org.solutione.santarita.api.Producto;
 import org.solutione.santarita.api.Proveedor;
 
+
 import java.io.IOException;
 
 public class PrProviderVisit {
@@ -30,6 +31,7 @@ public class PrProviderVisit {
     private boolean edit = false;
 
     @FXML
+    private DatePicker dateVisit;
     void initialize(){
        
     }
@@ -40,11 +42,20 @@ public class PrProviderVisit {
         this.principalPane =  principalPane;
         this.provider = provider;
         lblBrand.setText(provider);
+        dateVisit.setStyle("-fx-background-color: #a49582; -fx-text-fill: #3f0d16; -fx-font: 18px \"Roboto Light\";");
     }
 
     public void btnGuardarMC(MouseEvent mouseEvent) {
-        new BDProveedores().addVisitProvider(provider);
-        thisStage.close();
+        String date=null;
+        try{
+        date=dateVisit.getValue().toString();
+        }catch(Exception e){
+
+        }
+        if(date!=null){
+            new BDProveedores().addVisitProvider(provider,date);
+            thisStage.close();
+        }else{}
     }
 
     public void btnCancelarMC(MouseEvent mouseEvent) {

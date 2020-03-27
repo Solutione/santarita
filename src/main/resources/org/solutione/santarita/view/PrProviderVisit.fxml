@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -11,6 +17,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="603.0" style="-fx-background-color: #6c4b47;" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.solutione.santarita.controller.PrProviderVisit">
 
    <bottom>
@@ -19,7 +29,7 @@
             <ImageView fx:id="btnCancelar" fitHeight="28.0" fitWidth="71.0" onMouseClicked="#btnCancelarMC" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/btnCancelar.png" />
-               </image>
+               </image> 
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="25.0" top="5.0" />
                </HBox.margin>
@@ -60,4 +70,25 @@
          </right>
       </BorderPane>
    </top>
+   <center>
+   <GridPane prefHeight="85.0" prefWidth="603.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <Label prefHeight="24.0" prefWidth="240.0" text="Selecciona la fecha: " GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" textFill="#3f0d16">
+        <font>
+            <Font name="Roboto Light" size="24.0" />
+            </font>
+            <VBox.margin>
+               <Insets right="25.0" />
+            </VBox.margin>
+         </Label>
+            <DatePicker fx:id="dateVisit" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="76.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+    </center>
 </BorderPane>

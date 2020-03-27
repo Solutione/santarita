@@ -90,12 +90,12 @@ public class BDProveedores {
             e.printStackTrace();
         }
     }
-    public void addVisitProvider(String name){
+    public void addVisitProvider(String name,String date){
         try {
             String query = "insert into providers_visit " +
-                    "(name) " +
+                    "(name,date) " +
                     "values (" +
-                    "'"+name+"')";
+                    "'"+name+"','"+date+"')";
             Statement st = conn.createStatement();
             st.executeQuery(query);
             st.close();

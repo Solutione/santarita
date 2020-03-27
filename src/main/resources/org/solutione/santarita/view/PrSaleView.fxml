@@ -81,7 +81,7 @@
          </content>
         </ScrollPane>
     </center>
-   <top>
+   <top> 
      <GridPane prefHeight="85.0" prefWidth="700.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
         <Label prefHeight="24.0" prefWidth="240.0" text="Selecciona una fecha: " GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" textFill="#3f0d16">

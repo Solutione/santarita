@@ -10,7 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.control.DatePicker;
+import javafx.scene.control.DatePicker; 
 import javafx.stage.Stage;
 import org.solutione.santarita.api.BDProductos;
 import org.solutione.santarita.api.BDProveedores;
