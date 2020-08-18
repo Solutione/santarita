@@ -46,5 +46,5 @@ jfx {
     mainClass = 'org.solutione.santarita'
 
     // minimal requirement for jfxNative-task
-    vendor = 'scysco'
+    vendor = 'solutione'
 }

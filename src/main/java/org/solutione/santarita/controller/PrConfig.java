@@ -92,21 +92,11 @@ public class PrConfig {
     }
 
     public void btnSavePassMC(MouseEvent mouseEvent) {
-        if (pass.getText().equals(new BDUsers().getPassword()))
-            if (newPass.getText().equals(repNewPass.getText()))
-                newPassword();
-            else
-                JOptionPane.showMessageDialog(null, "Contraseñas no coinciden!!");
-        else
-            JOptionPane.showMessageDialog(null,"Contraseña actual incorrecta!!");
+       
     }
 
     private void newPassword() {
-        new BDUsers().setPassword(newPass.getText());
-        pass.setText("");
-        newPass.setText("");
-        repNewPass.setText("");
-        JOptionPane.showMessageDialog(null, "Contraseña actualizada correctamente!!");
+      
     }
 
     public void btnApagarMC(MouseEvent mouseEvent) {

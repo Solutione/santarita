@@ -86,7 +86,7 @@ public class PrFinanceRetirar {
     }
     public Double redondea(Double num){
         BigDecimal res; 
-        res = new BigDecimal(num).setScale(12, BigDecimal.ROUND_HALF_DOWN); 
+        res = new BigDecimal(num).setScale(3, BigDecimal.ROUND_HALF_DOWN); 
         double resultado = res.doubleValue();
         return resultado;
     }

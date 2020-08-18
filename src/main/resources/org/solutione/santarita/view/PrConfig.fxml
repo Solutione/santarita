@@ -77,36 +77,7 @@
                         </ScrollPane>
                      </center>
                   </BorderPane>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Label text="Contraseña:">
-                           <HBox.margin>
-                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                           </HBox.margin>
-                        </Label>
-                        <TextField fx:id="pass" style="-fx-text-fill: #3f0d16; -fx-background-color: #a49582;" />
-                        <Label text="Nueva Contraseña:">
-                           <HBox.margin>
-                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                           </HBox.margin>
-                        </Label>
-                        <TextField fx:id="newPass" style="-fx-background-color: #a49582; -fx-text-fill: #3f0d16;" />
-                        <Label text="Repetir:">
-                           <HBox.margin>
-                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                           </HBox.margin>
-                        </Label>
-                        <TextField fx:id="repNewPass" style="-fx-background-color: #a49582; -fx-text-fill: #3f0d16;" />
-                        <ImageView fitHeight="28.0" fitWidth="79.0" onMouseClicked="#btnSavePassMC" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../image/btnGuardar-b.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                           </HBox.margin>
-                        </ImageView>
-                     </children>
-                  </HBox>
+                 
                </children>
             </VBox>
          </content>

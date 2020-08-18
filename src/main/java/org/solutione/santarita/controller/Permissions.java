@@ -54,20 +54,7 @@ public class Permissions {
     }
 
     public void btnTerminarMC(MouseEvent mouseEvent) {
-        if (JOptionPane.showInputDialog(null,"Contraseña").equals(new BDUsers().getPassword())){
-            if (Principal.isSalePM) bpSale.setVisible(true);
-            else bpSale.setVisible(false);
-            if (Principal.isProviderPM) bpProvider.setVisible(true);
-            else bpProvider.setVisible(false);
-            if (Principal.isInventoryPM) bpInventory.setVisible(true);
-            else  bpInventory.setVisible(false);
-            if (Principal.isFinancePM) bpFinance.setVisible(true);
-            else  bpFinance.setVisible(false);
-            if (Principal.isConfigPM) imgConfig.setVisible(true);
-            else  imgConfig.setVisible(false);
-            stage.close();
         }
-    }
 
     public void salesMC(MouseEvent mouseEvent) {
         if (Principal.isSalePM){
