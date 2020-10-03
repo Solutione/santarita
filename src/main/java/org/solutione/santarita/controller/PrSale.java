@@ -8,6 +8,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -19,7 +22,9 @@ import org.solutione.santarita.api.Producto;
 import org.solutione.santarita.api.test;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 public class PrSale {
 
@@ -109,8 +114,15 @@ public class PrSale {
     private void addProduct(String code){
         Producto product = null;
         for (Producto p : allProducts)
+
             if (p.getCodigo().equals(code))
                 product = p;
+        if( product==null){
+            JOptionPane.showMessageDialog(null,"Producto no encontrado:"+code);
+            txtScanner.setText("");
+            txtScanner.requestFocus();
+
+        }
 
         double units = 1;
         for (Producto value : productos) {
@@ -129,6 +141,9 @@ public class PrSale {
         double total = 0;
         for (Producto producto : productos) total += producto.getSubtotal();
         dbTotal.set(total);
+
+
+
     }
 
     public void lblFinishMouseClick(MouseEvent mouseEvent) {
@@ -153,6 +168,7 @@ public class PrSale {
     }
 
     public void btnFamilyMC(MouseEvent mouseEvent) {
+        DecimalFormat formato2 = new DecimalFormat("#.##");
         if(!family){
             family=true;
             btnFamily.setImage(new Image("org/solutione/santarita/image/family-b.png"));
@@ -163,7 +179,7 @@ public class PrSale {
                         value.setSubtotal(v.getCosto()*value.getUnidades());
                         double total = 0;
                         for (Producto producto : productos) total += producto.getSubtotal();
-                        dbTotal.set(total);
+                        dbTotal.set(Double.parseDouble(formato2.format(total)));
                     }
         }else {
             family = false;
@@ -175,12 +191,14 @@ public class PrSale {
                         value.setSubtotal(v.getPrecio()*value.getUnidades());
                         double total = 0;
                         for (Producto producto : productos) total += producto.getSubtotal();
-                        dbTotal.set(total);
+                        dbTotal.set(Double.parseDouble(formato2.format(total)));
                     }
         }
     }
 
     public void btnMoneyMC(MouseEvent mouseEvent) {
+        DecimalFormat formato2 = new DecimalFormat("#.##");
+
         if(money){
             money = false;
             btnMoney.setImage(new Image("org/solutione/santarita/image/efectivo-b.png"));
@@ -190,7 +208,7 @@ public class PrSale {
             btnMoney.setImage(new Image("org/solutione/santarita/image/efectivo.png"));
             double total = 0;
             for (Producto producto : productos) total += producto.getSubtotal();
-            dbTotal.set(total);
+            dbTotal.set(Double.parseDouble(formato2.format(total)));
         }
 
     }

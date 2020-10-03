@@ -106,7 +106,7 @@
             <Insets />
          </BorderPane.margin>
          <bottom>
-            <TextField fx:id="txtScanner" onAction="#txtScannerAdd" style="-fx-background-color: #a49582; -fx-text-fill: #a49582;" BorderPane.alignment="CENTER" />
+            <TextField fx:id="txtScanner" onAction="#txtScannerAdd" style="-fx-background-color: #a49582; -fx-text-fill: #FFFFFF;" BorderPane.alignment="CENTER" />
          </bottom>
          <top>
             <ImageView fx:id="imgBtnAgregar" fitHeight="35.0" fitWidth="109.0" onMouseClicked="#imgBtnAgregarMC" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER_RIGHT">

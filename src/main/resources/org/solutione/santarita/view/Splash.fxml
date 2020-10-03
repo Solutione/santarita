@@ -13,7 +13,7 @@
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="999.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="El gordo" textAlignment="CENTER" textFill="#ba7738">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Tiendas vilchis" textAlignment="CENTER" textFill="#ba7738">
                <font>
                   <Font name="Lexend Peta Regular" size="150.0" />
                </font>
